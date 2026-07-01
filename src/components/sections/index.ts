@@ -1,0 +1,10 @@
+export { Hero } from "./hero";
+export { ProblemaSection } from "./problema";
+export { ComparativaSection } from "./comparativa";
+export { BeneficiosSection } from "./beneficios";
+export { ComoFuncionaSection } from "./como-funciona";
+export { BannerConfianca } from "./banner-confianca";
+export { RevistasSection } from "./revistas";
+export { EbooksSection } from "./ebooks";
+export { DepoimentosSection } from "./depoimentos";
+export { CtaFinal } from "./cta-final";
