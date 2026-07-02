@@ -5,10 +5,7 @@ import { MotionBlock } from "@/components/ui";
 
 export function ProblemaSection() {
   return (
-    <section
-      data-snap-section
-      className="npg-company-section relative flex min-h-[108vh] items-center overflow-hidden px-3 py-24 lg:py-28"
-    >
+    <section className="npg-company-section relative flex min-h-[108vh] items-center overflow-hidden px-3 py-24 lg:py-28">
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-[linear-gradient(180deg,rgba(14,31,30,0.12),transparent)]" />
 
       <div className="relative z-10 mx-auto mt-8 w-full max-w-[1120px] lg:mt-10">

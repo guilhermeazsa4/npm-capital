@@ -3,6 +3,7 @@ import { Norican, Plus_Jakarta_Sans, Young_Serif } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { CookieBanner } from "@/components/cookie-banner";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 
@@ -45,6 +46,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

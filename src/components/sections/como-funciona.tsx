@@ -133,7 +133,6 @@ export function ComoFuncionaSection() {
   return (
     <section
       ref={sectionRef}
-      data-snap-section
       className="npg-company-section relative flex min-h-[104vh] items-center overflow-hidden px-4 py-20 text-[#14344E] lg:px-8 lg:py-16"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-[linear-gradient(180deg,rgba(14,31,30,0.08),transparent)]" />

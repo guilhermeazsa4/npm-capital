@@ -181,22 +181,24 @@ export function PageHeader({
   eyebrow,
   title,
   description,
+  centered = false,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  centered?: boolean;
 }) {
   return (
     <section className="relative overflow-hidden bg-[#0E1F1E] px-5 pb-16 pt-32 text-white lg:px-8 lg:pb-20 lg:pt-36">
       <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(20,52,78,0.9),rgba(14,31,30,1)_55%,rgba(20,52,78,0.82))]" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#F1C75B]/70 to-transparent" />
-      <div className="relative z-10 mx-auto max-w-[1220px]">
+      <div className={`relative z-10 mx-auto max-w-[1220px] ${centered ? "text-center" : ""}`}>
         <MotionBlock>
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="max-w-3xl text-4xl font-black leading-tight md:text-5xl lg:text-6xl">
+          <h1 className={`text-4xl font-black leading-tight md:text-5xl lg:text-6xl ${centered ? "mx-auto max-w-3xl" : "max-w-3xl"}`}>
             {title}
           </h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 md:text-lg">
+          <p className={`mt-6 text-base leading-8 text-white/75 md:text-lg ${centered ? "mx-auto max-w-2xl" : "max-w-2xl"}`}>
             {description}
           </p>
         </MotionBlock>

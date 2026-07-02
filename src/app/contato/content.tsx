@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { FloatingWhatsApp, MotionBlock, PageHeader } from "@/components/ui";
 import { CONTACT, WHATSAPP_URL } from "@/lib/constants";
@@ -122,6 +123,21 @@ export function ContatoContent() {
                       />
                     </div>
                   </div>
+                  <label htmlFor="consentimento" className="mt-4 flex items-start gap-2 text-xs leading-5 text-[#14344E]/70">
+                    <input
+                      id="consentimento"
+                      type="checkbox"
+                      required
+                      className="mt-0.5 h-4 w-4 shrink-0 rounded-[3px] border border-[#14344E]/30 text-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/30"
+                    />
+                    <span>
+                      Concordo com o tratamento dos meus dados de acordo com a{" "}
+                      <Link href="/politica-de-privacidade" className="font-semibold text-[#14344E] underline hover:text-[#F1C75B]">
+                        Política de Privacidade
+                      </Link>
+                      .
+                    </span>
+                  </label>
                   <button
                     type="submit"
                     className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[4px] bg-[#F1C75B] px-6 text-sm font-black text-[#0E1F1E] transition-colors hover:bg-[#E1B34C]"

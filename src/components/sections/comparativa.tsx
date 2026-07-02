@@ -131,7 +131,6 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
 export function ComparativaSection() {
   return (
     <section
-      data-snap-section
       className="relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-3 pb-14 pt-24 text-white lg:pb-12 lg:pt-28"
     >
       <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(20,52,78,0.94),rgba(14,31,30,1)_52%,rgba(20,52,78,0.86))]" />

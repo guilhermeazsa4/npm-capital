@@ -4,10 +4,7 @@ import { MotionBlock, PrimaryButton, WhatsAppButton } from "@/components/ui";
 
 export function CtaFinal() {
   return (
-    <section
-      data-snap-section
-      className="relative flex min-h-[100vh] items-center overflow-hidden bg-[#14344E] px-5 py-24 text-white lg:px-8 lg:py-28"
-    >
+    <section className="relative flex min-h-[100vh] items-center overflow-hidden bg-[#14344E] px-5 py-24 text-white lg:px-8 lg:py-28">
       <div className="cta-image absolute inset-0 bg-cover bg-center opacity-20" />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,52,78,0.98),rgba(14,31,30,0.9)_62%,rgba(14,31,30,0.62))]" />
       <div className="pointer-events-none absolute -top-24 left-1/2 h-[420px] w-[620px] -translate-x-1/2 rounded-full bg-[#F1C75B]/12 blur-[110px]" />
