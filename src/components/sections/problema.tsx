@@ -12,19 +12,21 @@ export function ProblemaSection() {
         <div className="grid items-center gap-16 lg:grid-cols-[620px_420px] lg:justify-between">
           <MotionBlock>
             <div className="mx-auto max-w-[620px] text-center lg:mx-0 lg:text-left">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#C99A31]">
-                Aqui na <span className="font-black text-[#B88622]">NPG</span>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#A66A12]">
+                Aqui na{" "}
+                <span className="font-black text-[#8F5A0E]">NPG CAPITAL</span>
               </p>
 
               <h2 className="mt-4 text-3xl font-black leading-tight text-[#14344E] md:text-4xl">
-                A gente cuida da inadimplência para o síndico cuidar melhor do condomínio.
+                A gente cuida da inadimplência para o síndico cuidar melhor do
+                condomínio.
               </h2>
 
-              <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-[#0E1F1E]">
+              <p className="mt-5 max-w-xl text-justify text-base font-semibold leading-7 text-[#0E1F1E]">
                 Administrar um condomínio não deveria ser uma sequência de
                 cobranças, improvisos e conversas difíceis.
               </p>
-              <p className="mt-4 max-w-xl text-base leading-7 text-[#18302F]">
+              <p className="mt-4 max-w-xl text-justify text-base leading-7 text-[#18302F]">
                 A <span className="font-black text-[#0E1F1E]">NPG</span> entra
                 para dar previsibilidade ao caixa e aliviar essa parte delicada
                 da rotina, para que a gestão consiga focar no que realmente

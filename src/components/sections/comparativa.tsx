@@ -42,10 +42,10 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
     <article className={`flow-clean-panel ${withNpg ? "flow-clean-panel-good" : "flow-clean-panel-risk"}`}>
       <div className="relative z-10">
         <div className="text-center">
-          <p className={`text-[10px] font-black uppercase tracking-[0.2em] ${withNpg ? "text-[#F1C75B]" : "text-white/48"}`}>
-            {withNpg ? "Com NPG Capital" : "Sem NPG"}
+          <p className={`text-sm font-black uppercase tracking-[0.18em] ${withNpg ? "text-[#8F5A0E]" : "text-white/60"}`}>
+            {withNpg ? "Com NPG Capital" : "Sem NPG Capital"}
           </p>
-          <h3 className="mt-1 text-sm font-black text-white">
+          <h3 className={`mt-2 text-xl font-black leading-tight ${withNpg ? "text-[#14344E]" : "text-white"}`}>
             {withNpg ? "O repasse chega completo" : "A inadimplência reduz o caixa"}
           </h3>
         </div>
@@ -108,14 +108,14 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
                 aria-hidden="true"
                 className={`h-8 w-8 ${withNpg ? "text-[#33C46B]" : "text-[#F1C75B]"}`}
               />
-              <p className={`text-3xl font-black ${withNpg ? "text-white" : "text-[#F1C75B]"}`}>
+              <p className={`text-4xl font-black ${withNpg ? "text-[#14344E]" : "text-[#F1C75B]"}`}>
                 {withNpg ? "100%" : "65%"}
               </p>
             </div>
-            <p className="mt-2 text-center text-sm font-black text-white">
+            <p className={`mt-2 text-center text-base font-black ${withNpg ? "text-[#14344E]" : "text-white"}`}>
               Caixa do condomínio
             </p>
-            <div className="mt-2.5 h-2 overflow-hidden rounded-full bg-white/10">
+            <div className={`mt-2.5 h-2.5 overflow-hidden rounded-full ${withNpg ? "bg-[#14344E]/12" : "bg-white/10"}`}>
               <div
                 className={`h-full rounded-full ${withNpg ? "flow-clean-bar-good" : "flow-clean-bar-risk"}`}
                 style={{ width: withNpg ? "100%" : "65%" }}
@@ -130,17 +130,17 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
 
 export function ComparativaSection() {
   return (
-    <section className="relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-3 py-14 text-white lg:py-12">
+    <section className="relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-3 pb-14 pt-24 text-white lg:pb-12 lg:pt-28">
       <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(20,52,78,0.94),rgba(14,31,30,1)_52%,rgba(20,52,78,0.86))]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F1C75B]/70 to-transparent" />
-      <div className="relative z-10 mx-auto mt-6 w-full max-w-[1000px] px-4 sm:px-5 lg:mt-8 lg:px-6">
+      <div className="relative z-10 mx-auto mt-12 w-full max-w-[1000px] px-4 sm:px-5 lg:mt-16 lg:px-6">
         <MotionBlock>
-          <h2 className="mx-auto max-w-2xl text-center text-2xl font-black leading-tight md:text-[28px]">
+          <h2 className="mx-auto max-w-3xl text-center text-3xl font-black leading-tight text-white drop-shadow-[0_10px_28px_rgba(0,0,0,0.28)] md:text-[42px]">
             O caminho do dinheiro muda quando a NPG entra no fluxo.
           </h2>
         </MotionBlock>
 
-        <div className="mt-5 grid gap-4 lg:grid-cols-2">
+        <div className="mt-8 grid gap-5 lg:grid-cols-2">
           <MotionBlock delay={0.08}>
             <ScenarioFlow mode="without" />
           </MotionBlock>
