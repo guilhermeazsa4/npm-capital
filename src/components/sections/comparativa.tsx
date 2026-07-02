@@ -130,7 +130,10 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
 
 export function ComparativaSection() {
   return (
-    <section className="relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-3 py-14 text-white lg:py-12">
+    <section
+      data-snap-section
+      className="relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-3 py-14 text-white lg:py-12"
+    >
       <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(20,52,78,0.94),rgba(14,31,30,1)_52%,rgba(20,52,78,0.86))]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F1C75B]/70 to-transparent" />
       <div className="relative z-10 mx-auto mt-6 w-full max-w-[1000px] px-4 sm:px-5 lg:mt-8 lg:px-6">

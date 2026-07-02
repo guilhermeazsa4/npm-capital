@@ -6,7 +6,10 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="gold-surface relative overflow-hidden border-t border-[#FFE39A]/70 px-5 py-6 text-black lg:px-8 lg:py-7">
+    <footer
+      data-snap-section
+      className="gold-surface relative overflow-hidden border-t border-[#FFE39A]/70 px-5 py-6 text-black lg:px-8 lg:py-7"
+    >
       <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.42),transparent_36%,rgba(255,255,255,0.16)_72%,transparent)] opacity-90" />
       <div className="relative z-10 mx-auto max-w-[1220px]">
         <div className="flex flex-col items-start justify-between gap-5 lg:flex-row lg:items-center">
