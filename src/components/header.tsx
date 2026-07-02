@@ -10,7 +10,7 @@ import { WHATSAPP_URL } from "@/lib/constants";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "A Empresa", href: "/a-empresa" },
-  { label: "Serviços", href: "/contato#formularios" },
+  { label: "Serviços", href: "/servicos" },
   { label: "E-books", href: "/e-books" },
   { label: "Contato", href: "/contato" },
 ];

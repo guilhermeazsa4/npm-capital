@@ -801,32 +801,32 @@ body {
 .flow-clean-panel.flow-clean-panel-good {
   z-index: 2;
   transform: none;
-  border-color: #ffe39a;
+  border-color: rgba(255, 255, 255, 0.78);
   background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.42), transparent 32%),
-    radial-gradient(ellipse at 50% 54%, rgba(93, 61, 12, 0.34), transparent 55%),
-    linear-gradient(135deg, #ffd870, #e6b247);
+    radial-gradient(ellipse 120% 58% at 50% -8%, #ffffff 0%, #ffffff 66%, rgba(255, 255, 255, 0) 92%),
+    radial-gradient(ellipse 74% 48% at 0% 106%, rgba(132, 156, 156, 0.26), transparent 68%),
+    radial-gradient(ellipse 58% 36% at 20% 88%, rgba(166, 184, 184, 0.24), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #f7f9f9 48%, #e9eeee 100%);
   box-shadow:
-    0 30px 78px rgba(4, 17, 24, 0.36),
-    0 0 0 1px rgba(255, 246, 204, 0.42),
-    0 0 24px rgba(241, 199, 91, 0.22),
+    0 30px 78px rgba(4, 17, 24, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.54),
+    0 0 26px rgba(225, 233, 234, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 0 rgba(100, 71, 17, 0.16);
-  backdrop-filter: blur(4px) saturate(112%);
-  -webkit-backdrop-filter: blur(4px) saturate(112%);
+    inset 0 -1px 0 rgba(20, 52, 78, 0.08);
+  backdrop-filter: blur(8px) saturate(112%);
+  -webkit-backdrop-filter: blur(8px) saturate(112%);
 }
 
 .flow-clean-panel.flow-clean-panel-good::before {
   background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.36), transparent 28%),
-    linear-gradient(90deg, rgba(255, 246, 204, 0.2), transparent 48%);
-  opacity: 0.82;
+    linear-gradient(115deg, rgba(255, 255, 255, 0.72), transparent 30%),
+    linear-gradient(90deg, rgba(60, 191, 199, 0.08), transparent 48%);
+  opacity: 0.76;
 }
 
 .flow-clean-panel-good .text-center p,
 .flow-clean-panel-good .text-center h3 {
-  color: #0e1f1e;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.56);
 }
 
 .flow-clean-panel-good .flow-clean-track {
@@ -918,23 +918,26 @@ body {
 }
 
 .flow-clean-panel-good .flow-clean-unit {
-  border-color: rgba(255, 236, 176, 0.9);
+  border-color: rgba(20, 52, 78, 0.14);
   background:
-    linear-gradient(135deg, rgba(8, 30, 46, 0.98), rgba(5, 19, 21, 0.96)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06));
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(232, 238, 238, 0.88)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(20, 52, 78, 0.04));
   box-shadow:
-    0 20px 58px rgba(4, 17, 24, 0.44),
-    0 0 0 1px rgba(255, 232, 166, 0.28),
-    0 0 28px rgba(241, 199, 91, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.34),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+    0 20px 58px rgba(4, 17, 24, 0.14),
+    0 0 0 1px rgba(255, 255, 255, 0.64),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -1px 0 rgba(20, 52, 78, 0.08);
+}
+
+.flow-clean-panel-good .flow-clean-unit p {
+  color: #14344e;
 }
 
 .flow-clean-panel-good .flow-clean-unit::before,
 .flow-clean-panel-good .flow-clean-result::before {
   background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.3), transparent 28%),
-    linear-gradient(90deg, rgba(241, 199, 91, 0.16), transparent 48%);
+    linear-gradient(115deg, rgba(255, 255, 255, 0.6), transparent 28%),
+    linear-gradient(90deg, rgba(60, 191, 199, 0.08), transparent 48%);
 }
 
 .flow-clean-panel-risk .flow-clean-unit {
@@ -1077,17 +1080,16 @@ body {
 }
 
 .flow-clean-result-good {
-  border-color: rgba(255, 236, 176, 0.9);
+  border-color: rgba(20, 52, 78, 0.14);
   background:
-    linear-gradient(135deg, rgba(8, 30, 46, 0.98), rgba(5, 19, 21, 0.96)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06));
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(232, 238, 238, 0.9)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(20, 52, 78, 0.04));
   box-shadow:
-    0 20px 58px rgba(4, 17, 24, 0.44),
-    0 0 0 1px rgba(255, 232, 166, 0.28),
-    0 0 24px rgba(241, 199, 91, 0.16),
+    0 20px 58px rgba(4, 17, 24, 0.14),
+    0 0 0 1px rgba(255, 255, 255, 0.64),
     0 0 30px rgba(53, 232, 120, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.34),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -1px 0 rgba(20, 52, 78, 0.08);
 }
 
 .flow-clean-result-risk {
@@ -1377,6 +1379,97 @@ body {
   to {
     transform: translateY(100%);
   }
+}
+
+@keyframes servicesImageDrift {
+  from {
+    transform: scale(1.02) translate3d(-0.6%, -0.4%, 0);
+  }
+
+  to {
+    transform: scale(1.07) translate3d(0.8%, 0.6%, 0);
+  }
+}
+
+@keyframes servicesFinanceRun {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100% - 16px);
+  }
+}
+
+@keyframes servicesTrace {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+.services-hero-visual {
+  isolation: isolate;
+}
+
+.services-hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.18), transparent 30%),
+    linear-gradient(245deg, rgba(241, 199, 91, 0.12), transparent 42%);
+  mix-blend-mode: soft-light;
+}
+
+.services-hero-image {
+  animation: servicesImageDrift 10s ease-in-out infinite alternate;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.services-finance-line {
+  z-index: 4;
+}
+
+.services-finance-runner {
+  animation: servicesFinanceRun 4.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.services-bar {
+  background: linear-gradient(180deg, #33c46b, #14344e);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.services-grid-trace {
+  background:
+    linear-gradient(90deg, transparent, rgba(241, 199, 91, 0.68), rgba(51, 196, 107, 0.48), transparent);
+  background-size: 200% 100%;
+  opacity: 0.34;
+  animation: servicesTrace 5.6s linear infinite;
+}
+
+.services-card {
+  isolation: isolate;
+}
+
+.services-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px 0;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(241, 199, 91, 0.72), transparent);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.services-card:hover::after {
+  opacity: 1;
 }
 
 /* WhatsApp float */

@@ -28,7 +28,7 @@ export function Footer() {
             <Link href="/contato" className="transition-opacity hover:opacity-60">
               Contato
             </Link>
-            <Link href="/contato#formularios" className="transition-opacity hover:opacity-60">
+            <Link href="/servicos" className="transition-opacity hover:opacity-60">
               Serviços
             </Link>
             <Link href="/revistas" className="transition-opacity hover:opacity-60">
