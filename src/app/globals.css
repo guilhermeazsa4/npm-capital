@@ -1381,95 +1381,24 @@ body {
   }
 }
 
-@keyframes servicesImageDrift {
+@keyframes servicesMarqueeRight {
   from {
-    transform: scale(1.02) translate3d(-0.6%, -0.4%, 0);
+    transform: translateX(calc(-50% - 8px));
   }
 
   to {
-    transform: scale(1.07) translate3d(0.8%, 0.6%, 0);
+    transform: translateX(0);
   }
 }
 
-@keyframes servicesFinanceRun {
-  from {
-    left: 0;
-  }
-
-  to {
-    left: calc(100% - 16px);
-  }
+.services-marquee {
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.72), #000 1.5%, #000 98.5%, rgba(0, 0, 0, 0.72));
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.72), #000 1.5%, #000 98.5%, rgba(0, 0, 0, 0.72));
 }
 
-@keyframes servicesTrace {
-  from {
-    background-position: 0% 50%;
-  }
-
-  to {
-    background-position: 200% 50%;
-  }
-}
-
-.services-hero-visual {
-  isolation: isolate;
-}
-
-.services-hero-visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.18), transparent 30%),
-    linear-gradient(245deg, rgba(241, 199, 91, 0.12), transparent 42%);
-  mix-blend-mode: soft-light;
-}
-
-.services-hero-image {
-  animation: servicesImageDrift 10s ease-in-out infinite alternate;
-  transform-origin: center center;
+.services-marquee-track {
+  animation: servicesMarqueeRight 78s linear infinite;
   will-change: transform;
-}
-
-.services-finance-line {
-  z-index: 4;
-}
-
-.services-finance-runner {
-  animation: servicesFinanceRun 4.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-}
-
-.services-bar {
-  background: linear-gradient(180deg, #33c46b, #14344e);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38);
-}
-
-.services-grid-trace {
-  background:
-    linear-gradient(90deg, transparent, rgba(241, 199, 91, 0.68), rgba(51, 196, 107, 0.48), transparent);
-  background-size: 200% 100%;
-  opacity: 0.34;
-  animation: servicesTrace 5.6s linear infinite;
-}
-
-.services-card {
-  isolation: isolate;
-}
-
-.services-card::after {
-  content: "";
-  position: absolute;
-  inset: auto 18px 0;
-  height: 2px;
-  pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgba(241, 199, 91, 0.72), transparent);
-  opacity: 0;
-  transition: opacity 220ms ease;
-}
-
-.services-card:hover::after {
-  opacity: 1;
 }
 
 /* WhatsApp float */
