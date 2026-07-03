@@ -43,7 +43,7 @@ export function DepoimentosSection() {
           </h2>
         </MotionBlock>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        <div className="mt-14 grid gap-5 md:px-16 lg:grid-cols-3 lg:px-0">
           {testimonials.map((t, i) => (
             <MotionBlock key={t.name} delay={i * 0.08}>
               <article className="premium-glass-button topbar-ticket-button group relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden rounded-[16px] p-7">

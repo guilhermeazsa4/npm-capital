@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   TrendingUp,
 } from "lucide-react";
+import type { KeyboardEvent } from "react";
 import { useEffect, useState } from "react";
 import { PrimaryButton } from "@/components/ui";
 
@@ -29,7 +30,7 @@ function HeroContent() {
         Garantimos a receita,{" "}
         <span className="hero-gold-signature">Você gere melhor.</span>
       </h1>
-      <p className="mt-6 max-w-xl text-sm font-medium leading-7 text-white/92 md:text-base md:leading-7">
+      <p className="mt-6 max-w-xl text-left text-sm font-medium leading-7 text-white/92 md:text-base md:leading-7">
         Com a <span className="font-bold text-white">NPG Capital</span>, seu condomínio conta com
         <br />
         arrecadação garantida, previsibilidade financeira
@@ -43,7 +44,7 @@ function HeroContent() {
             Solicitar Proposta
           </PrimaryButton>
         </div>
-        <div className="border-l border-white/18 pl-4 text-sm font-semibold leading-7 text-white md:text-base">
+        <div className="w-full border-l border-white/18 pl-4 text-center text-sm font-semibold leading-7 text-white sm:w-auto sm:text-left md:hidden md:text-base lg:block">
           <p>Mais de 10 condomínios atendidos</p>
           <p>+10 anos de experiência</p>
         </div>
@@ -80,12 +81,14 @@ export function Hero() {
       text: "Antecipação para obras",
       description:
         "Melhorias, manutenções emergenciais e projetos estruturais podem avançar com mais velocidade, permitindo que o condomínio execute prioridades sem ficar preso ao ritmo irregular da arrecadação.",
+      hideClass: "hidden sm:block",
     },
     {
       icon: Handshake,
       text: "Gestão sem desgaste",
       description:
         "A rotina de cobrança deixa de pesar sobre síndico e administradora, reduzindo conflitos internos e liberando a gestão para focar em melhorias, operação e relacionamento com os moradores.",
+      hideClass: "hidden sm:block md:hidden lg:block",
     },
   ];
 
@@ -93,7 +96,7 @@ export function Hero() {
     <section className="hero-section home-section relative flex min-h-[820px] flex-col justify-center bg-[#0E1F1E] px-5 pb-12 pt-28 text-white lg:min-h-screen lg:px-6 lg:pb-20 lg:pt-28">
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="hero-bg-kenburns absolute inset-0 bg-cover bg-center"
+          className="hero-bg-kenburns absolute inset-0 bg-cover bg-[75%_center] lg:bg-center"
           style={{
             backgroundImage: "url('/assets/sao-paulo-custom-hero-2400x1350-flipped.webp')",
           }}
@@ -119,7 +122,6 @@ export function Hero() {
         )}
       </div>
 
-      {/* Faixa de destaques */}
       <div className="hero-highlights-block relative z-20 mx-auto mt-12 w-full max-w-[1072px] lg:mt-16">
         <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {highlights.map((item, i) => {
@@ -133,9 +135,7 @@ export function Hero() {
                     aria-hidden="true"
                     className="h-11 w-11 shrink-0 text-[#F1C75B]"
                   />
-                  <h3
-                    className="text-sm font-black leading-tight text-white"
-                  >
+                  <h3 className="text-sm font-black leading-tight text-white">
                     {item.text}
                   </h3>
                 </div>
@@ -149,63 +149,53 @@ export function Hero() {
               </>
             );
 
-            return hydrated ? (
+            const interactiveProps = {
+              tabIndex: 0,
+              role: "button",
+              "aria-expanded": isActive,
+              onMouseEnter: () => setActiveHighlight(i),
+              onMouseLeave: () => setActiveHighlight(null),
+              onFocus: () => setActiveHighlight(i),
+              onBlur: () => setActiveHighlight(null),
+              onClick: () => setActiveHighlight(isActive ? null : i),
+              onKeyDown: (event: KeyboardEvent<HTMLElement>) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  setActiveHighlight(isActive ? null : i);
+                }
+              },
+            };
+
+            return (
               <div
                 key={item.text}
-                className={`hero-highlight-slot relative min-h-[76px] ${isActive ? "z-30" : "z-10"}`}
+                className={`hero-highlight-slot relative min-h-[76px] ${item.hideClass ?? ""} ${
+                  isActive ? "z-30" : "z-10"
+                }`}
               >
-                <motion.article
-                  tabIndex={0}
-                  role="button"
-                  aria-expanded={isActive}
-                  onMouseEnter={() => setActiveHighlight(i)}
-                  onMouseLeave={() => setActiveHighlight(null)}
-                  onFocus={() => setActiveHighlight(i)}
-                  onBlur={() => setActiveHighlight(null)}
-                  onClick={() => setActiveHighlight(isActive ? null : i)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      setActiveHighlight(isActive ? null : i);
-                    }
-                  }}
-                  className="hero-highlight-card group absolute inset-x-0 top-0 min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
-                  initial={{ opacity: 0, y: 34 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.7,
-                    delay: 0.32 + i * 0.08,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  whileHover={{ transition: { duration: 0.12, ease: "easeOut" } }}
-                >
-                  {content}
-                </motion.article>
-              </div>
-            ) : (
-              <div
-                key={item.text}
-                className={`hero-highlight-slot relative min-h-[76px] ${isActive ? "z-30" : "z-10"}`}
-              >
-                <article
-                  tabIndex={0}
-                  role="button"
-                  aria-expanded={isActive}
-                  onMouseEnter={() => setActiveHighlight(i)}
-                  onMouseLeave={() => setActiveHighlight(null)}
-                  onFocus={() => setActiveHighlight(i)}
-                  onBlur={() => setActiveHighlight(null)}
-                  onClick={() => setActiveHighlight(isActive ? null : i)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      setActiveHighlight(isActive ? null : i);
-                    }
-                  }}
-                  className="hero-highlight-card group absolute inset-x-0 top-0 min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
-                >
-                  {content}
-                </article>
+                {hydrated ? (
+                  <motion.article
+                    {...interactiveProps}
+                    className="hero-highlight-card group absolute inset-x-0 top-0 min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
+                    initial={{ opacity: 0, y: 34 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.32 + i * 0.08,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    whileHover={{ transition: { duration: 0.12, ease: "easeOut" } }}
+                  >
+                    {content}
+                  </motion.article>
+                ) : (
+                  <article
+                    {...interactiveProps}
+                    className="hero-highlight-card group absolute inset-x-0 top-0 min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
+                  >
+                    {content}
+                  </article>
+                )}
               </div>
             );
           })}

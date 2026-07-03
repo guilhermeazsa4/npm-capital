@@ -18,7 +18,7 @@ export function CtaFinal() {
               Quanto a <span className="text-[#F1C75B]">inadimplência</span>{" "}
               custa ao seu condomínio este mês?
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-white/75">
+            <p className="mx-auto mt-6 hidden max-w-xl text-base leading-8 text-white/75 sm:block">
               Faça uma análise gratuita e descubra qual seria a arrecadação
               garantida do seu prédio. Sem custo e sem compromisso.
             </p>
