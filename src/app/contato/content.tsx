@@ -38,19 +38,19 @@ export function ContatoContent() {
   return (
     <main className="bg-white">
       {/* Sessão 1 — Hero centralizado */}
-      <section className="relative overflow-hidden bg-white px-5 pb-16 pt-32 lg:px-8 lg:pb-20 lg:pt-36">
+      <section className="relative overflow-hidden bg-white px-4 pb-12 pt-28 sm:px-6 sm:pb-16 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-36">
         <div className="relative z-10 mx-auto max-w-[1220px] text-center">
           <MotionBlock>
-            <p className="mb-5 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.22em] text-[#F1C75B]">
+            <p className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#F1C75B] sm:mb-5 sm:text-sm sm:tracking-[0.22em]">
               Fale com a NPG
             </p>
-            <h1 className="mx-auto max-w-3xl text-4xl font-black leading-tight text-[#14344E] md:text-5xl lg:text-6xl">
+            <h1 className="mx-auto max-w-3xl text-balance text-3xl font-black leading-tight text-[#14344E] sm:text-4xl md:text-5xl lg:text-6xl">
               Solicite a proposta do seu condomínio
             </h1>
           </MotionBlock>
 
           <MotionBlock delay={0.12}>
-            <div className="mx-auto mt-12 grid max-w-[980px] gap-5 sm:grid-cols-3">
+            <div className="mx-auto mt-8 grid max-w-[520px] gap-4 sm:mt-10 lg:mt-12 lg:max-w-[980px] lg:grid-cols-3 lg:gap-5">
               {contactCards.map((card) => {
                 const Icon = card.icon;
                 const content = (
@@ -70,7 +70,7 @@ export function ContatoContent() {
                 );
 
                 const className =
-                  "hero-highlight-card rounded-[18px] p-6 text-center transition-transform hover:-translate-y-1";
+                  "hero-highlight-card rounded-[16px] p-5 text-center transition-transform hover:-translate-y-1 sm:rounded-[18px] sm:p-6";
 
                 return card.href ? (
                   <a key={card.label} href={card.href} className={className}>
@@ -89,14 +89,14 @@ export function ContatoContent() {
 
       <section
         id="formularios"
-        className="relative overflow-hidden bg-[#14344E] px-5 py-16 lg:px-8 lg:py-20"
+        className="relative overflow-hidden bg-[#14344E] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
       >
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,52,78,0.98),rgba(14,31,30,0.9)_62%,rgba(14,31,30,0.62))]" />
-        <div className="relative z-10 mx-auto grid max-w-[1220px] gap-12 lg:grid-cols-2 lg:items-stretch">
+        <div className="relative z-10 mx-auto grid max-w-[1220px] gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-12">
           {/* Formulário */}
           <div
             id="solicitar-proposta"
-            className="rounded-[8px] border border-[#14344E]/10 bg-white p-6 shadow-[0_16px_46px_rgba(20,52,78,0.08)] sm:p-8"
+            className="rounded-[8px] border border-[#14344E]/10 bg-white p-5 shadow-[0_16px_46px_rgba(20,52,78,0.08)] sm:p-8"
           >
             {submitted ? (
               <div className="py-12 text-center">
@@ -118,13 +118,13 @@ export function ContatoContent() {
                   setSubmitted(true);
                 }}
               >
-                <div className="mb-6 flex items-center gap-6 border-b border-[#14344E]/10">
+                <div className="mb-6 flex items-center gap-4 border-b border-[#14344E]/10 sm:gap-6">
                   {(["proposta", "contato"] as const).map((tab) => (
                     <button
                       key={tab}
                       type="button"
                       onClick={() => setActiveTab(tab)}
-                      className={`relative pb-3 text-lg font-black transition-colors ${
+                      className={`relative pb-3 text-sm font-black transition-colors sm:text-lg ${
                         activeTab === tab
                           ? "text-[#14344E]"
                           : "text-[#14344E]/35 hover:text-[#14344E]/60"
@@ -140,7 +140,7 @@ export function ContatoContent() {
 
                 {activeTab === "proposta" ? (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
                         <label htmlFor="p-nome" className={labelClassName}>
                           Nome <span className="text-red-500">*</span>
@@ -164,7 +164,7 @@ export function ContatoContent() {
                     <p className="pt-2 text-xs font-black uppercase tracking-[0.18em] text-[#14344E]/50">
                       Dados do condomínio
                     </p>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
                         <label htmlFor="p-condominio" className={labelClassName}>
                           Nome do condomínio <span className="text-red-500">*</span>
@@ -195,7 +195,7 @@ export function ContatoContent() {
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
                         <label htmlFor="c-nome" className={labelClassName}>
                           Nome <span className="text-red-500">*</span>
@@ -273,7 +273,7 @@ export function ContatoContent() {
           </div>
 
           {/* Mapa */}
-          <div className="h-[420px] overflow-hidden rounded-[8px] lg:h-full">
+          <div className="h-[320px] overflow-hidden rounded-[8px] sm:h-[380px] lg:h-full">
             <iframe
               title="Localização da NPG Capital"
               className="h-full w-full border-0"

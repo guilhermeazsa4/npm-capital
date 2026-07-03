@@ -37,7 +37,7 @@ function HeroContent() {
         e mais tranquilidade para uma gestão eficiente.
       </p>
 
-      <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+      <div className="hero-actions mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <div className="w-full sm:w-[203px]">
           <PrimaryButton href="/contato#solicitar-proposta">
             Solicitar Proposta
@@ -90,7 +90,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative flex min-h-[820px] flex-col justify-center bg-[#0E1F1E] px-5 pb-12 pt-28 text-white lg:min-h-screen lg:px-6 lg:pb-20 lg:pt-28">
+    <section className="hero-section home-section relative flex min-h-[820px] flex-col justify-center bg-[#0E1F1E] px-5 pb-12 pt-28 text-white lg:min-h-screen lg:px-6 lg:pb-20 lg:pt-28">
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="hero-bg-kenburns absolute inset-0 bg-cover bg-center"
@@ -102,25 +102,26 @@ export function Hero() {
       <div className="hero-grade absolute inset-0" />
       <div className="hero-vignette absolute inset-0" />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1072px]">
+      <div className="hero-main-block relative z-10 mx-auto w-full max-w-[1072px]">
         {hydrated ? (
           <motion.div
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-4xl text-left"
+            className="hero-content-wrap max-w-4xl text-left"
           >
             <HeroContent />
           </motion.div>
         ) : (
-          <div className="max-w-4xl text-left">
+          <div className="hero-content-wrap max-w-4xl text-left">
             <HeroContent />
           </div>
         )}
+      </div>
 
-        {/* Faixa de destaques */}
-        <div className="relative z-20 mt-12 lg:mt-16">
-          <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      {/* Faixa de destaques */}
+      <div className="hero-highlights-block relative z-20 mx-auto mt-12 w-full max-w-[1072px] lg:mt-16">
+        <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {highlights.map((item, i) => {
             const Icon = item.icon;
             const isActive = activeHighlight === i;
@@ -139,8 +140,8 @@ export function Hero() {
                   </h3>
                 </div>
                 <p
-                  className={`relative z-10 mt-0 max-h-0 overflow-hidden text-[13px] font-medium leading-5 text-white/78 opacity-0 transition-all duration-300 group-hover:mt-4 group-hover:max-h-48 group-hover:opacity-100 group-focus-visible:mt-4 group-focus-visible:max-h-48 group-focus-visible:opacity-100 ${
-                    isActive ? "mt-4 max-h-48 opacity-100" : ""
+                  className={`relative z-10 overflow-hidden text-[13px] font-medium leading-5 text-white/78 transition-all duration-300 ${
+                    isActive ? "mt-4 max-h-48 opacity-100" : "mt-0 max-h-0 opacity-0"
                   }`}
                 >
                   {item.description}
@@ -149,50 +150,65 @@ export function Hero() {
             );
 
             return hydrated ? (
-              <motion.article
+              <div
                 key={item.text}
-                tabIndex={0}
-                role="button"
-                aria-expanded={isActive}
-                onClick={() => setActiveHighlight(isActive ? null : i)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setActiveHighlight(isActive ? null : i);
-                  }
-                }}
-                className="hero-highlight-card group min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
-                initial={{ opacity: 0, y: 34 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.32 + i * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                whileHover={{ transition: { duration: 0.12, ease: "easeOut" } }}
+                className={`hero-highlight-slot relative min-h-[76px] ${isActive ? "z-30" : "z-10"}`}
               >
-                {content}
-              </motion.article>
+                <motion.article
+                  tabIndex={0}
+                  role="button"
+                  aria-expanded={isActive}
+                  onMouseEnter={() => setActiveHighlight(i)}
+                  onMouseLeave={() => setActiveHighlight(null)}
+                  onFocus={() => setActiveHighlight(i)}
+                  onBlur={() => setActiveHighlight(null)}
+                  onClick={() => setActiveHighlight(isActive ? null : i)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setActiveHighlight(isActive ? null : i);
+                    }
+                  }}
+                  className="hero-highlight-card group absolute inset-x-0 top-0 min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
+                  initial={{ opacity: 0, y: 34 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.32 + i * 0.08,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  whileHover={{ transition: { duration: 0.12, ease: "easeOut" } }}
+                >
+                  {content}
+                </motion.article>
+              </div>
             ) : (
-              <article
+              <div
                 key={item.text}
-                tabIndex={0}
-                role="button"
-                aria-expanded={isActive}
-                onClick={() => setActiveHighlight(isActive ? null : i)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setActiveHighlight(isActive ? null : i);
-                  }
-                }}
-                className="hero-highlight-card group min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
+                className={`hero-highlight-slot relative min-h-[76px] ${isActive ? "z-30" : "z-10"}`}
               >
-                {content}
-              </article>
+                <article
+                  tabIndex={0}
+                  role="button"
+                  aria-expanded={isActive}
+                  onMouseEnter={() => setActiveHighlight(i)}
+                  onMouseLeave={() => setActiveHighlight(null)}
+                  onFocus={() => setActiveHighlight(i)}
+                  onBlur={() => setActiveHighlight(null)}
+                  onClick={() => setActiveHighlight(isActive ? null : i)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setActiveHighlight(isActive ? null : i);
+                    }
+                  }}
+                  className="hero-highlight-card group absolute inset-x-0 top-0 min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
+                >
+                  {content}
+                </article>
+              </div>
             );
           })}
-          </div>
         </div>
       </div>
     </section>

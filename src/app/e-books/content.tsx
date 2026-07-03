@@ -161,10 +161,10 @@ function EbooksMarquee() {
     >
       <div
         ref={trackRef}
-        className="ebooks-marquee-track flex w-max gap-10 px-8 py-6"
+        className="ebooks-marquee-track flex w-max gap-5 px-4 py-5 sm:gap-7 sm:px-6 lg:gap-10 lg:px-8 lg:py-6"
       >
         {Array.from({ length: GROUP_COUNT }, (_, group) => group).map((group) => (
-          <div key={group} className="flex shrink-0 gap-10" aria-hidden={group !== 0}>
+          <div key={group} className="flex shrink-0 gap-5 sm:gap-7 lg:gap-10" aria-hidden={group !== 0}>
             {ebooks.map((eb) => (
               <a
                 key={`${eb.title}-${group}`}
@@ -174,10 +174,10 @@ function EbooksMarquee() {
                 tabIndex={group === 0 ? 0 : -1}
                 draggable={false}
                 onClick={onLinkClick}
-                className="glass-card-white group relative flex h-[540px] w-[360px] shrink-0 flex-col overflow-hidden rounded-[20px] transition-transform duration-300 will-change-transform hover:z-10 hover:-translate-y-1.5 hover:scale-[1.03]"
+                className="glass-card-white group relative flex h-[390px] w-[260px] shrink-0 flex-col overflow-hidden rounded-[14px] transition-transform duration-300 will-change-transform hover:z-10 hover:-translate-y-1.5 hover:scale-[1.03] sm:h-[460px] sm:w-[308px] sm:rounded-[18px] lg:h-[540px] lg:w-[360px] lg:rounded-[20px]"
               >
                 {/* Hemisfério norte — 80%: imagem centralizada */}
-                <div className="flex-[4] px-10 py-8">
+                <div className="flex-[4] px-6 py-6 sm:px-8 lg:px-10 lg:py-8">
                   <div className="relative h-full w-full">
                     <Image
                       src={eb.image}
@@ -185,20 +185,20 @@ function EbooksMarquee() {
                       fill
                       draggable={false}
                       className="object-contain object-center"
-                      sizes="360px"
+                      sizes="(min-width: 1024px) 360px, (min-width: 640px) 308px, 260px"
                     />
                   </div>
                 </div>
 
                 {/* Hemisfério sul — 20%: conteúdo escrito */}
-                <div className="flex flex-1 items-center justify-between gap-3 px-6">
+                <div className="flex flex-1 items-center justify-between gap-3 px-4 sm:px-5 lg:px-6">
                   <div>
-                    <h3 className="text-base font-black leading-snug text-[#14344E]">
+                    <h3 className="text-sm font-black leading-snug text-[#14344E] sm:text-[15px] lg:text-base">
                       {eb.title}
                     </h3>
-                    <p className="mt-1 text-sm text-[#14344E]/55">{eb.format}</p>
+                    <p className="mt-1 text-xs text-[#14344E]/55 sm:text-sm">{eb.format}</p>
                   </div>
-                  <span className="group/cta relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-4 py-2 text-xs font-black text-[#0E1F1E] shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_10px_24px_rgba(241,199,91,0.28),inset_0_1px_0_rgba(255,255,255,0.56)] transition-all group-hover:-translate-y-0.5 group-hover:bg-[#FFD66E]/92">
+                  <span className="group/cta relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-3 py-2 text-[11px] font-black text-[#0E1F1E] shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_10px_24px_rgba(241,199,91,0.28),inset_0_1px_0_rgba(255,255,255,0.56)] transition-all group-hover:-translate-y-0.5 group-hover:bg-[#FFD66E]/92 sm:px-4 sm:text-xs">
                     <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.52),transparent_36%,rgba(255,255,255,0.22)_72%,transparent)] opacity-90" />
                     <span className="relative z-10">Baixe agora</span>
                   </span>
@@ -215,21 +215,21 @@ function EbooksMarquee() {
 export function EbooksContent() {
   return (
     <main className="bg-white">
-      <section className="relative overflow-hidden bg-white px-5 pb-4 pt-32 lg:px-8 lg:pb-6 lg:pt-36">
+      <section className="relative overflow-hidden bg-white px-4 pb-4 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pb-6 lg:pt-36">
         <div className="relative z-10 mx-auto max-w-[1220px] text-center">
           <MotionBlock>
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F1C75B]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#F1C75B] sm:mb-5 sm:text-sm sm:tracking-[0.22em]">
               Materiais gratuitos
             </p>
-            <h1 className="mx-auto max-w-3xl text-4xl font-black leading-tight text-[#14344E] md:text-5xl lg:text-6xl">
+            <h1 className="mx-auto max-w-3xl text-balance text-3xl font-black leading-tight text-[#14344E] sm:text-4xl md:text-5xl lg:text-6xl">
               E-books e guias práticos
             </h1>
-            <p className="mx-auto mt-6 flex max-w-2xl flex-wrap items-center justify-center gap-3 text-base leading-8 text-[#14344E]/70 md:text-lg">
+            <p className="mx-auto mt-5 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-sm leading-7 text-[#14344E]/70 sm:gap-3 md:mt-6 md:text-lg md:leading-8">
               <span>Em parceria com</span>
               <span
                 role="img"
                 aria-label="Editora Bonijuris"
-                className="inline-block h-8 w-[140px] bg-[#9D2235]"
+                className="inline-block h-7 w-[124px] bg-[#9D2235] sm:h-8 sm:w-[140px]"
                 style={{
                   WebkitMaskImage: "url(/assets/bonijuris.png)",
                   maskImage: "url(/assets/bonijuris.png)",
@@ -246,7 +246,7 @@ export function EbooksContent() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-white px-5 pb-16 pt-4 lg:px-8 lg:pb-20 lg:pt-6">
+      <section className="relative overflow-hidden bg-white px-4 pb-14 pt-3 sm:px-6 lg:px-8 lg:pb-20 lg:pt-6">
         <div className="relative z-10">
           <MotionBlock>
             <EbooksMarquee />
