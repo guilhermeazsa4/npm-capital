@@ -8,7 +8,7 @@ import {
   ShieldCheck,
   TrendingUp,
 } from "lucide-react";
-import type { KeyboardEvent } from "react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { PrimaryButton } from "@/components/ui";
 
@@ -55,45 +55,17 @@ function HeroContent() {
 
 export function Hero() {
   const hydrated = useHydrated();
-  const [activeHighlight, setActiveHighlight] = useState<number | null>(null);
 
   const highlights = [
-    {
-      icon: ShieldCheck,
-      text: "Receita 100% garantida",
-      description:
-        "A arrecadação mensal do condomínio é preservada mesmo com inadimplência, dando previsibilidade para folha, contratos, manutenção e reservas sem depender do pagamento individual de cada unidade.",
-    },
-    {
-      icon: BanknoteArrowUp,
-      text: "Cobrança de taxas atrasadas",
-      description:
-        "A recuperação de valores vencidos passa a seguir uma rotina especializada, com acompanhamento contínuo, comunicação adequada e redução do desgaste entre síndico, administradora e moradores inadimplentes.",
-    },
-    {
-      icon: Gavel,
-      text: "Cobrança judicial inclusa",
-      description:
-        "Quando a cobrança administrativa não é suficiente, a condução jurídica entra no fluxo com documentação organizada, critérios claros e estratégia para proteger o caixa coletivo sem improvisos.",
-    },
-    {
-      icon: TrendingUp,
-      text: "Antecipação para obras",
-      description:
-        "Melhorias, manutenções emergenciais e projetos estruturais podem avançar com mais velocidade, permitindo que o condomínio execute prioridades sem ficar preso ao ritmo irregular da arrecadação.",
-      hideClass: "hidden sm:block",
-    },
-    {
-      icon: Handshake,
-      text: "Gestão sem desgaste",
-      description:
-        "A rotina de cobrança deixa de pesar sobre síndico e administradora, reduzindo conflitos internos e liberando a gestão para focar em melhorias, operação e relacionamento com os moradores.",
-      hideClass: "hidden sm:block md:hidden lg:block",
-    },
+    { icon: ShieldCheck, text: "Receita 100% garantida" },
+    { icon: BanknoteArrowUp, text: "Cobrança de taxas atrasadas" },
+    { icon: Gavel, text: "Cobrança judicial inclusa" },
+    { icon: TrendingUp, text: "Antecipação para obras", hideClass: "hidden sm:block" },
+    { icon: Handshake, text: "Gestão sem desgaste", hideClass: "hidden sm:block md:hidden lg:block" },
   ];
 
   return (
-    <section className="hero-section home-section relative flex min-h-[820px] flex-col justify-center bg-[#0E1F1E] px-5 pb-12 pt-28 text-white lg:min-h-screen lg:px-6 lg:pb-20 lg:pt-28">
+    <section className="hero-section home-section relative flex min-h-screen flex-col justify-center bg-[#0E1F1E] px-5 pb-12 pt-28 text-white lg:px-6 lg:pb-20 lg:pt-28">
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="hero-bg-kenburns absolute inset-0 bg-cover bg-[75%_center] lg:bg-center"
@@ -126,7 +98,6 @@ export function Hero() {
         <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {highlights.map((item, i) => {
             const Icon = item.icon;
-            const isActive = activeHighlight === i;
             const content = (
               <>
                 <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.36),transparent_34%,rgba(255,255,255,0.14)_72%,transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-85 group-focus-visible:opacity-85" />
@@ -139,63 +110,35 @@ export function Hero() {
                     {item.text}
                   </h3>
                 </div>
-                <p
-                  className={`relative z-10 overflow-hidden text-[13px] font-medium leading-5 text-white/78 transition-all duration-300 ${
-                    isActive ? "mt-4 max-h-48 opacity-100" : "mt-0 max-h-0 opacity-0"
-                  }`}
-                >
-                  {item.description}
-                </p>
               </>
             );
 
-            const interactiveProps = {
-              tabIndex: 0,
-              role: "button",
-              "aria-expanded": isActive,
-              onMouseEnter: () => setActiveHighlight(i),
-              onMouseLeave: () => setActiveHighlight(null),
-              onFocus: () => setActiveHighlight(i),
-              onBlur: () => setActiveHighlight(null),
-              onClick: () => setActiveHighlight(isActive ? null : i),
-              onKeyDown: (event: KeyboardEvent<HTMLElement>) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  event.preventDefault();
-                  setActiveHighlight(isActive ? null : i);
-                }
-              },
-            };
-
-            return (
-              <div
-                key={item.text}
-                className={`hero-highlight-slot relative min-h-[76px] ${item.hideClass ?? ""} ${
-                  isActive ? "z-30" : "z-10"
-                }`}
+            const card = (
+              <Link
+                href="/servicos"
+                className="hero-highlight-card group flex min-h-[76px] items-center rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
               >
-                {hydrated ? (
-                  <motion.article
-                    {...interactiveProps}
-                    className="hero-highlight-card group absolute inset-x-0 top-0 min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
-                    initial={{ opacity: 0, y: 34 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.7,
-                      delay: 0.32 + i * 0.08,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    whileHover={{ transition: { duration: 0.12, ease: "easeOut" } }}
-                  >
-                    {content}
-                  </motion.article>
-                ) : (
-                  <article
-                    {...interactiveProps}
-                    className="hero-highlight-card group absolute inset-x-0 top-0 min-h-[76px] cursor-pointer rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
-                  >
-                    {content}
-                  </article>
-                )}
+                {content}
+              </Link>
+            );
+
+            return hydrated ? (
+              <motion.div
+                key={item.text}
+                className={item.hideClass ?? ""}
+                initial={{ opacity: 0, y: 34 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.32 + i * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                {card}
+              </motion.div>
+            ) : (
+              <div key={item.text} className={item.hideClass ?? ""}>
+                {card}
               </div>
             );
           })}

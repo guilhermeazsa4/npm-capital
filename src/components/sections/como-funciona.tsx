@@ -54,22 +54,15 @@ export function ComoFuncionaSection() {
     let frame = 0;
     let resultTimer = 0;
     let isAnimating = false;
+    let hasPlayed = false;
 
     const stop = () => {
       window.cancelAnimationFrame(frame);
       window.clearTimeout(resultTimer);
     };
 
-    const reset = () => {
-      stop();
-      isAnimating = false;
-      fill.style.setProperty("--fill", "0");
-      setFilledSteps(Array(steps.length).fill(false));
-      setResultVisible(false);
-    };
-
     const start = () => {
-      if (isAnimating) return;
+      if (isAnimating || hasPlayed) return;
       isAnimating = true;
       stop();
       setFilledSteps(Array(steps.length).fill(false));
@@ -114,6 +107,8 @@ export function ComoFuncionaSection() {
           fill.style.setProperty("--fill", "1");
           setFilledSteps(Array(steps.length).fill(true));
           resultTimer = window.setTimeout(() => setResultVisible(true), 150);
+          isAnimating = false;
+          hasPlayed = true;
         }
       };
 
@@ -124,8 +119,7 @@ export function ComoFuncionaSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           start();
-        } else {
-          reset();
+          if (hasPlayed) observer.disconnect();
         }
       },
       { threshold: 0.35 },

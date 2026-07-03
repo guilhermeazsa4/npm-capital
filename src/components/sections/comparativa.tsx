@@ -83,7 +83,7 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
               d="M260 0 V118"
             />
             <path
-              className="flow-clean-stream flow-clean-stream-delay-2 flow-clean-stream-loss"
+              className={`flow-clean-stream flow-clean-stream-delay-2 ${withNpg ? "flow-clean-stream-good" : "flow-clean-stream-loss"}`}
               pathLength={1}
               d="M442 0 C442 72 314 62 260 118"
             />
@@ -106,13 +106,13 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
             <div className="flex items-center justify-center gap-2">
               <CircleDollarSign
                 aria-hidden="true"
-                className={`h-6 w-6 ${withNpg ? "text-[#1EF07A]" : "text-[#c9b077]"}`}
+                className={`h-6 w-6 ${withNpg ? "text-[#33C46B]" : "text-[#F1C75B]"}`}
               />
-              <p className={`text-3xl font-black leading-none ${withNpg ? "text-white" : "text-[#c9b077]"}`}>
+              <p className={`text-3xl font-black leading-none ${withNpg ? "text-[#33C46B]" : "text-[#F1C75B]"}`}>
                 {withNpg ? "100%" : "65%"}
               </p>
             </div>
-            <p className="mt-2 text-center text-sm font-black text-white">
+            <p className={`mt-2 text-center text-sm font-black ${withNpg ? "text-[#14344E]" : "text-white"}`}>
               Caixa do condomínio
             </p>
             <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/10">

@@ -347,14 +347,15 @@ body {
 .how-works-line span {
   position: absolute;
   inset-block: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #14344e, #4f9fd0, #14344e);
   box-shadow:
     0 0 18px rgba(20, 52, 78, 0.34),
     0 0 30px rgba(20, 52, 78, 0.14);
-  animation: howWorksFlow 10s linear infinite;
+  transform: scaleX(var(--fill, 0));
+  transform-origin: left center;
 }
 
 .how-works-step {
@@ -485,20 +486,10 @@ body {
   color: #ffffff;
 }
 
-@keyframes howWorksFlow {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(200%);
-  }
-}
-
 @media (max-width: 767px) {
   .how-works-line {
     bottom: 0;
-    left: 38px;
+    left: 31px;
     right: auto;
     top: 32px;
     height: calc(100% - 92px);
@@ -507,10 +498,11 @@ body {
 
   .how-works-line span {
     inset-inline: 0;
-    top: -100%;
+    top: 0;
     height: 100%;
     width: auto;
-    animation-name: howWorksFlowMobile;
+    transform: scaleY(var(--fill, 0));
+    transform-origin: top center;
   }
 
   .how-works-step {
@@ -541,16 +533,6 @@ body {
     top: auto;
     width: 100%;
     margin-top: 28px;
-  }
-}
-
-@keyframes howWorksFlowMobile {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(200%);
   }
 }
 
