@@ -45,16 +45,11 @@ function YouTubePreview() {
 
 export function AEmpresaContent() {
   return (
-    <main
-      className="section-grid"
-      style={{
-        backgroundColor: "#14344E",
-        backgroundImage: "linear-gradient(135deg, #14344E 0%, #0E1F1E 100%)",
-      }}
-    >
+    <main className="bg-[#14344E]">
       {/* Sessão 1 — Hero */}
       <section className="relative overflow-hidden px-5 lg:px-8">
-        <div className="mx-auto grid max-w-[1120px] items-center gap-10 pb-16 pt-28 lg:grid-cols-2 lg:gap-16 lg:pb-24 lg:pt-40">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,#14344E_0%,#122D3E_100%)]" />
+        <div className="relative z-10 mx-auto grid max-w-[1120px] items-center gap-10 pb-16 pt-28 lg:grid-cols-2 lg:gap-16 lg:pb-24 lg:pt-40">
           <MotionBlock>
             <div className="text-left">
               <p className="mb-5 text-lg font-bold text-[#F1C75B]">A NPG é diferente</p>
@@ -87,8 +82,9 @@ export function AEmpresaContent() {
       </section>
 
       {/* Sessão 3 — Vídeo */}
-      <section className="px-5 py-20 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-[1120px]">
+      <section className="relative overflow-hidden px-5 py-20 lg:px-8 lg:py-24">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,#122D3E_0%,#10262E_100%)]" />
+        <div className="relative z-10 mx-auto max-w-[1120px]">
           <MotionBlock>
             <div className="overflow-hidden rounded-[20px] shadow-[0_24px_70px_rgba(20,52,78,0.2)]">
               <div className="relative aspect-video bg-black">
@@ -120,8 +116,9 @@ export function AEmpresaContent() {
       </section>
 
       {/* Sessão 4 — Manifesto */}
-      <section className="px-5 py-20 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-[900px]">
+      <section className="relative overflow-hidden px-5 py-20 lg:px-8 lg:py-24">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,#10262E_0%,#0E1F1E_100%)]" />
+        <div className="relative z-10 mx-auto max-w-[900px]">
           <MotionBlock>
             <h2 className="text-center text-3xl font-black text-[#F1C75B] md:text-4xl">
               Manifesto NPG

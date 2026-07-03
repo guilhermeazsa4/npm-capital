@@ -37,7 +37,7 @@ function HeroContent() {
         e mais tranquilidade para uma gestão eficiente.
       </p>
 
-      <div className="hero-actions mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+      <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <div className="w-full sm:w-[203px]">
           <PrimaryButton href="/contato#solicitar-proposta">
             Solicitar Proposta
@@ -90,7 +90,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="hero-section home-section relative min-h-[820px] bg-[#0E1F1E] pb-12 pt-20 text-white lg:min-h-screen lg:pb-44">
+    <section className="relative flex min-h-[820px] flex-col justify-center bg-[#0E1F1E] px-5 pb-12 pt-28 text-white lg:min-h-screen lg:px-6 lg:pb-20 lg:pt-28">
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="hero-bg-kenburns absolute inset-0 bg-cover bg-center"
@@ -102,26 +102,24 @@ export function Hero() {
       <div className="hero-grade absolute inset-0" />
       <div className="hero-vignette absolute inset-0" />
 
-      <div className="hero-main-block relative z-10 mx-auto w-full max-w-[1160px] px-5 pt-12 lg:absolute lg:inset-x-0 lg:top-[calc(50%-29px)] lg:-translate-y-1/2 lg:px-6 lg:pt-0">
+      <div className="relative z-10 mx-auto w-full max-w-[1072px]">
         {hydrated ? (
           <motion.div
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="hero-content-wrap max-w-4xl text-left lg:-ml-[6px]"
+            className="max-w-4xl text-left"
           >
             <HeroContent />
           </motion.div>
         ) : (
-          <div className="hero-content-wrap max-w-4xl text-left lg:-ml-[6px]">
+          <div className="max-w-4xl text-left">
             <HeroContent />
           </div>
         )}
-      </div>
 
-      {/* Faixa de destaques */}
-      <div className="hero-highlights-block relative z-20 mt-10 px-5 lg:absolute lg:inset-x-0 lg:top-[calc(100%-142px)] lg:mt-0 lg:px-6">
-        <div className="mx-auto max-w-[1120px]">
+        {/* Faixa de destaques */}
+        <div className="relative z-20 mt-12 lg:mt-16">
           <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {highlights.map((item, i) => {
             const Icon = item.icon;

@@ -142,11 +142,11 @@ export function ComoFuncionaSection() {
   return (
     <section
       ref={sectionRef}
-      className="home-section npg-company-section relative flex min-h-[104vh] items-center overflow-hidden px-4 py-20 text-[#14344E] lg:px-8 lg:py-16"
+      className="npg-company-section relative flex min-h-[104vh] items-center overflow-hidden px-4 py-20 text-[#14344E] lg:px-8 lg:py-16"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-[linear-gradient(180deg,rgba(14,31,30,0.08),transparent)]" />
 
-      <div className="home-scaled-block how-works-scaled-block relative z-10 mx-auto mt-12 w-full max-w-[1120px] lg:mt-14">
+      <div className="relative z-10 mx-auto mt-12 w-full max-w-[1120px] lg:mt-14">
         <div className="text-center">
           <MotionBlock>
             <p className="text-sm font-black uppercase tracking-[0.22em] text-[#C99A31]">

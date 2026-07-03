@@ -5,11 +5,11 @@ import { MotionBlock } from "@/components/ui";
 
 export function ProblemaSection() {
   return (
-    <section className="home-section npg-company-section relative flex min-h-[108vh] items-center overflow-hidden px-3 py-24 lg:py-28">
+    <section className="npg-company-section relative flex min-h-[108vh] items-center overflow-hidden px-3 py-24 lg:py-28">
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-[linear-gradient(180deg,rgba(14,31,30,0.12),transparent)]" />
 
-      <div className="home-scaled-block npg-problem-block relative z-10 mx-auto mt-8 w-full max-w-[1120px] lg:mt-10">
-        <div className="npg-problem-grid grid items-center gap-16 lg:grid-cols-[620px_420px] lg:justify-between">
+      <div className="relative z-10 mx-auto mt-8 w-full max-w-[1120px] lg:mt-10">
+        <div className="grid items-center gap-16 lg:grid-cols-[620px_420px] lg:justify-between">
           <MotionBlock>
             <div className="mx-auto max-w-[620px] text-center lg:mx-0 lg:text-left">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-[#A66A12]">
@@ -29,8 +29,7 @@ export function ProblemaSection() {
               <p className="mt-4 max-w-xl text-justify text-base leading-7 text-[#18302F]">
                 A <span className="font-black text-[#0E1F1E]">NPG</span> entra
                 para dar previsibilidade ao caixa e aliviar essa parte delicada
-                da rotina, para que a gestão consiga focar no que realmente
-                melhora a vida no prédio.
+                da rotina, para que a gestão consiga focar no que realmente importa, pessoas.
               </p>
             </div>
           </MotionBlock>
@@ -43,7 +42,7 @@ export function ProblemaSection() {
                   alt="Condomínio residencial moderno com área externa arborizada"
                   width={1280}
                   height={1707}
-                  className="npg-problem-image h-[460px] w-full object-cover opacity-95 lg:h-[560px]"
+                  className="h-[460px] w-full object-cover opacity-95 lg:h-[560px]"
                   sizes="(min-width: 1024px) 420px, 100vw"
                   priority={false}
                 />
