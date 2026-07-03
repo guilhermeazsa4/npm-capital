@@ -27,11 +27,11 @@ export function DepoimentosSection() {
   ];
 
   return (
-    <section className="relative flex min-h-[100vh] items-center overflow-hidden bg-[#0E1F1E] px-5 py-24 text-white lg:px-8 lg:py-28">
+    <section className="home-section relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-5 py-24 text-white lg:px-8 lg:py-28">
       <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(20,52,78,0.9),rgba(14,31,30,1)_55%,rgba(20,52,78,0.82))]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F1C75B]/70 to-transparent" />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1220px]">
+      <div className="home-scaled-block feedback-scaled-block feedback-section-shell relative z-10 mx-auto w-full max-w-[1220px]">
         <MotionBlock className="flex flex-col items-center text-center">
           <Eyebrow icon={<Quote aria-hidden="true" className="h-4 w-4" />}>
             Quem já garantiu

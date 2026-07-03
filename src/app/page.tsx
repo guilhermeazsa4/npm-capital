@@ -10,7 +10,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="bg-white">
+    <main className="home-page bg-white">
       <Hero />
       <ProblemaSection />
       <ComparativaSection />

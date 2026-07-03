@@ -103,19 +103,19 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
           </div>
 
           <div className={`flow-clean-result ${withNpg ? "flow-clean-result-good" : "flow-clean-result-risk"}`}>
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-center gap-2">
               <CircleDollarSign
                 aria-hidden="true"
-                className={`h-8 w-8 ${withNpg ? "text-[#33C46B]" : "text-[#F1C75B]"}`}
+                className={`h-6 w-6 ${withNpg ? "text-[#33C46B]" : "text-[#F1C75B]"}`}
               />
-              <p className={`text-4xl font-black ${withNpg ? "text-[#14344E]" : "text-[#F1C75B]"}`}>
+              <p className={`text-3xl font-black leading-none ${withNpg ? "text-white" : "text-[#F1C75B]"}`}>
                 {withNpg ? "100%" : "65%"}
               </p>
             </div>
-            <p className={`mt-2 text-center text-base font-black ${withNpg ? "text-[#14344E]" : "text-white"}`}>
+            <p className="mt-2 text-center text-sm font-black text-white">
               Caixa do condomínio
             </p>
-            <div className={`mt-2.5 h-2.5 overflow-hidden rounded-full ${withNpg ? "bg-[#14344E]/12" : "bg-white/10"}`}>
+            <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/10">
               <div
                 className={`h-full rounded-full ${withNpg ? "flow-clean-bar-good" : "flow-clean-bar-risk"}`}
                 style={{ width: withNpg ? "100%" : "65%" }}
@@ -131,12 +131,12 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
 export function ComparativaSection() {
   return (
     <section
-      className="relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-3 pb-14 pt-24 text-white lg:pb-12 lg:pt-28"
+      className="home-section relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-3 py-14 text-white lg:py-12"
     >
       <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(20,52,78,0.94),rgba(14,31,30,1)_52%,rgba(20,52,78,0.86))]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F1C75B]/70 to-transparent" />
 
-      <div className="relative z-10 mx-auto mt-12 w-full max-w-[1000px] px-4 sm:px-5 lg:mt-16 lg:px-6">
+      <div className="home-scaled-block comparison-scaled-block relative z-10 mx-auto mt-6 w-full max-w-[1000px] px-4 sm:px-5 lg:mt-8 lg:px-6">
         <MotionBlock>
           <h2 className="mx-auto max-w-3xl text-center text-3xl font-black leading-tight text-white drop-shadow-[0_10px_28px_rgba(0,0,0,0.28)] md:text-[42px]">
             O caminho do dinheiro muda quando a NPG entra no fluxo.

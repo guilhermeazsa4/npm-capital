@@ -107,7 +107,7 @@ export function Header() {
       <Link
         href="/"
         aria-label="NPG Capital"
-        className="fixed left-8 top-5 z-50 lg:left-12"
+        className="header-logo-link fixed left-8 top-5 z-50 lg:left-12"
         data-header-logo
       >
         <Image
@@ -115,13 +115,13 @@ export function Header() {
           alt="NPG Capital"
           width={240}
           height={60}
-          className={`h-14 w-auto object-contain transition-[filter,opacity] duration-500 ease-out ${
+          className={`header-logo-image h-14 w-auto object-contain transition-[filter,opacity] duration-500 ease-out ${
             darkLogo ? "opacity-90 brightness-0" : "opacity-100 brightness-100"
           }`}
           priority
         />
       </Link>
-      <div className={shellClass}>
+      <div className={`${shellClass} header-topbar-shell`}>
         <div className="mx-auto flex h-[72px] w-full items-center justify-between px-4 sm:px-5 lg:px-6">
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Menu principal">
             {navItems.map((item) => (
@@ -155,7 +155,7 @@ export function Header() {
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-[16px] border border-white/24 bg-white/12 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.24)] backdrop-blur-xl lg:hidden"
+            className="mobile-menu-button inline-flex h-11 w-11 items-center justify-center rounded-[16px] border border-white/24 bg-white/12 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.24)] backdrop-blur-xl lg:hidden"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             onClick={() => setOpen((v) => !v)}
           >
@@ -167,7 +167,7 @@ export function Header() {
       <AnimatePresence>
         {open ? (
           <motion.div
-            className="mx-auto mt-2 max-w-[1220px] rounded-[8px] border border-white/18 bg-[#0E1F1E]/72 px-5 py-5 shadow-[0_18px_58px_rgba(4,17,24,0.24),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-2xl lg:hidden"
+            className="mobile-menu-panel mx-auto mt-2 max-w-[1220px] rounded-[8px] border border-white/18 bg-[#0E1F1E]/72 px-5 py-5 shadow-[0_18px_58px_rgba(4,17,24,0.24),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-2xl lg:hidden"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
