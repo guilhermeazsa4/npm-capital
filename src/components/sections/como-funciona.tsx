@@ -142,7 +142,7 @@ export function ComoFuncionaSection() {
   return (
     <section
       ref={sectionRef}
-      className="npg-company-section relative flex min-h-[104vh] items-center overflow-hidden px-4 py-20 text-[#14344E] lg:px-8 lg:py-16"
+      className="npg-company-section relative flex min-h-[104vh] items-center overflow-hidden px-4 py-20 text-[#14344E] md:py-12 lg:px-8 lg:py-16"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-[linear-gradient(180deg,rgba(14,31,30,0.08),transparent)]" />
 
@@ -163,7 +163,7 @@ export function ComoFuncionaSection() {
             <span ref={fillRef} className="how-works-line-fill" />
           </div>
 
-          <div className="relative z-10 grid gap-5 md:grid-cols-4">
+          <div className="relative z-10 grid gap-5 lg:grid-cols-4">
             {steps.map((step, i) => (
               <MotionBlock key={step.title} delay={i * 0.08}>
                 <article className={`how-works-step how-works-step-${i + 1}`}>
@@ -175,8 +175,10 @@ export function ComoFuncionaSection() {
                   >
                     <step.icon aria-hidden="true" className="h-7 w-7" />
                   </span>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
+                  <div className="how-works-step-text">
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </div>
                 </article>
               </MotionBlock>
             ))}

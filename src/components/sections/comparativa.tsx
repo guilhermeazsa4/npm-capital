@@ -27,8 +27,8 @@ function UnitCard({
 
   return (
     <div className={`flow-clean-unit ${paid ? "flow-clean-unit-paid" : "flow-clean-unit-late"}`}>
-      <Icon aria-hidden="true" className="h-7 w-7 shrink-0" />
-      <p className="text-[13px] font-black uppercase tracking-[0.12em] text-white">
+      <Icon aria-hidden="true" className="h-5 w-5 shrink-0 sm:h-7 sm:w-7" />
+      <p className="text-[10px] font-black uppercase tracking-[0.1em] text-white sm:text-[13px] sm:tracking-[0.12em]">
         {label}
       </p>
     </div>
@@ -45,7 +45,7 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
           <p className={`text-sm font-black uppercase tracking-[0.18em] ${withNpg ? "text-[#8F5A0E]" : "text-white/60"}`}>
             {withNpg ? "Com NPG Capital" : "Sem NPG Capital"}
           </p>
-          <h3 className={`mt-2 text-xl font-black leading-tight ${withNpg ? "text-[#14344E]" : "text-white"}`}>
+          <h3 className={`mt-2 text-[1.125rem] font-black leading-tight sm:text-xl ${withNpg ? "text-[#14344E]" : "text-white"}`}>
             {withNpg ? "O repasse chega completo" : "A inadimplência reduz o caixa"}
           </h3>
         </div>
@@ -83,7 +83,7 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
               d="M260 0 V118"
             />
             <path
-              className={`flow-clean-stream flow-clean-stream-delay-2 ${withNpg ? "flow-clean-stream-good" : "flow-clean-stream-loss"}`}
+              className="flow-clean-stream flow-clean-stream-delay-2 flow-clean-stream-loss"
               pathLength={1}
               d="M442 0 C442 72 314 62 260 118"
             />
@@ -106,9 +106,9 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
             <div className="flex items-center justify-center gap-2">
               <CircleDollarSign
                 aria-hidden="true"
-                className={`h-6 w-6 ${withNpg ? "text-[#33C46B]" : "text-[#F1C75B]"}`}
+                className={`h-6 w-6 ${withNpg ? "text-[#1EF07A]" : "text-[#c9b077]"}`}
               />
-              <p className={`text-3xl font-black leading-none ${withNpg ? "text-white" : "text-[#F1C75B]"}`}>
+              <p className={`text-3xl font-black leading-none ${withNpg ? "text-white" : "text-[#c9b077]"}`}>
                 {withNpg ? "100%" : "65%"}
               </p>
             </div>

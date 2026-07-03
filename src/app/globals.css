@@ -105,6 +105,14 @@ body {
     linear-gradient(245deg, rgba(60, 191, 199, 0.07) 0%, transparent 42%);
 }
 
+/* Abaixo do breakpoint sm do Tailwind (640px): overlay escuro sólido em vez
+   de degradê, pra garantir leitura do texto sobre a foto em telas estreitas. */
+@media (max-width: 639px) {
+  .hero-grade {
+    background: rgba(6, 14, 20, 0.72);
+  }
+}
+
 .hero-vignette {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 18%),
@@ -519,6 +527,68 @@ body {
   color: #c99a31;
 }
 
+/* Abaixo do lg do Tailwind (mobile + tablet): timeline vertical (linha +
+   círculos à esquerda, texto à direita), em vez da barra horizontal usada
+   no desktop. O JS de como-funciona.tsx já mede a orientação real da linha
+   (getBoundingClientRect) pra calcular o progresso, então funciona sem
+   mudança nenhuma de JS. O grid de steps também só vira 4 colunas a partir
+   do lg (ver lg:grid-cols-4 em como-funciona.tsx) pra combinar com isso. */
+@media (max-width: 1023px) {
+  .how-works-flow {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .how-works-line {
+    left: 24px;
+    right: auto;
+    top: 32px;
+    bottom: 32px;
+    height: auto;
+    width: 16px;
+  }
+
+  .how-works-line-fill {
+    inset-block: 0;
+    inset-inline: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(var(--fill, 0));
+    transform-origin: top center;
+  }
+
+  .how-works-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 96px;
+    padding: 0;
+    text-align: left;
+  }
+
+  .how-works-dot {
+    flex-shrink: 0;
+    height: 64px;
+    width: 64px;
+  }
+
+  .how-works-step-text {
+    min-width: 0;
+  }
+
+  .how-works-step h3 {
+    margin-top: 0;
+  }
+
+  .how-works-step p {
+    margin: 4px 0 0;
+    max-width: none;
+  }
+}
+
 .how-works-result strong {
   display: block;
   margin-top: 4px;
@@ -900,11 +970,19 @@ body {
 }
 
 .flow-clean-unit-paid {
-  color: #35e878;
+  color: #1ef07a;
 }
 
 .flow-clean-unit-late {
   color: #ff5656;
+}
+
+@media (max-width: 639px) {
+  .flow-clean-unit {
+    min-height: 48px;
+    gap: 6px;
+    padding: 8px 6px;
+  }
 }
 
 .flow-clean-panel-good .flow-clean-unit {
@@ -970,15 +1048,15 @@ body {
 }
 
 .flow-clean-stream-good {
-  stroke: #35e878;
+  stroke: #1ef07a;
   filter:
     drop-shadow(0 0 4px rgba(4, 17, 24, 0.72))
-    drop-shadow(0 0 10px rgba(53, 232, 120, 0.78));
+    drop-shadow(0 0 10px rgba(30, 240, 122, 0.85));
 }
 
 .flow-clean-stream-risk {
-  stroke: #ffd66e;
-  filter: drop-shadow(0 0 7px rgba(255, 214, 110, 0.5));
+  stroke: #c9b077;
+  filter: drop-shadow(0 0 7px rgba(201, 176, 119, 0.5));
 }
 
 .flow-clean-stream-loss {
@@ -1033,14 +1111,14 @@ body {
 }
 
 .flow-clean-center-risk {
-  border: 1px solid rgba(255, 126, 126, 0.46);
+  border: 1px solid rgba(196, 140, 140, 0.46);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 34%),
-    linear-gradient(135deg, #ff5656, #b92020);
+    linear-gradient(135deg, #a56a6a, #6e4444);
   color: #ffffff;
   box-shadow:
     0 16px 42px rgba(4, 17, 24, 0.24),
-    0 0 26px rgba(255, 86, 86, 0.22),
+    0 0 26px rgba(165, 106, 106, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.36);
 }
 
@@ -1077,7 +1155,7 @@ body {
   box-shadow:
     0 20px 58px rgba(4, 17, 24, 0.24),
     0 0 0 1px rgba(255, 255, 255, 0.09),
-    0 0 30px rgba(53, 232, 120, 0.14),
+    0 0 34px rgba(30, 240, 122, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.34),
     inset 0 -1px 0 rgba(255, 255, 255, 0.08);
 }
@@ -1093,17 +1171,17 @@ body {
 }
 
 .flow-clean-bar-good {
-  background: linear-gradient(90deg, #1fcf68, #66f28d);
+  background: linear-gradient(90deg, #0be868, #7dffab);
   box-shadow:
-    0 0 26px rgba(53, 232, 120, 0.74),
+    0 0 30px rgba(30, 240, 122, 0.82),
     0 0 8px rgba(255, 255, 255, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.32);
 }
 
 .flow-clean-bar-risk {
-  background: linear-gradient(90deg, #f1c75b, #b87b1f);
+  background: linear-gradient(90deg, #c9b077, #8a7550);
   box-shadow:
-    0 0 16px rgba(241, 199, 91, 0.36),
+    0 0 16px rgba(201, 176, 119, 0.32),
     inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 

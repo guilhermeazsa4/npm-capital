@@ -9,7 +9,7 @@ export function Footer() {
     <footer className="gold-surface relative overflow-hidden border-t border-[#FFE39A]/70 px-5 py-6 text-black lg:px-8 lg:py-7">
       <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.42),transparent_36%,rgba(255,255,255,0.16)_72%,transparent)] opacity-90" />
       <div className="relative z-10 mx-auto max-w-[1220px]">
-        <div className="flex flex-col items-start justify-between gap-5 lg:flex-row lg:items-center">
+        <div className="flex flex-col items-center justify-between gap-5 sm:items-start lg:flex-row lg:items-center">
           <Image
             src="/assets/logoFull.png"
             alt="NPG Capital"
@@ -18,7 +18,7 @@ export function Footer() {
             className="h-14 w-auto object-contain brightness-0 lg:h-16"
           />
 
-          <nav className="flex flex-wrap gap-x-7 gap-y-2 text-base font-black">
+          <nav className="hidden flex-wrap gap-x-7 gap-y-2 text-base font-black sm:flex">
             <Link href="/a-empresa" className="transition-opacity hover:opacity-60">
               A Empresa
             </Link>
@@ -40,8 +40,8 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-4 flex flex-col gap-2 border-t border-black/15 pt-4 text-xs font-semibold text-white lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
+        <div className="mt-4 flex flex-col items-center gap-2 border-t border-black/15 pt-4 text-center text-xs font-semibold text-white sm:items-stretch sm:text-left lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 sm:justify-start">
             <a href={`mailto:${CONTACT.email}`} className="transition-opacity hover:opacity-70">
               {CONTACT.email}
             </a>

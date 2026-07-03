@@ -9,7 +9,7 @@ export function ProblemaSection() {
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-[linear-gradient(180deg,rgba(14,31,30,0.12),transparent)]" />
 
       <div className="relative z-10 mx-auto mt-8 w-full max-w-[1120px] lg:mt-10">
-        <div className="grid items-center gap-16 lg:grid-cols-[620px_420px] lg:justify-between">
+        <div className="grid items-center gap-16 lg:grid-cols-[minmax(0,620px)_minmax(0,420px)] lg:justify-between">
           <MotionBlock>
             <div className="mx-auto max-w-[620px] text-center lg:mx-0 lg:text-left">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-[#A66A12]">
@@ -35,7 +35,7 @@ export function ProblemaSection() {
           </MotionBlock>
 
           <MotionBlock delay={0.12} className="w-full justify-self-end">
-            <div className="relative w-full">
+            <div className="relative w-full md:mx-auto md:max-w-[500px] lg:mx-0 lg:max-w-none">
               <div className="npg-company-photo relative overflow-hidden rounded-[18px] border border-white/70 bg-[#0E1F1E] shadow-[0_28px_80px_rgba(20,52,78,0.18)]">
                 <Image
                   src="/assets/analog-landscape-city-with-buildings-vertical.jpg"
