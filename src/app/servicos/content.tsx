@@ -42,46 +42,6 @@ const services = [
     title: "Caixa previsível",
     text: "A gestão passa a enxergar entradas e compromissos com mais clareza, reduzindo decisões de última hora no fechamento do mês.",
   },
-  {
-    icon: BanknoteArrowUp,
-    title: "Repasse mensal",
-    text: "O fluxo de repasse fica mais organizado, permitindo que administradora e síndico saibam quando contar com os recursos.",
-  },
-  {
-    icon: Gavel,
-    title: "Acompanhamento jurídico",
-    text: "As etapas formais são acompanhadas com critério, evitando improvisos e dando rastreabilidade ao processo de recuperação.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Obras planejadas",
-    text: "Com previsibilidade, obras deixam de depender apenas do caixa disponível no mês e podem ser estruturadas com antecedência.",
-  },
-  {
-    icon: Handshake,
-    title: "Menos atrito",
-    text: "A cobrança deixa de ser uma tensão direta dentro do condomínio, criando uma rotina mais profissional e menos pessoal.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Reserva preservada",
-    text: "O fundo de reserva deixa de ser usado para cobrir inadimplência recorrente e permanece disponível para emergências reais.",
-  },
-  {
-    icon: BanknoteArrowUp,
-    title: "Recuperação de atrasos",
-    text: "Valores vencidos entram em uma rotina de recuperação contínua, com prioridade, registro e evolução acompanhada ao longo do tempo.",
-  },
-  {
-    icon: Gavel,
-    title: "Critérios claros",
-    text: "Cada etapa da cobrança segue critérios definidos, ajudando a evitar ruídos, dúvidas e negociações conduzidas no improviso.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Contratos em dia",
-    text: "Com arrecadação mais estável, o condomínio consegue honrar fornecedores e serviços essenciais sem sacrificar outras prioridades.",
-  },
 ] as const;
 
 const highlights = [
@@ -193,38 +153,27 @@ export function ServicosContent() {
 
           </MotionBlock>
 
-          <div className="services-marquee relative left-1/2 mt-5 w-screen -translate-x-1/2 translate-y-8 overflow-hidden">
-            <div className="services-marquee-track flex w-max gap-4">
-              {[0, 1].map((group) => (
-                <div
-                  key={group}
-                  className="services-marquee-group flex shrink-0 gap-4"
-                  aria-hidden={group === 1}
-                >
-                  {services.map((service) => {
-                    const Icon = service.icon;
+          <div className="relative left-1/2 mt-10 grid w-screen -translate-x-1/2 grid-cols-1 gap-4 px-5 sm:grid-cols-2 lg:grid-cols-6 lg:px-8">
+            {services.map((service, index) => {
+              const Icon = service.icon;
 
-                    return (
-                      <article
-                        key={`${service.title}-${group}`}
-                        className="relative h-[300px] w-[230px] shrink-0 overflow-hidden rounded-[8px] border border-white/30 bg-[#0F2F49]/94 p-4 text-center text-white shadow-[0_22px_64px_rgba(20,52,78,0.22),0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.24),inset_0_-1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl"
-                      >
-                        <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.26),transparent_34%,rgba(255,255,255,0.1)_72%,transparent)] opacity-90" />
-                        <span className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-[8px] bg-[#F1C75B] text-[#0E1F1E] shadow-[0_14px_30px_rgba(4,17,24,0.18)]">
-                          <Icon aria-hidden="true" className="h-6 w-6" />
-                        </span>
-                        <h3 className="relative z-10 mt-4 text-base font-black leading-tight text-white">
-                          {service.title}
-                        </h3>
-                        <p className="relative z-10 mt-3 text-[13px] leading-5 text-white/80">
-                          {service.text}
-                        </p>
-                      </article>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
+              return (
+                <MotionBlock key={service.title} delay={index * 0.04}>
+                  <article className="relative h-full min-h-[260px] overflow-hidden rounded-[8px] border border-white/30 bg-[#0F2F49]/94 p-4 text-center text-white shadow-[0_22px_64px_rgba(20,52,78,0.22),0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.24),inset_0_-1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl">
+                    <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.26),transparent_34%,rgba(255,255,255,0.1)_72%,transparent)] opacity-90" />
+                    <span className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-[8px] bg-[#F1C75B] text-[#0E1F1E] shadow-[0_14px_30px_rgba(4,17,24,0.18)]">
+                      <Icon aria-hidden="true" className="h-6 w-6" />
+                    </span>
+                    <h3 className="relative z-10 mt-4 text-base font-black leading-tight text-white">
+                      {service.title}
+                    </h3>
+                    <p className="relative z-10 mt-3 text-[13px] leading-5 text-white/80">
+                      {service.text}
+                    </p>
+                  </article>
+                </MotionBlock>
+              );
+            })}
           </div>
         </div>
       </section>

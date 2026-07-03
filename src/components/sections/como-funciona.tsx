@@ -53,6 +53,7 @@ export function ComoFuncionaSection() {
 
     let frame = 0;
     let resultTimer = 0;
+    let isAnimating = false;
 
     const stop = () => {
       window.cancelAnimationFrame(frame);
@@ -61,12 +62,15 @@ export function ComoFuncionaSection() {
 
     const reset = () => {
       stop();
+      isAnimating = false;
       fill.style.setProperty("--fill", "0");
       setFilledSteps(Array(steps.length).fill(false));
       setResultVisible(false);
     };
 
     const start = () => {
+      if (isAnimating) return;
+      isAnimating = true;
       stop();
       setFilledSteps(Array(steps.length).fill(false));
       setResultVisible(false);
@@ -76,13 +80,16 @@ export function ComoFuncionaSection() {
       // the dot highlight always agree, regardless of grid spacing.
       const lineRect = line.getBoundingClientRect();
       const isHorizontal = lineRect.width >= lineRect.height;
+      const lineSize = isHorizontal ? lineRect.width : lineRect.height;
+      const safeLineSize = Math.max(1, lineSize);
 
       const dotFractions = dotRefs.current.map((dot) => {
         if (!dot) return 1;
         const dotRect = dot.getBoundingClientRect();
-        return isHorizontal
-          ? (dotRect.left + dotRect.width / 2 - lineRect.left) / lineRect.width
-          : (dotRect.top + dotRect.height / 2 - lineRect.top) / lineRect.height;
+        const rawFraction = isHorizontal
+          ? (dotRect.left + dotRect.width / 2 - lineRect.left) / safeLineSize
+          : (dotRect.top + dotRect.height / 2 - lineRect.top) / safeLineSize;
+        return Math.min(1, Math.max(0, rawFraction || 0));
       });
 
       const startTime = performance.now();
@@ -104,6 +111,8 @@ export function ComoFuncionaSection() {
         if (progress < 1) {
           frame = window.requestAnimationFrame(tick);
         } else {
+          fill.style.setProperty("--fill", "1");
+          setFilledSteps(Array(steps.length).fill(true));
           resultTimer = window.setTimeout(() => setResultVisible(true), 150);
         }
       };
@@ -133,11 +142,11 @@ export function ComoFuncionaSection() {
   return (
     <section
       ref={sectionRef}
-      className="npg-company-section relative flex min-h-[104vh] items-center overflow-hidden px-4 py-20 text-[#14344E] lg:px-8 lg:py-16"
+      className="home-section npg-company-section relative flex min-h-[104vh] items-center overflow-hidden px-4 py-20 text-[#14344E] lg:px-8 lg:py-16"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-[linear-gradient(180deg,rgba(14,31,30,0.08),transparent)]" />
 
-      <div className="relative z-10 mx-auto mt-12 w-full max-w-[1120px] lg:mt-14">
+      <div className="home-scaled-block how-works-scaled-block relative z-10 mx-auto mt-12 w-full max-w-[1120px] lg:mt-14">
         <div className="text-center">
           <MotionBlock>
             <p className="text-sm font-black uppercase tracking-[0.22em] text-[#C99A31]">
