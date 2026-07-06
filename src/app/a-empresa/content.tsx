@@ -1,8 +1,7 @@
 "use client";
 
-import { ChevronDown, Handshake, Receipt, ShieldCheck } from "lucide-react";
-import Image from "next/image";
-import { FloatingWhatsApp, MotionBlock } from "@/components/ui";
+import { Handshake, Receipt, ShieldCheck } from "lucide-react";
+import { FloatingActions, MotionBlock } from "@/components/ui";
 
 const YOUTUBE_ID = "QbD8gyoADKY";
 
@@ -47,38 +46,20 @@ export function AEmpresaContent() {
   return (
     <main className="bg-[#14344E]">
       {/* Sessão 1 — Hero */}
-      <section className="relative min-h-[720px] overflow-hidden px-4 sm:px-6 lg:px-8 xl:min-h-screen">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,#14344E_0%,#122D3E_100%)]" />
-        <div className="relative z-10 mx-auto grid min-h-[720px] w-full max-w-[1120px] items-center gap-8 pb-20 pt-32 sm:gap-10 sm:pb-24 sm:pt-36 md:min-h-[760px] lg:pb-24 lg:pt-40 xl:min-h-screen xl:grid-cols-[1.05fr_0.95fr] xl:gap-20 2xl:max-w-[1240px] 2xl:gap-24">
+      <section className="relative overflow-hidden bg-white px-4 pb-12 pt-28 sm:px-6 sm:pb-16 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-36">
+        <div className="relative z-10 mx-auto max-w-[1220px] text-center">
           <MotionBlock>
-            <div className="mx-auto max-w-[620px] text-center xl:mx-0 xl:text-left 2xl:max-w-[680px]">
-              <p className="mb-5 text-lg font-bold text-[#F1C75B]">A NPG é diferente</p>
-              <p className="text-balance text-xl font-semibold leading-8 text-white/92 sm:text-2xl sm:leading-9 md:text-[28px] md:leading-10 xl:text-[28px] 2xl:text-[32px] 2xl:leading-[1.42]">
-                NPG Capital nasceu para trazer segurança financeira aos
-                condomínios, garantindo a arrecadação mesmo com inadimplência.
-                Assim, os síndicos ganham em previsibilidade, tranquilidade, gestão rápida e
-                eficiente.
-              </p>
-            </div>
-          </MotionBlock>
-
-          <MotionBlock delay={0.1}>
-            <div className="relative mx-auto h-44 w-full max-w-[320px] sm:h-56 sm:max-w-[420px] md:h-64 md:max-w-[500px] lg:h-72 xl:h-[360px] xl:max-w-none 2xl:h-[400px]">
-              <Image
-                src="/assets/logoFull.png"
-                alt="NPG Capital"
-                fill
-                className="object-contain"
-                sizes="(min-width: 1536px) 560px, (min-width: 1280px) 480px, 100vw"
-                priority
-              />
-            </div>
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#F1C75B] sm:mb-5 sm:text-sm sm:tracking-[0.22em]">
+              A NPG é diferente
+            </p>
+            <h1 className="mx-auto max-w-3xl text-balance text-3xl font-black leading-tight text-[#14344E] sm:text-4xl md:text-5xl lg:text-6xl">
+              Segurança financeira para condomínios que não podem parar.
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#14344E]/70 md:mt-6 md:text-lg md:leading-8">
+              NPG Capital nasceu para garantir a arrecadação mesmo com inadimplência, dando aos síndicos previsibilidade, tranquilidade e uma gestão mais rápida e eficiente.
+            </p>
           </MotionBlock>
         </div>
-
-        <span className="absolute inset-x-0 bottom-5 z-10 hidden justify-center sm:flex lg:bottom-6 animate-bounce">
-          <ChevronDown aria-hidden="true" className="h-8 w-8 text-white/50 lg:h-9 lg:w-9" />
-        </span>
       </section>
 
       {/* Sessão 3 — Vídeo */}
@@ -116,7 +97,7 @@ export function AEmpresaContent() {
       </section>
 
       {/* Sessão 4 — Manifesto */}
-      <section className="relative overflow-hidden px-4 py-14 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-24">
+      <section id="manifesto" className="relative overflow-hidden px-4 py-14 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-24">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,#10262E_0%,#0E1F1E_100%)]" />
         <div className="relative z-10 mx-auto max-w-[900px] 2xl:max-w-[980px]">
           <MotionBlock>
@@ -137,7 +118,7 @@ export function AEmpresaContent() {
         </div>
       </section>
 
-      <FloatingWhatsApp />
+      <FloatingActions />
     </main>
   );
 }

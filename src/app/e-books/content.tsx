@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { FloatingWhatsApp, MotionBlock } from "@/components/ui";
+import { FloatingActions, MotionBlock } from "@/components/ui";
 
 const ebooks = [
   {
@@ -254,7 +254,7 @@ export function EbooksContent() {
         </div>
       </section>
 
-      <FloatingWhatsApp />
+      <FloatingActions />
     </main>
   );
 }

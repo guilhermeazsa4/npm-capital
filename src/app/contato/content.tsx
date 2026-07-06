@@ -3,7 +3,7 @@
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { FloatingWhatsApp, MotionBlock, WhatsAppButton } from "@/components/ui";
+import { FloatingActions, MotionBlock, WhatsAppButton } from "@/components/ui";
 import { CONTACT } from "@/lib/constants";
 
 const contactCards = [
@@ -285,7 +285,7 @@ export function ContatoContent() {
         </div>
       </section>
 
-      <FloatingWhatsApp />
+      <FloatingActions />
     </main>
   );
 }

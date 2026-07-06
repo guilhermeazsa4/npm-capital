@@ -1,4 +1,4 @@
-import { FloatingWhatsApp, PageHeader } from "@/components/ui";
+import { FloatingActions, PageHeader } from "@/components/ui";
 import { CONTACT } from "@/lib/constants";
 
 const sections = [
@@ -64,7 +64,7 @@ export function PoliticaDePrivacidadeContent() {
         </div>
       </section>
 
-      <FloatingWhatsApp />
+      <FloatingActions />
     </main>
   );
 }

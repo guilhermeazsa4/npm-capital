@@ -3,14 +3,12 @@
 import { motion } from "framer-motion";
 import {
   BanknoteArrowUp,
-  Gavel,
-  Handshake,
+  ChevronRight,
   ShieldCheck,
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { PrimaryButton } from "@/components/ui";
 
 function useHydrated() {
   const [hydrated, setHydrated] = useState(false);
@@ -39,12 +37,19 @@ function HeroContent() {
       </p>
 
       <div className="hero-actions mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-        <div className="w-full sm:w-[203px]">
-          <PrimaryButton href="/contato#solicitar-proposta">
-            Solicitar Proposta
-          </PrimaryButton>
+        <div className="w-full sm:w-auto">
+          <Link
+            href="/servicos"
+            className="floating-gold-button group inline-flex h-14 w-full items-center justify-center gap-2 overflow-hidden rounded-[18px] px-5 text-sm font-black sm:w-auto"
+          >
+            <span className="whitespace-nowrap">Conheça nossos serviços</span>
+            <ChevronRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform group-hover:translate-x-1"
+            />
+          </Link>
         </div>
-        <div className="w-full border-l border-white/18 pl-4 text-center text-sm font-semibold leading-7 text-white sm:w-auto sm:text-left md:hidden md:text-base lg:block">
+        <div className="w-full border-l border-white/18 pl-4 text-left text-sm font-semibold leading-7 text-white sm:w-auto sm:text-base">
           <p>Mais de 10 condomínios atendidos</p>
           <p>+10 anos de experiência</p>
         </div>
@@ -59,9 +64,7 @@ export function Hero() {
   const highlights = [
     { icon: ShieldCheck, text: "Receita 100% garantida" },
     { icon: BanknoteArrowUp, text: "Cobrança de taxas atrasadas" },
-    { icon: Gavel, text: "Cobrança judicial inclusa" },
     { icon: TrendingUp, text: "Antecipação para obras", hideClass: "hidden sm:block" },
-    { icon: Handshake, text: "Gestão sem desgaste", hideClass: "hidden sm:block md:hidden lg:block" },
   ];
 
   return (
@@ -95,7 +98,7 @@ export function Hero() {
       </div>
 
       <div className="hero-highlights-block relative z-20 mx-auto mt-12 w-full max-w-[1072px] lg:mt-16">
-        <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((item, i) => {
             const Icon = item.icon;
             const content = (

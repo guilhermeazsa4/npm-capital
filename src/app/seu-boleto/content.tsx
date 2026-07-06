@@ -2,7 +2,7 @@
 
 import { Clock, Download, LockKeyhole, MessageCircle } from "lucide-react";
 import { useState } from "react";
-import { FloatingWhatsApp, MotionBlock, PageHeader } from "@/components/ui";
+import { FloatingActions, MotionBlock, PageHeader } from "@/components/ui";
 import { WHATSAPP_URL } from "@/lib/constants";
 
 export function SeuBoletoContent() {
@@ -140,7 +140,7 @@ export function SeuBoletoContent() {
         </div>
       </section>
 
-      <FloatingWhatsApp />
+      <FloatingActions />
     </main>
   );
 }

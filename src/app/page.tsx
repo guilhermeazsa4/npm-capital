@@ -1,9 +1,10 @@
-import { FloatingWhatsApp } from "@/components/ui";
+import { FloatingActions } from "@/components/ui";
 import {
   Hero,
   ProblemaSection,
   ComparativaSection,
   ComoFuncionaSection,
+  BeneficiosDiferenteSection,
   DepoimentosSection,
   CtaFinal,
 } from "@/components/sections";
@@ -15,9 +16,10 @@ export default function Home() {
       <ProblemaSection />
       <ComparativaSection />
       <ComoFuncionaSection />
+      <BeneficiosDiferenteSection />
       <DepoimentosSection />
       <CtaFinal />
-      <FloatingWhatsApp />
+      <FloatingActions />
     </main>
   );
 }

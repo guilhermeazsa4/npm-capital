@@ -3,6 +3,7 @@ export { ProblemaSection } from "./problema";
 export { ComparativaSection } from "./comparativa";
 export { BeneficiosSection } from "./beneficios";
 export { ComoFuncionaSection } from "./como-funciona";
+export { BeneficiosDiferenteSection } from "./beneficios-diferente";
 export { BannerConfianca } from "./banner-confianca";
 export { RevistasSection } from "./revistas";
 export { EbooksSection } from "./ebooks";

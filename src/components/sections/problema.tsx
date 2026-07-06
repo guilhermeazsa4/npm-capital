@@ -1,64 +1,91 @@
 "use client";
 
-import Image from "next/image";
+import { ArrowRight, BanknoteArrowUp, Home, TrendingUp } from "lucide-react";
+import Link from "next/link";
 import { MotionBlock } from "@/components/ui";
 
-export function ProblemaSection() {
+function ServiceCard({
+  icon: Icon,
+  title,
+  description,
+  delay,
+}: {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  delay: number;
+}) {
   return (
-    <section className="npg-company-section relative flex min-h-[108vh] items-center overflow-hidden px-3 py-24 lg:py-28">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-[linear-gradient(180deg,rgba(14,31,30,0.12),transparent)]" />
+    <MotionBlock delay={delay} className="h-full">
+      <Link
+        href="/servicos"
+        className="group relative flex h-full flex-col overflow-hidden rounded-[16px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 p-8 text-[#0E1F1E] shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_0_28px_rgba(241,199,91,0.16),0_16px_42px_rgba(241,199,91,0.3),inset_0_1px_0_rgba(255,255,255,0.56),inset_0_-1px_0_rgba(100,71,17,0.12)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:bg-[#FFD66E]/92 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.16),0_0_34px_rgba(241,199,91,0.22),0_20px_54px_rgba(241,199,91,0.4),inset_0_1px_0_rgba(255,255,255,0.62)]"
+      >
+        <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.52),transparent_36%,rgba(255,255,255,0.22)_72%,transparent)] opacity-90 transition-opacity group-hover:opacity-100" />
+        <Icon aria-hidden="true" className="relative z-10 h-12 w-12 text-[#14344E]" />
+        <h3 className="relative z-10 mt-5 text-base font-black leading-tight text-[#0E1F1E]">{title}</h3>
+        <p className="relative z-10 mt-3 flex-1 text-sm leading-6 text-[#0E1F1E]/75">{description}</p>
+        <span className="relative z-10 mt-5 inline-flex items-center gap-2 text-sm font-black text-[#0E1F1E]">
+          Saiba mais
+          <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </span>
+      </Link>
+    </MotionBlock>
+  );
+}
 
-      <div className="relative z-10 mx-auto mt-8 w-full max-w-[1120px] lg:mt-10">
-        <div className="grid items-center gap-16 lg:grid-cols-[minmax(0,620px)_minmax(0,420px)] lg:justify-between">
-          <MotionBlock>
-            <div className="mx-auto max-w-[620px] text-center lg:mx-0 lg:text-left">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#A66A12]">
-                Aqui na{" "}
-                <span className="font-black text-[#8F5A0E]">NPG CAPITAL</span>
-              </p>
+export function ProblemaSection() {
+  const services = [
+    {
+      icon: BanknoteArrowUp,
+      title: "Cobrança com Garantia de Recebimento",
+      description:
+        "Antecipação de 100% das taxas de condomínio, mesmo que alguns moradores atrasem o pagamento. Sem custos adicionais para o condomínio.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Cobrança de Taxas Atrasadas Sem Custo",
+      description:
+        "Recuperamos os atrasos acumulados. Depois que as taxas são recuperadas, o repasse volta aos valores principais.",
+    },
+    {
+      icon: Home,
+      title: "Antecipação para Obra (Garantia de Reforma)",
+      description:
+        "Condomínio sem saldo em fundo de obras? Resolvemos imediatamente. Antecipação com garantia de recebimento.",
+    },
+  ];
 
-              <h2 className="mt-4 text-3xl font-black leading-tight text-[#14344E] md:text-4xl">
-                A gente cuida da inadimplência para o síndico cuidar melhor do
-                condomínio.
-              </h2>
+  return (
+    <section className="relative overflow-hidden bg-white px-5 py-20 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-[1220px]">
+        <MotionBlock className="mb-16 text-center">
+          <p className="text-sm font-black uppercase tracking-[0.2em] text-[#F1C75B]">
+            Nossos Serviços
+          </p>
+          <h2 className="mt-4 text-3xl font-black leading-tight text-[#14344E] md:text-4xl lg:text-5xl">
+            As melhores soluções em cobrança e garantia de taxas de condomínio.
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#14344E]/72">
+            Três formas de dar previsibilidade financeira ao seu condomínio. Escolha a que mais faz sentido para a sua realidade.
+          </p>
+        </MotionBlock>
 
-              <p className="mt-5 max-w-xl text-justify text-base font-semibold leading-7 text-[#0E1F1E]">
-                Administrar um condomínio não deveria ser uma sequência de
-                cobranças, improvisos e conversas difíceis.
-              </p>
-              <p className="mt-4 max-w-xl text-justify text-base leading-7 text-[#18302F]">
-                A <span className="font-black text-[#0E1F1E]">NPG</span> entra
-                para dar previsibilidade ao caixa e aliviar essa parte delicada
-                da rotina, para que a gestão consiga focar no que realmente importa, pessoas.
-              </p>
-            </div>
-          </MotionBlock>
-
-          <MotionBlock delay={0.12} className="w-full justify-self-end">
-            <div className="relative w-full md:mx-auto md:max-w-[500px] lg:mx-0 lg:max-w-none">
-              <div className="npg-company-photo relative overflow-hidden rounded-[18px] border border-white/70 bg-[#0E1F1E] shadow-[0_28px_80px_rgba(20,52,78,0.18)]">
-                <Image
-                  src="/assets/analog-landscape-city-with-buildings-vertical.jpg"
-                  alt="Condomínio residencial moderno com área externa arborizada"
-                  width={1280}
-                  height={1707}
-                  className="h-[460px] w-full object-cover opacity-95 lg:h-[560px]"
-                  sizes="(min-width: 1024px) 420px, 100vw"
-                  priority={false}
-                />
-
-                <div className="npg-image-glass-card absolute bottom-4 left-4 right-4 z-10 rounded-[18px] p-4 text-white">
-                  <p className="relative z-10 text-xs font-black uppercase tracking-[0.2em] text-[#F1C75B]">
-                    Para a rotina
-                  </p>
-                  <p className="relative z-10 mt-2 text-base font-black leading-tight">
-                    Mais tranquilidade para manter tudo em movimento.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </MotionBlock>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {services.map((service, i) => (
+            <ServiceCard key={service.title} {...service} delay={i * 0.08} />
+          ))}
         </div>
+
+        <MotionBlock delay={0.3} className="mt-12 text-center">
+          <Link
+            href="/servicos"
+            className="group inline-flex items-center gap-2 text-base font-black text-[#14344E] transition-colors hover:text-[#F1C75B]"
+          >
+            Ver todos os serviços
+            <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </MotionBlock>
       </div>
     </section>
   );
