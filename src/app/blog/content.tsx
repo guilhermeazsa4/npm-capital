@@ -3,7 +3,7 @@
 import { ArrowRight, Calendar, Tag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Eyebrow, FloatingActions, MotionBlock } from "@/components/ui";
+import { FloatingActions, MotionBlock } from "@/components/ui";
 import { blogPosts } from "@/lib/blog-posts";
 
 export function BlogContent() {
@@ -12,7 +12,9 @@ export function BlogContent() {
       <section className="bg-gradient-to-b from-white to-[#FAFAFA] px-5 pb-20 pt-32 lg:px-8 lg:pb-24 lg:pt-36">
         <div className="mx-auto max-w-[1080px]">
           <MotionBlock className="mx-auto max-w-2xl text-center">
-            <Eyebrow>Blog</Eyebrow>
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#F1C75B] sm:mb-5 sm:text-sm sm:tracking-[0.22em]">
+              Blog
+            </p>
             <h1 className="text-4xl font-black leading-tight text-[#14344E] md:text-5xl">
               Artigos para síndicos e administradoras
             </h1>

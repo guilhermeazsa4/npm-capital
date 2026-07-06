@@ -53,7 +53,7 @@ export function AEmpresaContent() {
               A NPG é diferente
             </p>
             <h1 className="mx-auto max-w-3xl text-balance text-3xl font-black leading-tight text-[#14344E] sm:text-4xl md:text-5xl lg:text-6xl">
-              Segurança financeira para condomínios que não podem parar.
+              Conheça quem faz a diferença na sua gestão
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#14344E]/70 md:mt-6 md:text-lg md:leading-8">
               NPG Capital nasceu para garantir a arrecadação mesmo com inadimplência, dando aos síndicos previsibilidade, tranquilidade e uma gestão mais rápida e eficiente.

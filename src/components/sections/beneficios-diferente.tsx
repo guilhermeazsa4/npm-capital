@@ -55,16 +55,19 @@ export function BeneficiosDiferenteSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-white px-5 py-20 lg:px-8 lg:py-28">
-      <div className="mx-auto max-w-[1400px]">
+    <section className="relative overflow-hidden bg-[#0E1F1E] px-5 py-20 text-white lg:px-8 lg:py-28">
+      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(20,52,78,0.9),rgba(14,31,30,1)_55%,rgba(20,52,78,0.82))]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F1C75B]/70 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-[1400px]">
         <MotionBlock className="mb-16 text-center">
           <p className="text-sm font-black uppercase tracking-[0.2em] text-[#F1C75B]">
             Benefícios
           </p>
-          <h2 className="mt-4 text-3xl font-black leading-tight text-[#14344E] md:text-4xl lg:text-5xl">
+          <h2 className="mt-4 text-3xl font-black leading-tight text-white md:text-4xl lg:text-5xl">
             Benefícios de uma garantidora diferente.
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#14344E]/72">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/72">
             Ser diferente é olhar para pessoas onde outros veem apenas prédios e números. É isso que guia cada benefício que oferecemos.
           </p>
         </MotionBlock>

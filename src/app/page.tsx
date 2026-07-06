@@ -7,6 +7,7 @@ import {
   BeneficiosDiferenteSection,
   DepoimentosSection,
   CtaFinal,
+  EbooksSection,
 } from "@/components/sections";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <BeneficiosDiferenteSection />
       <DepoimentosSection />
       <CtaFinal />
+      <EbooksSection />
       <FloatingActions />
     </main>
   );

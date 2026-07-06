@@ -183,7 +183,7 @@ export function FloatingActions() {
       <LinkButton
         href="/a-empresa#manifesto"
         variant="glass"
-        className="topbar-ticket-button whatsapp-animate active:scale-95"
+        className="topbar-ticket-button whatsapp-animate hidden active:scale-95 sm:inline-flex"
         style={{ animationDelay: "0.2s" }}
       >
         <ScrollText aria-hidden="true" className="relative z-10 h-4 w-4" />

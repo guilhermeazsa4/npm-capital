@@ -792,7 +792,7 @@ body {
   isolation: isolate;
   position: relative;
   overflow: hidden;
-  min-height: 480px;
+  min-height: 520px;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   background:

@@ -6,9 +6,7 @@ import { ProblemaSection, BeneficiosDiferenteSection, CtaFinal } from "@/compone
 export function ServicosContent() {
   return (
     <main className="bg-white">
-      <div className="pt-20 sm:pt-24 lg:pt-28">
-        <ProblemaSection />
-      </div>
+      <ProblemaSection className="pt-28 sm:pt-32 lg:pt-36" />
       <BeneficiosDiferenteSection />
       <CtaFinal />
 

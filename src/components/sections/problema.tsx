@@ -3,6 +3,7 @@
 import { ArrowRight, BanknoteArrowUp, Home, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { MotionBlock } from "@/components/ui";
+import { cn } from "@/lib/utils";
 
 function ServiceCard({
   icon: Icon,
@@ -34,7 +35,7 @@ function ServiceCard({
   );
 }
 
-export function ProblemaSection() {
+export function ProblemaSection({ className }: { className?: string } = {}) {
   const services = [
     {
       icon: BanknoteArrowUp,
@@ -57,7 +58,12 @@ export function ProblemaSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-white px-5 py-20 lg:px-8 lg:py-28">
+    <section
+      className={cn(
+        "relative overflow-hidden bg-white px-5 pt-20 pb-20 lg:px-8 lg:pt-28 lg:pb-28",
+        className
+      )}
+    >
       <div className="mx-auto max-w-[1220px]">
         <MotionBlock className="mb-16 text-center">
           <p className="text-sm font-black uppercase tracking-[0.2em] text-[#F1C75B]">
@@ -76,16 +82,6 @@ export function ProblemaSection() {
             <ServiceCard key={service.title} {...service} delay={i * 0.08} />
           ))}
         </div>
-
-        <MotionBlock delay={0.3} className="mt-12 text-center">
-          <Link
-            href="/servicos"
-            className="group inline-flex items-center gap-2 text-base font-black text-[#14344E] transition-colors hover:text-[#F1C75B]"
-          >
-            Ver todos os serviços
-            <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </MotionBlock>
       </div>
     </section>
   );

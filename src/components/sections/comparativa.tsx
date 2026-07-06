@@ -138,7 +138,10 @@ export function ComparativaSection() {
 
       <div className="relative z-10 mx-auto mt-6 w-full max-w-[1000px] px-4 sm:px-5 lg:mt-8 lg:px-6">
         <MotionBlock>
-          <h2 className="mx-auto max-w-3xl text-center text-3xl font-black leading-tight text-white drop-shadow-[0_10px_28px_rgba(0,0,0,0.28)] md:text-[42px]">
+          <p className="text-center text-sm font-black uppercase tracking-[0.2em] text-[#F1C75B]">
+            Fluxo de caixa
+          </p>
+          <h2 className="mx-auto mt-4 max-w-3xl text-center text-3xl font-black leading-tight text-white drop-shadow-[0_10px_28px_rgba(0,0,0,0.28)] md:text-[42px]">
             O caminho do dinheiro muda quando a NPG entra no fluxo.
           </h2>
         </MotionBlock>

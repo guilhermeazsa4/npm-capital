@@ -52,7 +52,7 @@ export function Header() {
   const inner = (
     <>
       <div className={shellClass}>
-        <div className="mx-auto grid h-[76px] w-full max-w-[1520px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 sm:h-[84px] sm:px-7 lg:px-10 xl:h-[92px] 2xl:h-[100px] 2xl:px-14">
+        <div className="mx-auto grid h-[76px] w-full max-w-[1520px] grid-cols-2 items-center gap-4 px-5 sm:h-[84px] sm:px-7 lg:px-10 xl:h-[92px] xl:grid-cols-[1fr_auto_1fr] 2xl:h-[100px] 2xl:px-14">
           <Link href="/" aria-label="NPG Capital" className="flex shrink-0 items-center justify-self-start">
             <Image
               src="/assets/logoFull.png"

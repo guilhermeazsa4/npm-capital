@@ -13,19 +13,20 @@ export function CtaFinal() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section className="npg-company-section relative flex min-h-[104vh] items-center overflow-hidden px-4 py-20 text-[#14344E] sm:px-6 lg:px-8 lg:py-24">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 bg-[linear-gradient(180deg,rgba(14,31,30,0.08),transparent)]" />
+    <section className="relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-24">
+      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(20,52,78,0.94),rgba(14,31,30,1)_52%,rgba(20,52,78,0.86))]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F1C75B]/70 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r from-transparent via-[#F1C75B] to-transparent" />
 
       <div className="relative z-10 mx-auto w-full max-w-[980px]">
         <MotionBlock className="text-center">
-          <p className="text-sm font-black uppercase tracking-[0.22em] text-[#C99A31]">
+          <p className="text-sm font-black uppercase tracking-[0.22em] text-[#F1C75B]">
             Próximo passo
           </p>
-          <h2 className="mx-auto mt-6 text-xl font-black leading-tight text-[#14344E] sm:whitespace-nowrap sm:text-2xl md:text-3xl">
+          <h2 className="mx-auto mt-6 text-xl font-black leading-tight text-white sm:whitespace-nowrap sm:text-2xl md:text-3xl">
             Descubra sua <span className="text-[#F1C75B]">arrecadação garantida</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-[#18302F]">
+          <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-white/75">
             Faça uma análise gratuita e descubra qual seria a arrecadação garantida do seu prédio. Sem custo e sem compromisso.
           </p>
         </MotionBlock>
@@ -142,7 +143,7 @@ export function CtaFinal() {
         </MotionBlock>
 
         <MotionBlock delay={0.2}>
-          <p className="mt-6 text-center text-sm text-[#14344E]/55">
+          <p className="mt-6 text-center text-sm text-white/55">
             Análise gratuita &middot; Resposta em até 1 dia útil &middot; Sem compromisso
           </p>
         </MotionBlock>
