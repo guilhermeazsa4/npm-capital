@@ -45,7 +45,7 @@ export function Header() {
 
   const headerClass = "fixed inset-x-0 top-0 z-50 w-full transition-all duration-300";
 
-  const shellClass = `premium-topbar w-full overflow-hidden rounded-b-[18px] transition-all duration-300 ${
+  const shellClass = `premium-topbar w-full overflow-hidden transition-all duration-300 ${
     scrolled ? "premium-topbar-scrolled" : ""
   }`;
 
