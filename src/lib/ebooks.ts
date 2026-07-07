@@ -18,15 +18,6 @@ export const ebooks: Ebook[] = [
     externalHref: "https://conteudo.editorabonijuris.com.br/e-book-coisas-basicas-do-condominio-condoninho",
   },
   {
-    slug: "revista-direito-e-condominio",
-    title: "Revista Direito e Condomínio",
-    format: "Periódico #46",
-    image: "/assets/TabletRDC.png",
-    description:
-      "A edição mais recente do periódico especializado em direito condominial, com artigos assinados por especialistas, análises de jurisprudência e orientações práticas para o dia a dia da gestão condominial.",
-    externalHref: "https://www.editorabonijuris.com.br/periodicos/revista-direito-e-condominio/",
-  },
-  {
     slug: "leis-essenciais",
     title: "Leis Essenciais",
     format: "E-book · 2ª edição",
@@ -52,6 +43,24 @@ export const ebooks: Ebook[] = [
     description:
       "Uma visão aprofundada sobre a relação entre proprietários, inquilinos e condomínio, com orientações sobre locação, transferência de unidades e responsabilidades de cada parte.",
     externalHref: "https://conteudo.editorabonijuris.com.br/e-book-dinamica-do-imovel",
+  },
+  {
+    slug: "nao-tropece-na-redacao",
+    title: "Não Tropece na Redação",
+    format: "E-book",
+    image: "/assets/TabletNTR.png",
+    description:
+      "Dicas práticas para escrever atas, comunicados e avisos do condomínio com clareza, sem erros de português e sem gerar ruído com moradores.",
+    externalHref: "#",
+  },
+  {
+    slug: "financas-em-foco",
+    title: "Finanças em Foco",
+    format: "E-book · Haus",
+    image: "/assets/TabletFCF.png",
+    description:
+      "Um panorama simples sobre organização financeira do condomínio: onde o dinheiro está indo, como montar previsão orçamentária e evitar surpresas no caixa.",
+    externalHref: "#",
   },
 ];
 

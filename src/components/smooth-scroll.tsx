@@ -4,6 +4,11 @@ import Lenis from "lenis";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
+// Shared reference so other components (e.g. in-page anchor buttons) can
+// trigger an animated scroll through Lenis instead of fighting it with a
+// native scrollIntoView call.
+export let lenisInstance: Lenis | null = null;
+
 export function SmoothScroll() {
   const lenisRef = useRef<Lenis | null>(null);
   const pathname = usePathname();
@@ -13,10 +18,12 @@ export function SmoothScroll() {
       autoRaf: true,
     });
     lenisRef.current = lenis;
+    lenisInstance = lenis;
 
     return () => {
       lenis.destroy();
       lenisRef.current = null;
+      lenisInstance = null;
     };
   }, []);
 

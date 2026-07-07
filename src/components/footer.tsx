@@ -10,7 +10,7 @@ export function Footer() {
     <footer className="gold-surface relative overflow-hidden border-t border-[#FFE39A]/70 px-5 pb-6 pt-12 text-black lg:px-8 lg:pb-8 lg:pt-20">
       <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.42),transparent_36%,rgba(255,255,255,0.16)_72%,transparent)] opacity-90" />
       <div className="relative z-10 mx-auto max-w-[1220px]">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-16">
           {/* Parceiras */}
           <div>
             <h3 className="text-sm font-black uppercase text-black">Parceiras</h3>
@@ -24,6 +24,22 @@ export function Footer() {
                   className="h-full w-full object-contain"
                 />
               </div>
+              <div className="h-14 w-40">
+                <Image
+                  src="/assets/RevistaDireitoECondLogo.png"
+                  alt="Revista Direito e Condomínio"
+                  width={180}
+                  height={56}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Associada */}
+          <div>
+            <h3 className="text-sm font-black uppercase text-black">Associada</h3>
+            <div className="mt-5 flex flex-wrap items-center gap-6">
               <div className="h-14 w-48">
                 <Image
                   src="/assets/logoCondGarantidos.png"
