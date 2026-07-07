@@ -21,14 +21,14 @@ function ServiceCard({
     <MotionBlock delay={delay} className="h-full">
       <Link
         href="/servicos"
-        className="premium-glass-button topbar-ticket-button group relative flex h-full items-start gap-4 overflow-hidden rounded-[16px] p-7 text-white"
+        className="premium-glass-button topbar-ticket-button group relative flex h-full flex-col overflow-hidden rounded-[16px] p-7 text-white"
       >
         <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.36),transparent_34%,rgba(255,255,255,0.14)_72%,transparent)] opacity-85 transition-opacity group-hover:opacity-100" />
-        <Icon aria-hidden="true" className="relative z-10 h-10 w-10 shrink-0 text-[#F1C75B]" />
-        <div className="relative z-10">
+        <div className="relative z-10 flex items-center gap-4">
+          <Icon aria-hidden="true" className="h-10 w-10 shrink-0 text-[#F1C75B]" />
           <h3 className="text-base font-black leading-tight text-white">{title}</h3>
-          <p className="mt-3 text-sm leading-6 text-white/75">{description}</p>
         </div>
+        <p className="relative z-10 mt-3 text-sm leading-6 text-white/75">{description}</p>
       </Link>
     </MotionBlock>
   );

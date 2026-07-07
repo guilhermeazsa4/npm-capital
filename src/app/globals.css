@@ -1699,12 +1699,8 @@ body {
 }
 
 .gold-surface {
-  background:
-    linear-gradient(135deg, rgba(212, 165, 58, 0.98), rgba(181, 132, 33, 0.95)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0));
-  box-shadow:
-    0 22px 55px rgba(100, 71, 17, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  background: linear-gradient(135deg, #d4a53a, #b58421);
+  box-shadow: 0 22px 55px rgba(100, 71, 17, 0.26);
 }
 
 .section-grid {

@@ -105,7 +105,7 @@ export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
 
   return (
     <main className="bg-gradient-to-b from-white to-[#FAFAFA]">
-      <section className="px-3 pb-16 pt-28 sm:px-4 sm:pt-32 lg:px-6 lg:pb-20 lg:pt-36">
+      <section className="px-3 pb-16 pt-20 sm:px-4 sm:pt-24 lg:px-6 lg:pb-20 lg:pt-28">
         <div className="mx-auto max-w-[1040px]">
           <Link
             href="/e-books"
@@ -178,7 +178,7 @@ export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
                   }}
                 >
                   <p className="mb-5 text-left text-lg font-black text-white">Baixe seu e-book</p>
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
                       <label htmlFor="eb-nome" className={labelClassName}>
                         Nome <span className="text-red-500">*</span>

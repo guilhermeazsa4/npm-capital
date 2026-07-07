@@ -220,35 +220,68 @@ function FloatingWhatsAppIcon() {
 
 export function FloatingActions({ hideProposalInHero = false }: { hideProposalInHero?: boolean } = {}) {
   const [showProposal, setShowProposal] = useState(!hideProposalInHero);
+  const [mountProposal, setMountProposal] = useState(!hideProposalInHero);
+
+  // Keep the button mounted for the fade-out transition, then remove it from
+  // the DOM entirely so it can never bleed through the footer afterwards.
+  useEffect(() => {
+    if (showProposal) {
+      setMountProposal(true);
+      return;
+    }
+    const timeout = setTimeout(() => setMountProposal(false), 300);
+    return () => clearTimeout(timeout);
+  }, [showProposal]);
 
   useEffect(() => {
-    if (!hideProposalInHero) return;
+    const update = () => {
+      let pastHero = true;
+      if (hideProposalInHero) {
+        const hero = document.querySelector(".hero-section");
+        const threshold = hero instanceof HTMLElement ? hero.offsetHeight * 0.3 : window.innerHeight * 0.3;
+        pastHero = window.scrollY > threshold;
+      }
 
-    const onScroll = () => {
-      const hero = document.querySelector(".hero-section");
-      const threshold = hero instanceof HTMLElement ? hero.offsetHeight * 0.3 : window.innerHeight * 0.3;
-      setShowProposal(window.scrollY > threshold);
+      // Hide well before the footer visually reaches the button, so there's
+      // no chance of the two overlapping/bleeding into each other.
+      const footer = document.querySelector("footer");
+      const footerClear = !(footer instanceof HTMLElement) || footer.getBoundingClientRect().top > window.innerHeight + 80;
+
+      setShowProposal(pastHero && footerClear);
     };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, [hideProposalInHero]);
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex items-center gap-3">
-      {showProposal ? (
-        <a
-          href="/contato#solicitar-proposta"
-          className="floating-gold-button whatsapp-animate group inline-flex h-14 items-center gap-2 overflow-hidden rounded-[18px] px-5 text-sm font-black active:scale-95"
-          style={{ animationDelay: "0.5s" }}
-        >
-          <FileText aria-hidden="true" className="h-5 w-5 shrink-0" />
-          <span className="whitespace-nowrap">Solicitar Proposta</span>
-        </a>
+    <>
+      {/* Fades out, then unmounts — so it never lingers/bleeds through the footer. */}
+      {mountProposal ? (
+        <div className="fixed bottom-5 right-[92px] z-40 sm:right-[104px]">
+          <a
+            href="/contato#solicitar-proposta"
+            className={`floating-gold-button whatsapp-animate group inline-flex h-14 items-center gap-2 overflow-hidden rounded-[18px] px-5 text-sm font-black transition-opacity duration-300 ease-in active:scale-95 ${
+              showProposal ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
+            style={{ animationDelay: "0.5s" }}
+          >
+            <FileText aria-hidden="true" className="h-5 w-5 shrink-0" />
+            <span className="whitespace-nowrap">Solicitar Proposta</span>
+          </a>
+        </div>
       ) : null}
-      <FloatingWhatsAppIcon />
-    </div>
+
+      {/* Always above the footer — the WhatsApp button must never get covered. */}
+      <div className="fixed bottom-5 right-5 z-[60]">
+        <FloatingWhatsAppIcon />
+      </div>
+    </>
   );
 }
 
