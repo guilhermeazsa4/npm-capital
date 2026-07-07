@@ -3,7 +3,7 @@
 import { MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { MotionBlock, WhatsAppButton } from "@/components/ui";
+import { MotionBlock } from "@/components/ui";
 
 const inputClassName =
   "w-full rounded-[4px] border border-[#14344E]/15 bg-white px-4 py-3 text-sm text-[#14344E] outline-none transition-colors focus:border-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/20";
@@ -80,7 +80,7 @@ export function CtaFinal() {
                   <p className="pt-2 text-xs font-black uppercase tracking-[0.18em] text-[#14344E]/50">
                     Dados do condomínio
                   </p>
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
                       <label htmlFor="cta-condominio" className={labelClassName}>
                         Nome do condomínio <span className="text-red-500">*</span>
@@ -92,19 +92,6 @@ export function CtaFinal() {
                         Receita mensal
                       </label>
                       <input id="cta-receita" type="text" placeholder="Ex.: R$ 20.000" className={inputClassName} />
-                    </div>
-                    <div>
-                      <label htmlFor="cta-servico" className={labelClassName}>
-                        Selecione o serviço
-                      </label>
-                      <select id="cta-servico" defaultValue="" className={inputClassName}>
-                        <option value="" disabled>
-                          Escolha uma opção
-                        </option>
-                        <option value="garantia-total">Garantia total</option>
-                        <option value="cobranca-taxas">Cobrança de taxas</option>
-                        <option value="antecipacao-obras">Antecipação de obras</option>
-                      </select>
                     </div>
                   </div>
                 </div>
@@ -125,17 +112,14 @@ export function CtaFinal() {
                   </span>
                 </label>
 
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-6">
                   <button
                     type="submit"
-                    className="group relative inline-flex min-h-12 flex-1 items-center justify-center gap-3 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 py-3 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-1px_0_rgba(100,71,17,0.12)] backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92 hover:shadow-[0_20px_54px_rgba(241,199,91,0.4),inset_0_1px_0_rgba(255,255,255,0.56)] active:scale-[0.98]"
+                    className="group relative inline-flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 py-3 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-1px_0_rgba(100,71,17,0.12)] backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92 hover:shadow-[0_20px_54px_rgba(241,199,91,0.4),inset_0_1px_0_rgba(255,255,255,0.56)] active:scale-[0.98]"
                   >
                     <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.52),transparent_36%,rgba(255,255,255,0.22)_72%,transparent)] opacity-90 transition-opacity group-hover:opacity-100" />
                     <span className="relative z-10">Solicitar proposta personalizada</span>
                   </button>
-                  <WhatsAppButton className="min-h-12 flex-1">
-                    Falar no WhatsApp
-                  </WhatsAppButton>
                 </div>
               </form>
             )}

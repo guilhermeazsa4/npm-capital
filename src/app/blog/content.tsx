@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Calendar, Tag } from "lucide-react";
+import { ArrowRight, Tag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FloatingActions, MotionBlock } from "@/components/ui";
@@ -18,9 +18,6 @@ export function BlogContent() {
             <h1 className="text-4xl font-black leading-tight text-[#14344E] md:text-5xl">
               Artigos para síndicos e administradoras
             </h1>
-            <p className="mt-6 text-base leading-8 text-[#14344E]/72 md:text-lg">
-              Conteúdo sobre inadimplência, gestão e legislação condominial, direto ao ponto.
-            </p>
           </MotionBlock>
 
           <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-14">
@@ -37,14 +34,10 @@ export function BlogContent() {
                     />
                   </Link>
 
-                  <div className="mt-4 flex items-center justify-between gap-3 text-xs font-bold text-[#14344E]/55">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#14344E]/6 px-2.5 py-1 text-[#14344E]">
+                  <div className="mt-4 flex items-center gap-3 text-xs font-bold text-[#14344E]/55">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F1C75B]/12 px-2.5 py-1 text-[#B8860B]">
                       <Tag aria-hidden="true" className="h-3.5 w-3.5" />
                       {post.category}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <Calendar aria-hidden="true" className="h-3.5 w-3.5" />
-                      {post.date}
                     </span>
                   </div>
 

@@ -10,3 +10,8 @@ export const CONTACT = {
   address: "Av. Paulista, 1000 — São Paulo, SP",
   cnpj: "00.000.000/0001-00",
 } as const;
+
+export const SOCIAL = {
+  instagram: "https://www.instagram.com/npgcapital",
+  facebook: "https://www.facebook.com/npgcapital",
+} as const;

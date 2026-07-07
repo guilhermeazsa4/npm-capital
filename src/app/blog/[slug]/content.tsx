@@ -149,6 +149,10 @@ export function BlogPostContent({
               {post.title}
             </h1>
 
+            <p className="mt-3 text-left text-sm font-semibold text-[#14344E]/55">
+              Por Equipe NPG Capital
+            </p>
+
             <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-[8px]">
               <Image
                 src={post.image}

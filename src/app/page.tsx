@@ -21,7 +21,7 @@ export default function Home() {
       <DepoimentosSection />
       <CtaFinal />
       <EbooksSection />
-      <FloatingActions />
+      <FloatingActions hideProposalInHero />
     </main>
   );
 }

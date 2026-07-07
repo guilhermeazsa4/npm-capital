@@ -162,7 +162,6 @@ export function EbooksMarquee() {
                     <h3 className="text-sm font-black leading-snug text-[#14344E] sm:text-[15px] lg:text-base">
                       {eb.title}
                     </h3>
-                    <p className="mt-1 text-xs text-[#14344E]/55 sm:text-sm">{eb.format}</p>
                   </div>
                   <span className="group/cta relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-3 py-2 text-[11px] font-black text-[#0E1F1E] shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_10px_24px_rgba(241,199,91,0.28),inset_0_1px_0_rgba(255,255,255,0.56)] transition-all group-hover:-translate-y-0.5 group-hover:bg-[#FFD66E]/92 sm:px-4 sm:text-xs">
                     <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.52),transparent_36%,rgba(255,255,255,0.22)_72%,transparent)] opacity-90" />

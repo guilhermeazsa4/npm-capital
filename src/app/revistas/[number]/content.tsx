@@ -12,7 +12,7 @@ export function RevistaLandingContent({ revista }: { revista: Revista }) {
   return (
     <main className="bg-gradient-to-b from-white to-[#FAFAFA]">
       <section className="px-3 pb-20 pt-28 sm:px-4 sm:pt-32 lg:px-6 lg:pb-24 lg:pt-36">
-        <div className="mx-auto max-w-[880px]">
+        <div className="mx-auto max-w-[1040px]">
           <Link
             href="/revistas"
             className="group inline-flex items-center gap-2 text-sm font-bold text-[#14344E]/60 transition-colors hover:text-[#14344E]"
@@ -44,7 +44,7 @@ export function RevistaLandingContent({ revista }: { revista: Revista }) {
               <h1 className="mt-4 text-2xl font-black leading-tight text-[#14344E] sm:text-3xl lg:text-4xl">
                 {revista.theme}
               </h1>
-              <p className="mt-4 max-w-xl text-base leading-7 text-[#14344E]/72">
+              <p className="mt-4 max-w-none text-base leading-7 text-[#14344E]/72">
                 {revista.description}
               </p>
 

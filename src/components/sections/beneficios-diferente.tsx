@@ -1,6 +1,6 @@
 "use client";
 
-import { Headphones, Info, Users, Zap } from "lucide-react";
+import { Headset, MessageCircle, PaintRoller, Users } from "lucide-react";
 import { MotionBlock } from "@/components/ui";
 
 function BenefitCard({
@@ -20,7 +20,7 @@ function BenefitCard({
         <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.52),transparent_36%,rgba(255,255,255,0.22)_72%,transparent)] opacity-90 transition-opacity group-hover:opacity-100" />
         <Icon aria-hidden="true" className="relative z-10 h-12 w-12 text-[#14344E]" />
         <h3 className="relative z-10 mt-5 text-base font-black leading-tight text-[#0E1F1E]">{title}</h3>
-        <p className="relative z-10 mt-3 flex-1 text-sm leading-6 text-[#0E1F1E]/75">{description}</p>
+        <p className="relative z-10 mt-3 flex-1 text-sm font-medium leading-6 text-[#0E1F1E]/75">{description}</p>
       </div>
     </MotionBlock>
   );
@@ -29,19 +29,19 @@ function BenefitCard({
 export function BeneficiosDiferenteSection() {
   const benefits = [
     {
-      icon: Headphones,
+      icon: Headset,
       title: "Atendimento exclusivo e personalizado",
       description:
         "Na NPG Capital você é atendido com atenção e cordialidade. O alto padrão de atendimento faz parte da filosofia da empresa em cada contato com síndicos e administradoras.",
     },
     {
-      icon: Info,
+      icon: MessageCircle,
       title: "Informações e orientações gratuitas",
       description:
         "Orientações condominiais e jurídicas sobre qualquer assunto de interesse do condomínio são oferecidas gratuitamente pelos nossos consultores.",
     },
     {
-      icon: Zap,
+      icon: PaintRoller,
       title: "Antecipação para reformas e benfeitorias",
       description:
         "Condomínio sem saldo no fundo de obras? A NPG resolve rapidamente, com antecipação de valores parcelados diretamente no boleto do condomínio.",

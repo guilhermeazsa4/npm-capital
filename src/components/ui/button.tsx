@@ -12,7 +12,7 @@ export const buttonVariants = cva(
         glass: "premium-glass-button font-bold text-[#FFE8A6]",
       },
       size: {
-        topbar: "min-h-10 rounded-[14px] px-4 text-sm 2xl:min-h-12 2xl:px-5 2xl:text-base",
+        topbar: "min-h-9 rounded-[14px] px-3 text-xs 2xl:min-h-10 2xl:px-4 2xl:text-sm",
         mobile: "min-h-14 w-full justify-center rounded-[8px] px-5 text-base",
       },
     },

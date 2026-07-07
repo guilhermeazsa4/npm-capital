@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
     date: "15/06/2026",
     title: "5 sinais de que seu condomínio precisa de mais previsibilidade financeira",
     excerpt: "Sinais de que falta previsibilidade financeira na arrecadação.",
-    image: "/assets/brigadeiro-faria-lima-avenue-sao-paulo-brazil.jpg",
+    image: "/assets/fariaLimaAvenue.jpg",
     imageAlt: "Avenida Brigadeiro Faria Lima em São Paulo",
     paragraphs: [
       "Orçamento aprovado em assembleia que não se sustenta até o meio do ano, obras adiadas por falta de caixa, fundo de reserva usado para cobrir despesa corrente — esses são sintomas de um problema mais profundo: falta de previsibilidade na arrecadação.",

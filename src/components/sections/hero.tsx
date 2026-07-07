@@ -39,18 +39,18 @@ function HeroContent() {
       <div className="hero-actions mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <div className="w-full sm:w-auto">
           <Link
-            href="/servicos"
+            href="/contato#solicitar-proposta"
             className="floating-gold-button group inline-flex h-14 w-full items-center justify-center gap-2 overflow-hidden rounded-[18px] px-5 text-sm font-black sm:w-auto"
           >
-            <span className="whitespace-nowrap">Conheça nossos serviços</span>
+            <span className="whitespace-nowrap">Solicitar proposta</span>
             <ChevronRight
               aria-hidden="true"
               className="h-4 w-4 transition-transform group-hover:translate-x-1"
             />
           </Link>
         </div>
-        <div className="w-full border-l border-white/18 pl-4 text-left text-sm font-semibold leading-7 text-white sm:w-auto sm:text-base">
-          <p>Mais de 10 condomínios atendidos</p>
+        <div className="w-full border-l border-white/18 pl-4 text-left text-sm font-semibold leading-7 text-white [text-shadow:0_1px_6px_rgba(0,0,0,0.55)] sm:w-auto sm:text-base">
+          <p>+10 condomínios atendidos</p>
           <p>+10 anos de experiência</p>
         </div>
       </div>

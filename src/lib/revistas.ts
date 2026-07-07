@@ -57,7 +57,7 @@ export const revistas: Revista[] = [
   },
   {
     number: 40,
-    date: "Não informado",
+    date: "Nov/Jan 2025",
     theme: "Orientação para o síndico eficaz",
     description:
       "Práticas e atitudes que ajudam o síndico a conduzir a gestão do condomínio com mais organização e eficiência.",

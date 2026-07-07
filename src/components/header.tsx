@@ -52,14 +52,14 @@ export function Header() {
   const inner = (
     <>
       <div className={shellClass}>
-        <div className="mx-auto grid h-[76px] w-full max-w-[1520px] grid-cols-2 items-center gap-4 px-5 sm:h-[84px] sm:px-7 lg:px-10 xl:h-[92px] xl:grid-cols-[1fr_auto_1fr] 2xl:h-[100px] 2xl:px-14">
-          <Link href="/" aria-label="NPG Capital" className="flex shrink-0 items-center justify-self-start">
+        <div className="mx-auto grid h-[70px] w-full max-w-[1520px] grid-cols-2 items-center gap-4 px-5 sm:h-[78px] sm:px-7 lg:px-10 xl:h-[84px] xl:grid-cols-[1fr_auto_1fr] 2xl:h-[90px] 2xl:px-14">
+          <Link href="/" aria-label="NPG Capital" className="flex shrink-0 items-center justify-self-start xl:justify-self-end">
             <Image
               src="/assets/logoFull.png"
               alt="NPG Capital"
               width={240}
               height={60}
-              className={`h-10 w-auto object-contain transition-[filter] duration-300 sm:h-12 xl:h-14 2xl:h-16 ${
+              className={`h-8 w-auto object-contain transition-[filter] duration-300 sm:h-9 xl:h-10 2xl:h-11 ${
                 scrolled ? "brightness-0" : ""
               }`}
               priority
@@ -74,14 +74,14 @@ export function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="premium-nav-link rounded-[14px] px-2 py-2 text-sm font-bold whitespace-nowrap 2xl:px-3 2xl:py-2.5 2xl:text-base"
+                className="premium-nav-link rounded-[14px] px-2 py-2 text-xs font-bold whitespace-nowrap 2xl:px-3 2xl:py-2.5 2xl:text-sm"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center justify-end gap-3 justify-self-end 2xl:gap-4">
+          <div className="flex items-center justify-end gap-3 justify-self-end xl:justify-self-start 2xl:gap-4">
             <div className="hidden items-center gap-3 xl:flex 2xl:gap-4">
               <LinkButton href="/seu-boleto" variant="glass" className="topbar-ticket-button">
                 <FileText aria-hidden="true" className="relative z-10 h-4 w-4" />
@@ -119,7 +119,7 @@ export function Header() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="rounded-[8px] px-3 py-3 text-lg font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+                  className="rounded-[8px] px-3 py-3 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
@@ -127,7 +127,7 @@ export function Header() {
               ))}
               <Link
                 href="/seu-boleto"
-                className="rounded-[8px] px-3 py-3 text-lg font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+                className="rounded-[8px] px-3 py-3 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
                 onClick={() => setOpen(false)}
               >
                 Seu Boleto

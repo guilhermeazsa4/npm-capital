@@ -3,7 +3,7 @@
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { FloatingActions, MotionBlock, WhatsAppButton } from "@/components/ui";
+import { FloatingActions, MotionBlock } from "@/components/ui";
 import { CONTACT } from "@/lib/constants";
 
 const contactCards = [
@@ -178,20 +178,6 @@ export function ContatoContent() {
                         <input id="p-receita" type="text" placeholder="Ex.: R$ 20.000" className={inputClassName} />
                       </div>
                     </div>
-
-                    <div>
-                      <label htmlFor="p-servico" className={labelClassName}>
-                        Selecione o serviço
-                      </label>
-                      <select id="p-servico" defaultValue="" className={inputClassName}>
-                        <option value="" disabled>
-                          Escolha uma opção
-                        </option>
-                        <option value="garantia-total">Garantia total</option>
-                        <option value="cobranca-taxas">Cobrança de taxas</option>
-                        <option value="antecipacao-obras">Antecipação de obras</option>
-                      </select>
-                    </div>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -250,7 +236,7 @@ export function ContatoContent() {
                     .
                   </span>
                 </label>
-                <div className="mt-6 space-y-3">
+                <div className="mt-6">
                   <button
                     type="submit"
                     className="group relative inline-flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 py-3 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-1px_0_rgba(100,71,17,0.12)] backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92 hover:shadow-[0_20px_54px_rgba(241,199,91,0.4),inset_0_1px_0_rgba(255,255,255,0.56)] active:scale-[0.98]"
@@ -260,9 +246,6 @@ export function ContatoContent() {
                       {activeTab === "proposta" ? "Solicitar proposta personalizada" : "Enviar"}
                     </span>
                   </button>
-                  <WhatsAppButton className="min-h-12 w-full">
-                    Falar no WhatsApp
-                  </WhatsAppButton>
                 </div>
                 <p className="mt-3 text-center text-xs text-[#14344E]/50">
                   Análise gratuita e sem compromisso. Seus dados não são
