@@ -83,7 +83,7 @@ function ScenarioFlow({ mode }: { mode: "without" | "with" }) {
               d="M260 0 V118"
             />
             <path
-              className={`flow-clean-stream flow-clean-stream-delay-2 ${withNpg ? "flow-clean-stream-good" : "flow-clean-stream-loss"}`}
+              className="flow-clean-stream flow-clean-stream-delay-2 flow-clean-stream-loss"
               pathLength={1}
               d="M442 0 C442 72 314 62 260 118"
             />
