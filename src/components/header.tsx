@@ -24,6 +24,10 @@ export function Header() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    window.dispatchEvent(new CustomEvent("npg:mobile-menu", { detail: { open } }));
+  }, [open]);
+
+  useEffect(() => {
     let frame = 0;
 
     const onScroll = () => {
@@ -43,7 +47,7 @@ export function Header() {
     };
   }, []);
 
-  const headerClass = "fixed inset-x-0 top-0 z-50 w-full transition-all duration-300";
+  const headerClass = "fixed inset-x-0 top-0 z-[58] w-full transition-all duration-300";
 
   const shellClass = `premium-topbar w-full overflow-hidden transition-all duration-300 ${
     scrolled ? "premium-topbar-scrolled" : ""
@@ -109,34 +113,36 @@ export function Header() {
       <AnimatePresence>
         {open ? (
           <motion.div
-            className="w-full rounded-b-[18px] border-x border-b border-white/18 bg-[#0E1F1E]/94 px-5 py-6 text-center shadow-[0_18px_58px_rgba(4,17,24,0.24),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-2xl xl:hidden"
+            className="w-full rounded-b-[18px] border-x border-b border-white/18 bg-[#0E1F1E]/94 px-5 py-5 text-center shadow-[0_18px_58px_rgba(4,17,24,0.24),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-2xl xl:hidden"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
           >
-            <div className="mx-auto flex max-w-[520px] flex-col gap-3">
-              {navItems.map((item) => (
+            <div className="mx-auto flex max-w-[520px] flex-col gap-1.5">
+              <div className="grid grid-cols-2 gap-x-2 gap-y-3">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="rounded-[8px] px-3 py-2 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
                 <Link
-                  key={item.label}
-                  href={item.href}
-                  className="rounded-[8px] px-3 py-3 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+                  href="/seu-boleto"
+                  className="rounded-[8px] px-3 py-2 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
                   onClick={() => setOpen(false)}
                 >
-                  {item.label}
+                  Seu Boleto
                 </Link>
-              ))}
-              <Link
-                href="/seu-boleto"
-                className="rounded-[8px] px-3 py-3 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
-                onClick={() => setOpen(false)}
-              >
-                Seu Boleto
-              </Link>
+              </div>
               <LinkButton
                 href="/contato#solicitar-proposta"
                 variant="gold"
                 size="mobile"
-                className="mt-2"
+                className="mt-1.5"
                 onClick={() => setOpen(false)}
               >
                 Solicitar Proposta
@@ -145,7 +151,7 @@ export function Header() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-[8px] border border-white/22 bg-white/12 px-5 text-base font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]"
+                className="mt-1.5 inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] border border-white/22 bg-white/12 px-5 text-base font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]"
                 onClick={() => setOpen(false)}
               >
                 <MessageCircle aria-hidden="true" className="h-5 w-5" />

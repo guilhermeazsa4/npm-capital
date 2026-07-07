@@ -221,6 +221,16 @@ function FloatingWhatsAppIcon() {
 export function FloatingActions({ hideProposalInHero = false }: { hideProposalInHero?: boolean } = {}) {
   const [showProposal, setShowProposal] = useState(!hideProposalInHero);
   const [mountProposal, setMountProposal] = useState(!hideProposalInHero);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onMobileMenu = (e: Event) => {
+      const detail = (e as CustomEvent<{ open: boolean }>).detail;
+      setMobileMenuOpen(Boolean(detail?.open));
+    };
+    window.addEventListener("npg:mobile-menu", onMobileMenu);
+    return () => window.removeEventListener("npg:mobile-menu", onMobileMenu);
+  }, []);
 
   // Keep the button mounted for the fade-out transition, then remove it from
   // the DOM entirely so it can never bleed through the footer afterwards.
@@ -247,7 +257,7 @@ export function FloatingActions({ hideProposalInHero = false }: { hideProposalIn
       const footer = document.querySelector("footer");
       const footerClear = !(footer instanceof HTMLElement) || footer.getBoundingClientRect().top > window.innerHeight + 80;
 
-      setShowProposal(pastHero && footerClear);
+      setShowProposal(pastHero && footerClear && !mobileMenuOpen);
     };
 
     update();
@@ -257,7 +267,7 @@ export function FloatingActions({ hideProposalInHero = false }: { hideProposalIn
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
-  }, [hideProposalInHero]);
+  }, [hideProposalInHero, mobileMenuOpen]);
 
   return (
     <>
@@ -266,10 +276,9 @@ export function FloatingActions({ hideProposalInHero = false }: { hideProposalIn
         <div className="fixed bottom-5 right-[92px] z-40 sm:right-[104px]">
           <a
             href="/contato#solicitar-proposta"
-            className={`floating-gold-button whatsapp-animate group inline-flex h-14 items-center gap-2 overflow-hidden rounded-[18px] px-5 text-sm font-black transition-opacity duration-300 ease-in active:scale-95 ${
-              showProposal ? "opacity-100" : "pointer-events-none opacity-0"
+            className={`floating-gold-button group inline-flex h-14 items-center gap-2 overflow-hidden rounded-[18px] px-5 text-sm font-black transition-[opacity,transform] duration-300 ease-out will-change-transform active:scale-95 ${
+              showProposal ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-7 opacity-0"
             }`}
-            style={{ animationDelay: "0.5s" }}
           >
             <FileText aria-hidden="true" className="h-5 w-5 shrink-0" />
             <span className="whitespace-nowrap">Solicitar Proposta</span>
