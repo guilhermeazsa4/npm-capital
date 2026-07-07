@@ -81,7 +81,7 @@ export function Footer() {
           </p>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-black/70">Desenvolvido por</span>
+            <span className="text-sm font-semibold text-black/70">Desenvolvido por</span>
             <Image
               src="/assets/HausLogoBlack.png"
               alt="Haus"
