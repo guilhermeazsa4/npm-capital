@@ -3,16 +3,16 @@ import { CONTACT } from "@/lib/constants";
 
 const sections = [
   {
-    title: "1. Quem somos",
-    body: `Esta Política de Privacidade se aplica ao site da NPG Capital (CNPJ ${CONTACT.cnpj}) e descreve como coletamos, usamos, armazenamos e protegemos os dados pessoais de quem navega e preenche formulários em nosso site, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).`,
+    title: "1. Quem somos e quem é o controlador dos dados",
+    body: `O controlador dos dados pessoais tratados neste site é a NPG Capital (CNPJ ${CONTACT.cnpj}), com sede em ${CONTACT.address}. Esta Política de Privacidade descreve como coletamos, usamos, armazenamos e protegemos os dados pessoais de quem navega e preenche formulários em nosso site, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).`,
   },
   {
-    title: "2. Quais dados coletamos",
-    body: "Coletamos os dados que você nos informa voluntariamente ao preencher formulários no site, como: nome, e-mail, telefone/WhatsApp, profissão, nome do condomínio e número de unidades. Não coletamos dados sensíveis (saúde, origem racial, opinião política, etc.).",
+    title: "2. Quais dados coletamos e em quais formulários",
+    body: "Coletamos apenas os dados que você nos informa voluntariamente ao preencher um dos formulários do site: (i) Solicitar Proposta (/contato) — nome, e-mail, telefone/WhatsApp, nome do condomínio e, opcionalmente, a receita mensal; (ii) Contato (/contato) — nome, e-mail, telefone/WhatsApp, nome do condomínio e mensagem opcional; (iii) Download de e-book (/e-books) — nome, e-mail, profissão e telefone; (iv) Segunda via de boleto (/seu-boleto) — CPF ou CNPJ e unidade, usados apenas para localizar e emitir o boleto correspondente. Não coletamos dados sensíveis (saúde, origem racial, opinião política, etc.).",
   },
   {
     title: "3. Para que usamos seus dados",
-    body: "Usamos os dados para: (i) responder solicitações de proposta e contato; (ii) enviar materiais gratuitos (e-books, revistas) solicitados por você; (iii) entrar em contato por e-mail, telefone ou WhatsApp sobre os serviços da NPG Capital; e (iv) cumprir obrigações legais e regulatórias.",
+    body: "Usamos os dados para: (i) responder solicitações de proposta e contato; (ii) localizar e emitir a 2ª via de boletos a pedido do próprio condômino; (iii) enviar materiais gratuitos (e-books, revistas) solicitados por você; (iv) entrar em contato por e-mail, telefone ou WhatsApp sobre os serviços da NPG Capital; e (v) cumprir obrigações legais e regulatórias.",
   },
   {
     title: "4. Base legal",
@@ -23,8 +23,8 @@ const sections = [
     body: "Não vendemos seus dados. Podemos compartilhá-los com prestadores de serviço que nos ajudam a operar o site e atender contatos (por exemplo, ferramentas de e-mail e CRM), sempre sob obrigação de confidencialidade, ou quando exigido por lei ou ordem judicial.",
   },
   {
-    title: "6. Cookies",
-    body: "Atualmente este site não utiliza cookies de rastreamento ou ferramentas de analytics/publicidade. Caso isso mude, atualizaremos esta política e, se necessário, solicitaremos seu consentimento por meio de um aviso específico.",
+    title: "6. Cookies e métricas de uso",
+    body: "Este site não utiliza cookies de rastreamento, publicidade ou perfis de navegação. Guardamos apenas uma informação técnica no seu navegador (localStorage) para lembrar que você já viu o aviso de cookies — isso não identifica você nem é compartilhado com terceiros. Utilizamos (ou passaremos a utilizar) o Vercel Analytics para entender o volume de visitas e o desempenho do site: é uma ferramenta sem cookies, que não coleta dados pessoais nem identifica visitantes individualmente, apenas métricas agregadas e anônimas (como número de acessos, páginas visitadas, país e tipo de dispositivo). Caso passemos a usar cookies ou ferramentas de rastreamento no futuro, atualizaremos esta política e, se necessário, solicitaremos seu consentimento por meio de um aviso específico.",
   },
   {
     title: "7. Armazenamento e segurança",
@@ -35,8 +35,8 @@ const sections = [
     body: "Nos termos da LGPD, você pode solicitar a qualquer momento: confirmação da existência de tratamento, acesso aos dados, correção de dados incompletos ou desatualizados, anonimização, bloqueio ou eliminação de dados desnecessários, portabilidade, informação sobre compartilhamento e revogação do consentimento.",
   },
   {
-    title: "9. Como falar com a gente",
-    body: `Para exercer seus direitos ou tirar dúvidas sobre esta política, entre em contato pelo e-mail ${CONTACT.email}.`,
+    title: "9. Encarregado de dados (DPO) e como falar com a gente",
+    body: `Para exercer seus direitos, tirar dúvidas sobre esta política ou falar com o encarregado de dados (DPO) da NPG Capital, entre em contato pelo e-mail ${CONTACT.email}.`,
   },
   {
     title: "10. Alterações desta política",

@@ -14,13 +14,38 @@ export function SmoothScroll() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const lenis = new Lenis({
-      autoRaf: true,
-    });
+    const lenis = new Lenis();
     lenisRef.current = lenis;
     lenisInstance = lenis;
 
+    // Drive the RAF loop manually (instead of Lenis's autoRaf) so it can be
+    // paused while the tab is hidden — autoRaf keeps ticking in background
+    // tabs, burning CPU for no visible benefit.
+    let rafId = 0;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+
+    const startRaf = () => {
+      if (!rafId) rafId = requestAnimationFrame(raf);
+    };
+    const stopRaf = () => {
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+    };
+
+    const onVisibility = () => {
+      if (document.hidden) stopRaf();
+      else startRaf();
+    };
+
+    startRaf();
+    document.addEventListener("visibilitychange", onVisibility);
+
     return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      stopRaf();
       lenis.destroy();
       lenisRef.current = null;
       lenisInstance = null;

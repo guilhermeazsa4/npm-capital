@@ -10,7 +10,8 @@ import "./globals.css";
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const youngSerif = Young_Serif({
@@ -26,6 +27,7 @@ const norican = Norican({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://npgcapital.com.br"),
   title: "NPG Capital | Garantidora condominial",
   description:
     "A NPG Capital garante 100% da arrecadação do seu condomínio e assume a cobrança dos inadimplentes. Previsibilidade total, sem o desgaste de cobrar vizinho.",

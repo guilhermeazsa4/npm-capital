@@ -19,9 +19,18 @@ export async function generateMetadata({
     return { title: "Edição não encontrada — NPG Capital" };
   }
 
+  const title = `${revista.seoTitle} | Revista Direito e Condomínio #${revista.number}`;
+
   return {
-    title: `Revista Direito e Condomínio #${revista.number} — NPG Capital`,
-    description: revista.description,
+    title,
+    description: revista.metaDescription,
+    keywords: revista.keywords,
+    openGraph: {
+      title,
+      description: revista.metaDescription,
+      images: [{ url: revista.image }],
+      type: "article",
+    },
   };
 }
 

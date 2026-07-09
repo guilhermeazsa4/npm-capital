@@ -20,10 +20,12 @@ export function EbooksMarquee() {
   const hoveringRef = useRef(false);
   const lastXRef = useRef(0);
   const lastTRef = useRef(0);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
+    const root = rootRef.current;
+    if (!track || !root) return;
 
     const measure = () => {
       loopWidthRef.current = track.scrollWidth / GROUP_COUNT;
@@ -32,7 +34,7 @@ export function EbooksMarquee() {
     window.addEventListener("resize", measure);
 
     let lastFrame = performance.now();
-    let rafId: number;
+    let rafId = 0;
 
     const tick = (now: number) => {
       const dt = Math.min(now - lastFrame, 48);
@@ -60,10 +62,31 @@ export function EbooksMarquee() {
       rafId = requestAnimationFrame(tick);
     };
 
-    rafId = requestAnimationFrame(tick);
+    const startRaf = () => {
+      if (!rafId) {
+        lastFrame = performance.now();
+        rafId = requestAnimationFrame(tick);
+      }
+    };
+    const stopRaf = () => {
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+    };
+
+    // Only spend CPU animating the marquee while it's actually on screen.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) startRaf();
+        else stopRaf();
+      },
+      { threshold: 0 }
+    );
+    observer.observe(root);
+
     return () => {
       window.removeEventListener("resize", measure);
-      cancelAnimationFrame(rafId);
+      observer.disconnect();
+      stopRaf();
     };
   }, []);
 
@@ -113,6 +136,7 @@ export function EbooksMarquee() {
 
   return (
     <div
+      ref={rootRef}
       className="ebooks-marquee relative w-screen touch-pan-y select-none overflow-hidden active:cursor-grabbing"
       style={{ marginLeft: "calc(50% - 50vw)", cursor: "grab" }}
       onPointerDown={onPointerDown}

@@ -6,8 +6,6 @@ import Link from "next/link";
 import { FloatingActions, MotionBlock } from "@/components/ui";
 import type { Revista } from "@/lib/revistas";
 
-const BONIJURIS_URL = "https://www.editorabonijuris.com.br/periodicos/revista-direito-e-condominio/";
-
 export function RevistaLandingContent({ revista }: { revista: Revista }) {
   return (
     <main className="bg-gradient-to-b from-white to-[#FAFAFA]">
@@ -49,7 +47,7 @@ export function RevistaLandingContent({ revista }: { revista: Revista }) {
               </p>
 
               <a
-                href={BONIJURIS_URL}
+                href={revista.pdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative mt-6 inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3)] transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92"
@@ -60,6 +58,24 @@ export function RevistaLandingContent({ revista }: { revista: Revista }) {
               </a>
             </MotionBlock>
           </div>
+
+          {revista.tags.length > 0 ? (
+            <MotionBlock delay={0.16} className="mt-10 border-t border-[#14344E]/8 pt-6">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#14344E]/45">
+                Assuntos relacionados
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {revista.tags.map((tag) => (
+                  <li
+                    key={tag}
+                    className="rounded-full border border-[#14344E]/12 bg-[#14344E]/[0.04] px-3 py-1.5 text-xs font-semibold text-[#14344E]/70"
+                  >
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </MotionBlock>
+          ) : null}
         </div>
       </section>
 

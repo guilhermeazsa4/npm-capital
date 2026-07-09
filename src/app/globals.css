@@ -1661,14 +1661,6 @@ body {
   to { opacity: 1; max-height: 500px; }
 }
 
-.hero-image {
-  background-image: url("/assets/HeroFamily.webp");
-  }
-
-.cta-image {
-  background-image: url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=2200&q=86");
-}
-
 .trust-image {
   background-image: url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=86");
 }
@@ -1699,8 +1691,8 @@ body {
 }
 
 .gold-surface {
-  background: linear-gradient(135deg, #d4a53a, #b58421);
-  box-shadow: 0 22px 55px rgba(100, 71, 17, 0.26);
+  background: linear-gradient(135deg, #f1d68a, #dcb352);
+  box-shadow: 0 22px 55px rgba(100, 71, 17, 0.18);
 }
 
 .section-grid {

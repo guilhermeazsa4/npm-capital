@@ -19,9 +19,18 @@ export async function generateMetadata({
     return { title: "Material não encontrado — NPG Capital" };
   }
 
+  const title = `${ebook.seoTitle} | NPG Capital`;
+
   return {
-    title: `${ebook.title} — NPG Capital`,
-    description: ebook.description,
+    title,
+    description: ebook.metaDescription,
+    keywords: ebook.keywords,
+    openGraph: {
+      title,
+      description: ebook.metaDescription,
+      images: [{ url: ebook.image }],
+      type: "article",
+    },
   };
 }
 

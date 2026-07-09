@@ -140,6 +140,19 @@ export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
                 {ebook.description}
               </p>
 
+              {ebook.tags.length > 0 ? (
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {ebook.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="rounded-full border border-[#14344E]/12 bg-[#14344E]/[0.04] px-3 py-1.5 text-xs font-semibold text-[#14344E]/70"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+
               <ChevronDown aria-hidden="true" className="mt-6 h-7 w-7 animate-bounce text-[#14344E]" />
             </MotionBlock>
           </div>
@@ -148,7 +161,7 @@ export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
 
       <section id="download" className="px-3 pb-20 sm:px-4 lg:px-6 lg:pb-24">
         <div className="mx-auto max-w-[860px]">
-          <MotionBlock>
+          <div>
             <div className="hero-highlight-card rounded-[16px] p-6 text-white sm:p-8">
               {submitted ? (
                 <div className="relative z-10 py-4 text-center">
@@ -224,7 +237,7 @@ export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
                 </form>
               )}
             </div>
-          </MotionBlock>
+          </div>
         </div>
       </section>
 

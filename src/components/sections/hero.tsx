@@ -73,7 +73,7 @@ export function Hero() {
         <div
           className="hero-bg-kenburns absolute inset-0 bg-cover bg-[75%_center] lg:bg-center"
           style={{
-            backgroundImage: "url('/assets/FariaLima.png')",
+            backgroundImage: "url('/assets/FariaLima.webp')",
           }}
         />
       </div>

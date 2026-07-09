@@ -8,7 +8,8 @@ export const CONTACT = {
   email: "contato@npgcapital.com.br",
   phone: "(11) 97858-9115",
   address: "Av. Paulista, 1000 — São Paulo, SP",
-  cnpj: "00.000.000/0001-00",
+  // TODO: substituir pelo CNPJ real antes de publicar — aparece no footer e na política de privacidade.
+  cnpj: "00.001.010/0001-00",
 } as const;
 
 export const SOCIAL = {

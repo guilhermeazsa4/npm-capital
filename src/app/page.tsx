@@ -13,6 +13,12 @@ import {
 export default function Home() {
   return (
     <main className="home-page bg-white">
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/FariaLima.webp"
+        fetchPriority="high"
+      />
       <Hero />
       <ProblemaSection />
       <ComparativaSection />
