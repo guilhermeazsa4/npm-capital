@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
 import { FileText, Menu, MessageCircle, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { LinkButton } from "@/components/ui/button";
@@ -21,10 +20,21 @@ const navItems = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // Keep the mobile menu mounted for the fade/collapse-out transition, then
+  // remove it from the DOM entirely (matches the FloatingActions pattern).
+  const [mountMenu, setMountMenu] = useState(false);
 
   useEffect(() => {
     window.dispatchEvent(new CustomEvent("npg:mobile-menu", { detail: { open } }));
+  }, [open]);
+
+  useEffect(() => {
+    if (open) {
+      setMountMenu(true);
+      return;
+    }
+    const timeout = setTimeout(() => setMountMenu(false), 300);
+    return () => clearTimeout(timeout);
   }, [open]);
 
   useEffect(() => {
@@ -35,10 +45,7 @@ export function Header() {
       frame = window.requestAnimationFrame(() => setScrolled(window.scrollY > 12));
     };
 
-    frame = window.requestAnimationFrame(() => {
-      setMounted(true);
-      onScroll();
-    });
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
@@ -47,14 +54,14 @@ export function Header() {
     };
   }, []);
 
-  const headerClass = "fixed inset-x-0 top-0 z-[58] w-full transition-all duration-300";
+  const headerClass = "header-animate fixed inset-x-0 top-0 z-[58] w-full transition-all duration-300";
 
   const shellClass = `premium-topbar w-full overflow-hidden transition-all duration-300 ${
     scrolled ? "premium-topbar-scrolled" : ""
   }`;
 
-  const inner = (
-    <>
+  return (
+    <header className={headerClass}>
       <div className={shellClass}>
         <div className="mx-auto grid h-[70px] w-full max-w-[1520px] grid-cols-2 items-center gap-4 px-5 sm:h-[78px] sm:px-7 lg:px-10 xl:h-[84px] xl:grid-cols-[1fr_auto_1fr] 2xl:h-[90px] 2xl:px-14">
           <Link href="/" aria-label="NPG Capital" className="flex shrink-0 items-center justify-self-start xl:justify-self-end">
@@ -110,72 +117,54 @@ export function Header() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            className="w-full rounded-b-[18px] border-x border-b border-white/18 bg-[#0E1F1E]/94 px-5 py-5 text-center shadow-[0_18px_58px_rgba(4,17,24,0.24),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-2xl xl:hidden"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-          >
-            <div className="mx-auto flex max-w-[520px] flex-col gap-1.5">
-              <div className="grid grid-cols-2 gap-x-2 gap-y-3">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="rounded-[8px] px-3 py-2 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
-                    onClick={() => setOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+      {mountMenu ? (
+        <div
+          className={`mobile-menu-enter w-full rounded-b-[18px] border-x border-b border-white/18 bg-[#0E1F1E]/94 px-5 text-center shadow-[0_18px_58px_rgba(4,17,24,0.24),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-2xl xl:hidden ${
+            open ? "mobile-menu-open" : ""
+          }`}
+        >
+          <div className="mx-auto flex max-w-[520px] flex-col gap-1.5 py-5">
+            <div className="grid grid-cols-2 gap-x-2 gap-y-3">
+              {navItems.map((item) => (
                 <Link
-                  href="/seu-boleto"
+                  key={item.label}
+                  href={item.href}
                   className="rounded-[8px] px-3 py-2 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
                   onClick={() => setOpen(false)}
                 >
-                  Seu Boleto
+                  {item.label}
                 </Link>
-              </div>
-              <LinkButton
-                href="/contato#solicitar-proposta"
-                variant="gold"
-                size="mobile"
-                className="mt-1.5"
+              ))}
+              <Link
+                href="/seu-boleto"
+                className="rounded-[8px] px-3 py-2 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
                 onClick={() => setOpen(false)}
               >
-                Solicitar Proposta
-              </LinkButton>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-1.5 inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] border border-white/22 bg-white/12 px-5 text-base font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]"
-                onClick={() => setOpen(false)}
-              >
-                <MessageCircle aria-hidden="true" className="h-5 w-5" />
-                Falar no WhatsApp
-              </a>
+                Seu Boleto
+              </Link>
             </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-    </>
-  );
-
-  if (!mounted) {
-    return <header className={headerClass}>{inner}</header>;
-  }
-
-  return (
-    <motion.header
-      className={headerClass}
-      initial={{ y: -90 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-    >
-      {inner}
-    </motion.header>
+            <LinkButton
+              href="/contato#solicitar-proposta"
+              variant="gold"
+              size="mobile"
+              className="mt-1.5"
+              onClick={() => setOpen(false)}
+            >
+              Solicitar Proposta
+            </LinkButton>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1.5 inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] border border-white/22 bg-white/12 px-5 text-base font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.22)]"
+              onClick={() => setOpen(false)}
+            >
+              <MessageCircle aria-hidden="true" className="h-5 w-5" />
+              Falar no WhatsApp
+            </a>
+          </div>
+        </div>
+      ) : null}
+    </header>
   );
 }

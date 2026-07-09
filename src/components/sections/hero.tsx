@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
   BanknoteArrowUp,
   ChevronRight,
@@ -8,18 +5,6 @@ import {
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-function useHydrated() {
-  const [hydrated, setHydrated] = useState(false);
-
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => setHydrated(true));
-    return () => window.cancelAnimationFrame(frame);
-  }, []);
-
-  return hydrated;
-}
 
 function HeroContent() {
   return (
@@ -59,8 +44,6 @@ function HeroContent() {
 }
 
 export function Hero() {
-  const hydrated = useHydrated();
-
   const highlights = [
     { icon: ShieldCheck, text: "Receita 100% garantida" },
     { icon: BanknoteArrowUp, text: "Cobrança de taxas atrasadas" },
@@ -81,20 +64,11 @@ export function Hero() {
       <div className="hero-vignette absolute inset-0" />
 
       <div className="hero-main-block relative z-10 mx-auto w-full max-w-[1072px]">
-        {hydrated ? (
-          <motion.div
-            initial={{ opacity: 0, y: 34 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="hero-content-wrap max-w-4xl text-left"
-          >
-            <HeroContent />
-          </motion.div>
-        ) : (
-          <div className="hero-content-wrap max-w-4xl text-left">
-            <HeroContent />
-          </div>
-        )}
+        {/* Plain CSS animation (no JS/hydration gate) so the LCP text is
+            never hidden behind a post-hydration opacity flash. */}
+        <div className="hero-content-wrap hero-animate max-w-4xl text-left">
+          <HeroContent />
+        </div>
       </div>
 
       <div className="hero-highlights-block relative z-20 mx-auto mt-12 w-full max-w-[1072px] lg:mt-16">
@@ -116,32 +90,18 @@ export function Hero() {
               </>
             );
 
-            const card = (
-              <Link
-                href="/servicos"
-                className="hero-highlight-card group flex min-h-[76px] items-center rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
-              >
-                {content}
-              </Link>
-            );
-
-            return hydrated ? (
-              <motion.div
+            return (
+              <div
                 key={item.text}
-                className={item.hideClass ?? ""}
-                initial={{ opacity: 0, y: 34 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.32 + i * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+                className={`hero-animate ${item.hideClass ?? ""}`}
+                style={{ animationDelay: `${0.32 + i * 0.08}s` }}
               >
-                {card}
-              </motion.div>
-            ) : (
-              <div key={item.text} className={item.hideClass ?? ""}>
-                {card}
+                <Link
+                  href="/servicos"
+                  className="hero-highlight-card group flex min-h-[76px] items-center rounded-[18px] p-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F1C75B]/25"
+                >
+                  {content}
+                </Link>
               </div>
             );
           })}
