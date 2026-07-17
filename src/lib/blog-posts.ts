@@ -51,9 +51,8 @@ export const blogPosts: BlogPost[] = [
     date: "02/06/2026",
     title: "O que muda na cobrança condominial com as decisões recentes do STJ",
     excerpt: "O que muda na cobrança condominial com as decisões do STJ.",
-    image: "/assets/sao-paulo-aerial-bridge-hero-zoomed-out.webp",
-    imageAlt: "Vista aérea da ponte estaiada de São Paulo",
-    imageZoom: true,
+    image: "/assets/BannerEmpresa.jpg",
+    imageAlt: "Reunião de condomínio em assembleia",
     paragraphs: [
       "Decisões recentes do Superior Tribunal de Justiça reforçaram o entendimento de que a cota condominial tem natureza propter rem, o que amplia as possibilidades de cobrança direta sobre o imóvel, mesmo em casos de venda ou sucessão.",
       "Na prática, isso significa mais segurança jurídica para protestar dívidas e, em último caso, buscar a penhora do imóvel — mas exige que a documentação da cobrança esteja impecável desde a notificação inicial até a ata de aprovação do débito em assembleia.",
