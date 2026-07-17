@@ -11,7 +11,7 @@ function HeroContent() {
     <>
       <h1 className="max-w-[860px] text-4xl font-black leading-[1.02] md:text-6xl lg:text-[68px]">
         Garantimos a receita,{" "}
-        <span className="hero-gold-signature">Você gere melhor.</span>
+        <span className="hero-gold-signature">você gere melhor.</span>
       </h1>
       <p className="mt-6 max-w-xl text-left text-sm font-medium leading-7 text-white/92 md:text-base md:leading-7">
         Com a <span className="font-bold text-white">NPG Capital</span>, seu condomínio conta com
