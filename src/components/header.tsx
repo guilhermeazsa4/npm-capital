@@ -12,10 +12,11 @@ const navItems = [
   { label: "A Empresa", href: "/a-empresa" },
   { label: "Serviços", href: "/servicos" },
   { label: "Revistas", href: "/revistas" },
-  { label: "Blog", href: "/blog" },
   { label: "E-books", href: "/e-books" },
-  { label: "Contato", href: "/contato" },
+  { label: "Notícias", href: "/blog" },
 ];
+
+const contatoItem = { label: "Contato", href: "/contato" };
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -90,6 +91,14 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <LinkButton
+              href={contatoItem.href}
+              variant="glass"
+              size="topbar"
+              className="topbar-proposal-button ml-1"
+            >
+              {contatoItem.label}
+            </LinkButton>
           </nav>
 
           <div className="flex items-center justify-end gap-3 justify-self-end xl:justify-self-start 2xl:gap-4">
@@ -143,6 +152,15 @@ export function Header() {
                 Seu Boleto
               </Link>
             </div>
+            <LinkButton
+              href={contatoItem.href}
+              variant="glass"
+              size="mobile"
+              className="topbar-proposal-button mt-1.5"
+              onClick={() => setOpen(false)}
+            >
+              {contatoItem.label}
+            </LinkButton>
             <LinkButton
               href="/contato#solicitar-proposta"
               variant="gold"

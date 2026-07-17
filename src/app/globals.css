@@ -1096,15 +1096,15 @@ body {
 }
 
 .flow-clean-center-risk {
-  border: 1px solid rgba(255, 126, 126, 0.46);
+  border: 1px solid rgba(196, 148, 148, 0.4);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 34%),
-    linear-gradient(135deg, #ff5656, #b92020);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 34%),
+    linear-gradient(135deg, #9c6b6b, #6e4646);
   color: #ffffff;
   box-shadow:
     0 16px 42px rgba(4, 17, 24, 0.24),
-    0 0 26px rgba(255, 86, 86, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.36);
+    0 0 26px rgba(158, 107, 107, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .flow-clean-result {
