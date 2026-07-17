@@ -7,6 +7,7 @@ export interface BlogPost {
   paragraphs: string[];
   image: string;
   imageAlt: string;
+  imageZoom?: boolean;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -52,6 +53,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "O que muda na cobrança condominial com as decisões do STJ.",
     image: "/assets/sao-paulo-aerial-bridge-hero-zoomed-out.webp",
     imageAlt: "Vista aérea da ponte estaiada de São Paulo",
+    imageZoom: true,
     paragraphs: [
       "Decisões recentes do Superior Tribunal de Justiça reforçaram o entendimento de que a cota condominial tem natureza propter rem, o que amplia as possibilidades de cobrança direta sobre o imóvel, mesmo em casos de venda ou sucessão.",
       "Na prática, isso significa mais segurança jurídica para protestar dívidas e, em último caso, buscar a penhora do imóvel — mas exige que a documentação da cobrança esteja impecável desde a notificação inicial até a ata de aprovação do débito em assembleia.",
@@ -101,8 +103,8 @@ export const blogPosts: BlogPost[] = [
     date: "24/04/2026",
     title: "Como escolher uma administradora de condomínios confiável",
     excerpt: "Critérios objetivos para avaliar uma administradora antes de contratar.",
-    image: "/assets/BannerEmpresa.jpg",
-    imageAlt: "Reunião de condomínio em assembleia",
+    image: "/assets/analog-landscape-city-with-buildings.jpg",
+    imageAlt: "Vista de prédios residenciais em São Paulo",
     paragraphs: [
       "Trocar de administradora é uma decisão que afeta diretamente o dia a dia financeiro do condomínio, mas boa parte dos síndicos escolhe com base apenas em preço, sem avaliar critérios que evitam dor de cabeça mais à frente.",
       "Vale checar histórico de atendimento a condomínios de porte semelhante, clareza na prestação de contas mensal, prazo médio de resposta a chamados e, principalmente, como a administradora trata a inadimplência — se ela cobra ativamente ou apenas emite o boleto.",

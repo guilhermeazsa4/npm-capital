@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogPosts, getAdjacentPosts, getBlogPost } from "@/lib/blog-posts";
-import { BlogPostContent } from "./content";
+import { NoticiaPostContent } from "./content";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -25,7 +25,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogPostPage({
+export default async function NoticiaPostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -39,5 +39,5 @@ export default async function BlogPostPage({
 
   const { previous, next } = getAdjacentPosts(slug);
 
-  return <BlogPostContent post={post} previous={previous} next={next} />;
+  return <NoticiaPostContent post={post} previous={previous} next={next} />;
 }

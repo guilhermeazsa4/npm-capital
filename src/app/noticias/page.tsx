@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { BlogContent } from "./content";
+import { NoticiasContent } from "./content";
 
 export const metadata: Metadata = {
-  title: "Blog — NPG Capital",
+  title: "Notícias — NPG Capital",
   description:
     "Artigos sobre gestão condominial, inadimplência e previsibilidade financeira para síndicos e administradoras.",
 };
 
-export default function BlogPage() {
-  return <BlogContent />;
+export default function NoticiasPage() {
+  return <NoticiasContent />;
 }

@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/a-empresa",
     "/servicos",
     "/revistas",
-    "/blog",
+    "/noticias",
     "/e-books",
     "/contato",
     "/seu-boleto",
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const blogRoutes = blogPosts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
+    url: `${BASE_URL}/noticias/${post.slug}`,
     lastModified: new Date(),
   }));
 

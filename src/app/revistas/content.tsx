@@ -36,11 +36,11 @@ function RevistaCard({ revista, delay }: { revista: (typeof revistas)[number]; d
 export function RevistasContent() {
   return (
     <main className="bg-white">
-      <section className="relative overflow-hidden bg-white px-4 pb-12 pt-28 sm:px-6 sm:pb-16 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-36">
+      <section className="relative overflow-hidden bg-white px-4 pb-4 pt-28 sm:px-6 sm:pb-5 sm:pt-32 lg:px-8 lg:pb-6 lg:pt-36">
         <div className="relative z-10 mx-auto max-w-[1220px] text-center">
           <MotionBlock>
             <p className="mb-5 text-xs font-black uppercase tracking-[0.2em] text-[#F1C75B] sm:mb-6 sm:text-sm sm:tracking-[0.22em]">
-              Em parceria com a Bonijuris
+              Revistas gratuitas
             </p>
             <Image
               src="/assets/RevistaDireitoECondLogo.png"
@@ -54,7 +54,7 @@ export function RevistasContent() {
         </div>
       </section>
 
-      <section className="bg-white px-5 py-20 lg:px-8 lg:py-24">
+      <section className="bg-white px-5 pb-20 pt-4 lg:px-8 lg:pb-24 lg:pt-6">
         <div className="mx-auto max-w-[1220px]">
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
             {revistas.map((revista, i) => (

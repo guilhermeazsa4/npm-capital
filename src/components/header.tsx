@@ -13,7 +13,7 @@ const navItems = [
   { label: "Serviços", href: "/servicos" },
   { label: "Revistas", href: "/revistas" },
   { label: "E-books", href: "/e-books" },
-  { label: "Notícias", href: "/blog" },
+  { label: "Notícias", href: "/noticias" },
 ];
 
 const contatoItem = { label: "Contato", href: "/contato" };
@@ -91,14 +91,12 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <LinkButton
+            <Link
               href={contatoItem.href}
-              variant="glass"
-              size="topbar"
-              className="topbar-proposal-button ml-1"
+              className="premium-nav-link rounded-[14px] px-2 py-2 text-xs font-bold whitespace-nowrap underline decoration-2 underline-offset-4 2xl:px-3 2xl:py-2.5 2xl:text-sm"
             >
               {contatoItem.label}
-            </LinkButton>
+            </Link>
           </nav>
 
           <div className="flex items-center justify-end gap-3 justify-self-end xl:justify-self-start 2xl:gap-4">
@@ -151,16 +149,14 @@ export function Header() {
               >
                 Seu Boleto
               </Link>
+              <Link
+                href={contatoItem.href}
+                className="rounded-[8px] px-3 py-2 text-base font-semibold text-white/90 underline decoration-2 underline-offset-4 transition-colors hover:bg-white/10 hover:text-white"
+                onClick={() => setOpen(false)}
+              >
+                {contatoItem.label}
+              </Link>
             </div>
-            <LinkButton
-              href={contatoItem.href}
-              variant="glass"
-              size="mobile"
-              className="topbar-proposal-button mt-1.5"
-              onClick={() => setOpen(false)}
-            >
-              {contatoItem.label}
-            </LinkButton>
             <LinkButton
               href="/contato#solicitar-proposta"
               variant="gold"

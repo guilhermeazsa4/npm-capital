@@ -6,14 +6,14 @@ import Link from "next/link";
 import { FloatingActions, MotionBlock } from "@/components/ui";
 import { blogPosts } from "@/lib/blog-posts";
 
-export function BlogContent() {
+export function NoticiasContent() {
   return (
     <main className="bg-white">
       <section className="bg-gradient-to-b from-white to-[#FAFAFA] px-5 pb-20 pt-32 lg:px-8 lg:pb-24 lg:pt-36">
         <div className="mx-auto max-w-[1080px]">
           <MotionBlock className="mx-auto max-w-2xl text-center">
             <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#F1C75B] sm:mb-5 sm:text-sm sm:tracking-[0.22em]">
-              Blog
+              Notícias
             </p>
             <h1 className="text-4xl font-black leading-tight text-[#14344E] md:text-5xl">
               Artigos para síndicos e administradoras
@@ -24,12 +24,12 @@ export function BlogContent() {
             {blogPosts.map((post, i) => (
               <MotionBlock key={post.slug} delay={i * 0.05}>
                 <article className="flex h-full flex-col">
-                  <Link href={`/blog/${post.slug}`} className="relative block aspect-[16/10] w-full overflow-hidden rounded-[8px]">
+                  <Link href={`/noticias/${post.slug}`} className="relative block aspect-[16/10] w-full overflow-hidden rounded-[8px]">
                     <Image
                       src={post.image}
                       alt={post.imageAlt}
                       fill
-                      className="object-cover"
+                      className={`object-cover ${post.imageZoom ? "scale-150" : ""}`}
                       sizes="(min-width: 1024px) 340px, (min-width: 640px) 45vw, 100vw"
                     />
                   </Link>
@@ -42,7 +42,7 @@ export function BlogContent() {
                   </div>
 
                   <h2 className="mt-3 text-base font-black leading-snug text-[#14344E]">
-                    <Link href={`/blog/${post.slug}`} className="hover:underline">
+                    <Link href={`/noticias/${post.slug}`} className="hover:underline">
                       {post.title}
                     </Link>
                   </h2>
@@ -50,7 +50,7 @@ export function BlogContent() {
                   <p className="mt-3 flex-1 text-[15px] leading-[1.35] text-[#14344E]/72">{post.excerpt}</p>
 
                   <Link
-                    href={`/blog/${post.slug}`}
+                    href={`/noticias/${post.slug}`}
                     className="group mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#14344E]"
                   >
                     Ler artigo completo

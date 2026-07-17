@@ -112,7 +112,7 @@ function ShareButtons({ title }: { title: string }) {
   );
 }
 
-export function BlogPostContent({
+export function NoticiaPostContent({
   post,
   previous,
   next,
@@ -126,11 +126,11 @@ export function BlogPostContent({
       <article className="bg-gradient-to-b from-white to-[#FAFAFA] px-4 pb-20 pt-32 sm:px-6 lg:px-8 lg:pb-24 lg:pt-36">
         <div className="mx-auto max-w-[860px]">
           <Link
-            href="/blog"
+            href="/noticias"
             className="group inline-flex items-center gap-2 text-sm font-bold text-[#14344E]/60 transition-colors hover:text-[#14344E]"
           >
             <ArrowLeft aria-hidden="true" className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Voltar para o blog
+            Voltar para notícias
           </Link>
 
           <MotionBlock delay={0.05}>
@@ -158,7 +158,7 @@ export function BlogPostContent({
                 src={post.image}
                 alt={post.imageAlt}
                 fill
-                className="object-cover"
+                className={`object-cover ${post.imageZoom ? "scale-150" : ""}`}
                 sizes="(min-width: 1024px) 860px, 100vw"
                 priority
               />
@@ -180,7 +180,7 @@ export function BlogPostContent({
           <div className="mt-12 flex items-center justify-between border-t border-[#14344E]/10 pt-8">
             {previous ? (
               <Link
-                href={`/blog/${previous.slug}`}
+                href={`/noticias/${previous.slug}`}
                 className="group inline-flex items-center gap-2 text-sm font-bold text-[#14344E]/70 transition-colors hover:text-[#14344E]"
               >
                 <ArrowLeft aria-hidden="true" className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -192,7 +192,7 @@ export function BlogPostContent({
 
             {next ? (
               <Link
-                href={`/blog/${next.slug}`}
+                href={`/noticias/${next.slug}`}
                 className="group inline-flex items-center gap-2 text-sm font-bold text-[#14344E]/70 transition-colors hover:text-[#14344E]"
               >
                 Próxima
