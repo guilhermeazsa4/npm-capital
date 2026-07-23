@@ -27,6 +27,12 @@ const contactCards = [
   },
 ] as const;
 
+const estados = [
+  "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA",
+  "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN",
+  "RS", "RO", "RR", "SC", "SP", "SE", "TO",
+] as const;
+
 const inputClassName =
   "w-full rounded-[4px] border border-[#14344E]/15 bg-white px-4 py-3 text-sm text-[#14344E] outline-none transition-colors focus:border-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/20";
 const labelClassName = "mb-1 block text-sm font-semibold text-[#14344E]";
@@ -37,62 +43,24 @@ export function ContatoContent() {
 
   return (
     <main className="bg-white">
-      {/* Sessão 1 — Hero centralizado */}
-      <section className="relative overflow-hidden bg-white px-4 pb-12 pt-28 sm:px-6 sm:pb-16 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-36">
+      {/* Sessão 1 — Hero + Sessão 2 — Formulário (fundo unido) */}
+      <section
+        id="formularios"
+        className="relative overflow-hidden bg-[#14344E] px-4 pb-12 pt-28 sm:px-6 sm:pb-16 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-36"
+      >
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,52,78,0.98),rgba(14,31,30,0.9)_62%,rgba(14,31,30,0.62))]" />
         <div className="relative z-10 mx-auto max-w-[1220px] text-center">
           <MotionBlock>
-            <p className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#F1C75B] sm:mb-5 sm:text-sm sm:tracking-[0.22em]">
-              Fale com a NPG
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#F1C75B] sm:mb-5 sm:text-sm sm:tracking-[0.22em]">
+              Contato
             </p>
-            <h1 className="mx-auto max-w-3xl text-balance text-3xl font-black leading-tight text-[#14344E] sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="mx-auto max-w-3xl text-balance text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Solicite a proposta do seu condomínio
             </h1>
           </MotionBlock>
-
-          <MotionBlock delay={0.12}>
-            <div className="mx-auto mt-8 grid max-w-[520px] gap-4 sm:mt-10 lg:mt-12 lg:max-w-[980px] lg:grid-cols-3 lg:gap-5">
-              {contactCards.map((card) => {
-                const Icon = card.icon;
-                const content = (
-                  <>
-                    <Icon
-                      aria-hidden="true"
-                      className="mx-auto h-11 w-11 text-[#F1C75B]"
-                      strokeWidth={1.75}
-                    />
-                    <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#F1C75B]">
-                      {card.label}
-                    </p>
-                    <p className="mt-2 text-sm font-semibold leading-6 text-white">
-                      {card.value}
-                    </p>
-                  </>
-                );
-
-                const className =
-                  "hero-highlight-card rounded-[16px] p-5 text-center transition-transform hover:-translate-y-1 sm:rounded-[18px] sm:p-6";
-
-                return card.href ? (
-                  <a key={card.label} href={card.href} className={className}>
-                    {content}
-                  </a>
-                ) : (
-                  <div key={card.label} className={className}>
-                    {content}
-                  </div>
-                );
-              })}
-            </div>
-          </MotionBlock>
         </div>
-      </section>
 
-      <section
-        id="formularios"
-        className="relative overflow-hidden bg-[#14344E] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
-      >
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,52,78,0.98),rgba(14,31,30,0.9)_62%,rgba(14,31,30,0.62))]" />
-        <div className="relative z-10 mx-auto grid max-w-[1220px] gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-12">
+        <div className="relative z-10 mx-auto mt-10 max-w-[900px] sm:mt-12 lg:mt-14">
           {/* Formulário */}
           <div
             id="solicitar-proposta"
@@ -140,7 +108,7 @@ export function ContatoContent() {
 
                 {activeTab === "proposta" ? (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       <div>
                         <label htmlFor="p-nome" className={labelClassName}>
                           Nome <span className="text-red-500">*</span>
@@ -153,7 +121,7 @@ export function ContatoContent() {
                         </label>
                         <input id="p-email" type="email" required placeholder="voce@email.com" className={inputClassName} />
                       </div>
-                      <div className="col-span-2">
+                      <div>
                         <label htmlFor="p-telefone" className={labelClassName}>
                           Telefone / WhatsApp <span className="text-red-500">*</span>
                         </label>
@@ -177,11 +145,29 @@ export function ContatoContent() {
                         </label>
                         <input id="p-receita" type="text" placeholder="Ex.: R$ 20.000" className={inputClassName} />
                       </div>
+                      <div>
+                        <label htmlFor="p-cidade" className={labelClassName}>
+                          Cidade <span className="text-red-500">*</span>
+                        </label>
+                        <input id="p-cidade" type="text" required placeholder="Sua cidade" className={inputClassName} />
+                      </div>
+                      <div>
+                        <label htmlFor="p-estado" className={labelClassName}>
+                          Estado <span className="text-red-500">*</span>
+                        </label>
+                        <select id="p-estado" required defaultValue="SP" className={inputClassName}>
+                          {estados.map((uf) => (
+                            <option key={uf} value={uf}>
+                              {uf}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                       <div>
                         <label htmlFor="c-nome" className={labelClassName}>
                           Nome <span className="text-red-500">*</span>
@@ -205,6 +191,24 @@ export function ContatoContent() {
                           Condomínio <span className="text-red-500">*</span>
                         </label>
                         <input id="c-condominio" type="text" required placeholder="Nome do condomínio" className={inputClassName} />
+                      </div>
+                      <div>
+                        <label htmlFor="c-cidade" className={labelClassName}>
+                          Cidade <span className="text-red-500">*</span>
+                        </label>
+                        <input id="c-cidade" type="text" required placeholder="Sua cidade" className={inputClassName} />
+                      </div>
+                      <div>
+                        <label htmlFor="c-estado" className={labelClassName}>
+                          Estado <span className="text-red-500">*</span>
+                        </label>
+                        <select id="c-estado" required defaultValue="SP" className={inputClassName}>
+                          {estados.map((uf) => (
+                            <option key={uf} value={uf}>
+                              {uf}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     </div>
                     <div>
@@ -254,17 +258,48 @@ export function ContatoContent() {
               </form>
             )}
           </div>
+        </div>
+      </section>
 
-          {/* Mapa */}
-          <div className="h-[320px] overflow-hidden rounded-[8px] sm:h-[380px] lg:h-full">
-            <iframe
-              title="Localização da NPG Capital"
-              className="h-full w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(CONTACT.address)}&output=embed`}
-            />
-          </div>
+      {/* Sessão 3 — Cards de contato */}
+      <section className="relative overflow-hidden bg-[#14344E] px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,52,78,0.98),rgba(14,31,30,0.9)_62%,rgba(14,31,30,0.62))]" />
+        <div className="relative z-10 mx-auto max-w-[1220px]">
+          <MotionBlock>
+            <div className="mx-auto grid max-w-[520px] gap-4 sm:mt-0 lg:max-w-[980px] lg:grid-cols-3 lg:gap-5">
+              {contactCards.map((card) => {
+                const Icon = card.icon;
+                const content = (
+                  <>
+                    <Icon
+                      aria-hidden="true"
+                      className="mx-auto h-11 w-11 text-[#F1C75B]"
+                      strokeWidth={1.75}
+                    />
+                    <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#F1C75B]">
+                      {card.label}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold leading-6 text-white">
+                      {card.value}
+                    </p>
+                  </>
+                );
+
+                const className =
+                  "hero-highlight-card rounded-[16px] p-5 text-center transition-transform hover:-translate-y-1 sm:rounded-[18px] sm:p-6";
+
+                return card.href ? (
+                  <a key={card.label} href={card.href} className={className}>
+                    {content}
+                  </a>
+                ) : (
+                  <div key={card.label} className={className}>
+                    {content}
+                  </div>
+                );
+              })}
+            </div>
+          </MotionBlock>
         </div>
       </section>
 
