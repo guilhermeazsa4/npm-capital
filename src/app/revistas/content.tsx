@@ -43,7 +43,7 @@ export function RevistasContent() {
               Revistas gratuitas
             </p>
             <Image
-              src="/assets/RevistaDireitoECondLogo.png"
+              src="/assets/RevistaDireitoECondLogo.webp"
               alt="Revista Direito e Condomínio"
               width={480}
               height={160}

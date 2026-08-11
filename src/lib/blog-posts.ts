@@ -51,7 +51,7 @@ export const blogPosts: BlogPost[] = [
     date: "02/06/2026",
     title: "O que muda na cobrança condominial com as decisões recentes do STJ",
     excerpt: "O que muda na cobrança condominial com as decisões do STJ.",
-    image: "/assets/BannerEmpresa.jpg",
+    image: "/assets/BannerEmpresa.webp",
     imageAlt: "Reunião de condomínio em assembleia",
     paragraphs: [
       "Decisões recentes do Superior Tribunal de Justiça reforçaram o entendimento de que a cota condominial tem natureza propter rem, o que amplia as possibilidades de cobrança direta sobre o imóvel, mesmo em casos de venda ou sucessão.",
@@ -68,7 +68,7 @@ export const blogPosts: BlogPost[] = [
     date: "20/05/2026",
     title: "Fundo de obras x rateio extra: qual usar para reformas grandes",
     excerpt: "Rateio extra ou fundo de obras: qual usar em reformas grandes.",
-    image: "/assets/bannerTeamWorking.jpg",
+    image: "/assets/bannerTeamWorking.webp",
     imageAlt: "Equipe reunida planejando um projeto",
     paragraphs: [
       "Quando uma reforma estrutural aparece — troca de fachada, impermeabilização, modernização de elevadores — o síndico geralmente tem duas opções: um rateio extra pontual ou a criação de um fundo de obras ao longo de vários meses.",
@@ -85,7 +85,7 @@ export const blogPosts: BlogPost[] = [
     date: "08/05/2026",
     title: "Como conduzir uma assembleia sobre inadimplência sem virar cobrança pessoal",
     excerpt: "Como discutir inadimplência em assembleia sem virar cobrança pessoal.",
-    image: "/assets/BannerEmpresa.jpg",
+    image: "/assets/BannerEmpresa.webp",
     imageAlt: "Reunião de condomínio em assembleia",
     paragraphs: [
       "Pautas sobre inadimplência são as que mais desgastam a relação entre síndico e condôminos, porque frequentemente descambam para acusações diretas a vizinhos específicos, mesmo quando a intenção é discutir o problema de forma institucional.",

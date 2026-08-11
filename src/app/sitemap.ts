@@ -3,6 +3,9 @@ import { blogPosts } from "@/lib/blog-posts";
 import { ebooks } from "@/lib/ebooks";
 import { revistas } from "@/lib/revistas";
 
+// Exigido por output: "export" — sem isto o build falha ao coletar /sitemap.xml.
+export const dynamic = "force-static";
+
 const BASE_URL = "https://npgcapital.com.br";
 
 export default function sitemap(): MetadataRoute.Sitemap {

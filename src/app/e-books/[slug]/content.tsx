@@ -4,12 +4,43 @@ import { ArrowLeft, Check, CheckCircle2, ChevronDown, Download, Link2 } from "lu
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { FormErro, HoneypotField } from "@/components/form-fields";
 import { FloatingActions, MotionBlock } from "@/components/ui";
 import type { Ebook } from "@/lib/ebooks";
+import { enviarLead, type FormStatus } from "@/lib/enviar-lead";
 
 const inputClassName =
   "w-full rounded-[4px] border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/45 outline-none backdrop-blur-xl transition-colors focus:border-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/30";
 const labelClassName = "mb-1 block text-sm font-semibold text-white/85";
+
+function DownloadConfirmPopup({ onClose }: { onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-[70] flex items-center justify-center bg-[#0E1F1E]/72 p-4 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="premium-glass-button topbar-ticket-button relative w-full max-w-[380px] overflow-hidden rounded-[16px] p-6 text-center sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#1FAF67]/15">
+          <CheckCircle2 className="h-7 w-7 text-[#33C46B]" />
+        </div>
+        <h3 className="text-lg font-black text-white">Obrigado!</h3>
+        <p className="mt-2 text-sm leading-6 text-white/70">
+          Seu download começará em instantes.
+        </p>
+        <button
+          type="button"
+          onClick={onClose}
+          className="group relative mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3)] transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -101,7 +132,25 @@ function ShareButtons({ title }: { title: string }) {
 }
 
 export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [erro, setErro] = useState("");
+  const [showDownloadPopup, setShowDownloadPopup] = useState(false);
+  const submitted = status === "enviado";
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("enviando");
+    setErro("");
+
+    const resultado = await enviarLead(e.currentTarget, `E-book — ${ebook.title}`);
+
+    if (resultado.ok) {
+      setStatus("enviado");
+    } else {
+      setErro(resultado.erro);
+      setStatus("erro");
+    }
+  }
 
   return (
     <main className="bg-gradient-to-b from-white to-[#FAFAFA]">
@@ -176,6 +225,7 @@ export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
                     href={ebook.externalHref}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => setShowDownloadPopup(true)}
                     className="group relative mx-auto mt-5 inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3)] transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92"
                   >
                     <Download aria-hidden="true" className="h-4 w-4" />
@@ -183,49 +233,74 @@ export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
                   </a>
                 </div>
               ) : (
-                <form
-                  className="relative z-10"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSubmitted(true);
-                  }}
-                >
+                <form className="relative z-10" onSubmit={handleSubmit}>
+                  <HoneypotField />
+                  <input type="hidden" name="ebook" value={ebook.title} />
                   <p className="mb-5 text-left text-lg font-black text-white">Baixe seu e-book</p>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
                       <label htmlFor="eb-nome" className={labelClassName}>
                         Nome <span className="text-red-500">*</span>
                       </label>
-                      <input id="eb-nome" type="text" required placeholder="Seu nome" className={inputClassName} />
+                      <input id="eb-nome" name="nome" type="text" required placeholder="Seu nome" className={inputClassName} />
                     </div>
                     <div>
                       <label htmlFor="eb-email" className={labelClassName}>
                         E-mail <span className="text-red-500">*</span>
                       </label>
-                      <input id="eb-email" type="email" required placeholder="voce@email.com" className={inputClassName} />
+                      <input id="eb-email" name="email" type="email" required placeholder="voce@email.com" className={inputClassName} />
                     </div>
                     <div>
                       <label htmlFor="eb-profissao" className={labelClassName}>
                         Profissão <span className="text-red-500">*</span>
                       </label>
-                      <input id="eb-profissao" type="text" required placeholder="Síndico, administrador..." className={inputClassName} />
+                      <input id="eb-profissao" name="profissao" type="text" required placeholder="Síndico, administrador..." className={inputClassName} />
                     </div>
                     <div>
                       <label htmlFor="eb-telefone" className={labelClassName}>
                         Telefone <span className="text-red-500">*</span>
                       </label>
-                      <input id="eb-telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
+                      <input id="eb-telefone" name="telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
                     </div>
                   </div>
+
+                  <label
+                    htmlFor="eb-consentimento"
+                    className="mt-4 flex items-start gap-2 text-xs leading-5 text-white/70"
+                  >
+                    <input
+                      id="eb-consentimento"
+                      name="consentimento"
+                      value="1"
+                      type="checkbox"
+                      required
+                      className="mt-0.5 h-4 w-4 shrink-0 rounded-[3px] border border-white/30 accent-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/30"
+                    />
+                    <span>
+                      Concordo com o tratamento dos meus dados de acordo com a{" "}
+                      <Link
+                        href="/politica-de-privacidade"
+                        className="font-semibold text-white underline hover:text-[#F1C75B]"
+                      >
+                        Política de Privacidade
+                      </Link>
+                      .
+                    </span>
+                  </label>
+
+                  {status === "erro" ? <FormErro mensagem={erro} /> : null}
 
                   <div className="mt-6 flex flex-col items-center gap-4 border-t border-white/15 pt-6 sm:flex-row sm:justify-between">
                     <button
                       type="submit"
-                      className="group relative inline-flex min-h-12 w-full items-center justify-center gap-2 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3)] transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92 sm:w-auto"
+                      disabled={status === "enviando"}
+                      className="group relative inline-flex min-h-12 w-full items-center justify-center gap-2 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3)] transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92 disabled:pointer-events-none disabled:opacity-60 sm:w-auto"
                     >
                       <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.52),transparent_36%,rgba(255,255,255,0.22)_72%,transparent)] opacity-90 transition-opacity group-hover:opacity-100" />
                       <Download aria-hidden="true" className="relative z-10 h-4 w-4" />
-                      <span className="relative z-10">Baixar e-book</span>
+                      <span className="relative z-10">
+                        {status === "enviando" ? "Enviando..." : "Baixar e-book"}
+                      </span>
                     </button>
 
                     <ShareButtons title={ebook.title} />
@@ -242,6 +317,9 @@ export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
       </section>
 
       <FloatingActions />
+      {showDownloadPopup ? (
+        <DownloadConfirmPopup onClose={() => setShowDownloadPopup(false)} />
+      ) : null}
     </main>
   );
 }

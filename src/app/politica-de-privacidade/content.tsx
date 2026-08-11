@@ -8,11 +8,11 @@ const sections = [
   },
   {
     title: "2. Quais dados coletamos e em quais formulários",
-    body: "Coletamos apenas os dados que você nos informa voluntariamente ao preencher um dos formulários do site: (i) Solicitar Proposta (/contato) — nome, e-mail, telefone/WhatsApp, nome do condomínio e, opcionalmente, a receita mensal; (ii) Contato (/contato) — nome, e-mail, telefone/WhatsApp, nome do condomínio e mensagem opcional; (iii) Download de e-book (/e-books) — nome, e-mail, profissão e telefone; (iv) Segunda via de boleto (/seu-boleto) — CPF ou CNPJ e unidade, usados apenas para localizar e emitir o boleto correspondente. Não coletamos dados sensíveis (saúde, origem racial, opinião política, etc.).",
+    body: "Coletamos apenas os dados que você nos informa voluntariamente ao preencher um dos formulários do site: (i) Solicitar Proposta — nome, e-mail, telefone/WhatsApp, nome do condomínio, cidade, estado e, opcionalmente, a receita mensal; (ii) Download de e-book (/e-books) — nome, e-mail, profissão e telefone. Junto de cada envio registramos também o endereço IP e o navegador utilizado, como medida de segurança contra envios automatizados. Não coletamos dados sensíveis (saúde, origem racial, opinião política, etc.) e não solicitamos CPF, senha ou dados bancários em nenhum formulário do site.",
   },
   {
     title: "3. Para que usamos seus dados",
-    body: "Usamos os dados para: (i) responder solicitações de proposta e contato; (ii) localizar e emitir a 2ª via de boletos a pedido do próprio condômino; (iii) enviar materiais gratuitos (e-books, revistas) solicitados por você; (iv) entrar em contato por e-mail, telefone ou WhatsApp sobre os serviços da NPG Capital; e (v) cumprir obrigações legais e regulatórias.",
+    body: "Usamos os dados para: (i) responder solicitações de proposta e contato; (ii) enviar materiais gratuitos (e-books, revistas) solicitados por você; (iii) entrar em contato por e-mail, telefone ou WhatsApp sobre os serviços da NPG Capital; e (iv) cumprir obrigações legais e regulatórias.",
   },
   {
     title: "4. Base legal",
@@ -24,7 +24,7 @@ const sections = [
   },
   {
     title: "6. Cookies e métricas de uso",
-    body: "Este site não utiliza cookies de rastreamento, publicidade ou perfis de navegação. Guardamos apenas uma informação técnica no seu navegador (localStorage) para lembrar que você já viu o aviso de cookies — isso não identifica você nem é compartilhado com terceiros. Utilizamos (ou passaremos a utilizar) o Vercel Analytics para entender o volume de visitas e o desempenho do site: é uma ferramenta sem cookies, que não coleta dados pessoais nem identifica visitantes individualmente, apenas métricas agregadas e anônimas (como número de acessos, páginas visitadas, país e tipo de dispositivo). Caso passemos a usar cookies ou ferramentas de rastreamento no futuro, atualizaremos esta política e, se necessário, solicitaremos seu consentimento por meio de um aviso específico.",
+    body: "Este site não utiliza cookies de rastreamento, publicidade ou perfis de navegação, nem ferramentas de analytics. Guardamos apenas uma informação técnica no seu navegador (localStorage) para lembrar que você já viu o aviso de cookies — isso não identifica você nem é compartilhado com terceiros. Caso passemos a usar cookies ou ferramentas de rastreamento no futuro, atualizaremos esta política e, se necessário, solicitaremos seu consentimento por meio de um aviso específico.",
   },
   {
     title: "7. Armazenamento e segurança",

@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# credencial do formulário de contato (senha de app do Workspace) — nunca commitar
+public/api/config.php
+
 # vercel
 .vercel
 

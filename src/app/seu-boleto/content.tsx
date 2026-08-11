@@ -1,111 +1,77 @@
 "use client";
 
-import { Clock, Download, LockKeyhole, MessageCircle } from "lucide-react";
-import { useState } from "react";
+import { Clock, ExternalLink, LockKeyhole, MessageCircle } from "lucide-react";
 import { FloatingActions, MotionBlock, PageHeader } from "@/components/ui";
-import { WHATSAPP_URL } from "@/lib/constants";
+import { BOLETO_PORTAL_URL, WHATSAPP_URL } from "@/lib/constants";
 
 export function SeuBoletoContent() {
-  const [searched, setSearched] = useState(false);
-
   return (
     <main className="bg-white">
       <PageHeader
         eyebrow="Autoatendimento"
         title="Segunda via do seu boleto"
-        description="Informe seu CPF/CNPJ e a unidade para emitir a 2ª via do boleto condominial."
+        description="A emissão da 2ª via é feita no portal da administradora responsável pelo seu condomínio."
       />
 
       <section className="section-grid bg-white px-5 py-24 lg:px-8 lg:py-28">
         <div className="mx-auto grid max-w-[1220px] gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-          {/* Formulário */}
           <MotionBlock>
             <div className="rounded-[8px] border border-[#14344E]/10 bg-white p-6 shadow-[0_16px_46px_rgba(20,52,78,0.08)] sm:p-8">
-              {searched ? (
-                <div>
-                  <h3 className="text-xl font-black text-[#14344E]">
-                    Boleto encontrado
-                  </h3>
-                  <div className="mt-6 rounded-[4px] border border-[#14344E]/10 p-5">
-                    <p className="text-sm font-semibold text-[#14344E]/60">
-                      Boleto &middot; vencimento 10/07/2026
-                    </p>
-                    <p className="mt-1 text-lg font-black text-[#14344E]">
-                      Taxa condominial — R$ 780,00
-                    </p>
-                    <button
-                      type="button"
-                      className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#F1C75B] transition-colors hover:text-[#b8882e]"
-                    >
-                      <Download className="h-4 w-4" />
-                      Baixar 2ª via
-                    </button>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setSearched(false)}
-                    className="mt-4 text-sm font-semibold text-[#14344E]/50 hover:text-[#14344E]"
-                  >
-                    &larr; Nova busca
-                  </button>
-                </div>
-              ) : (
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSearched(true);
-                  }}
-                >
-                  <h3 className="mb-6 text-xl font-black text-[#14344E]">
-                    Buscar boleto
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <label htmlFor="cpf" className="mb-1 block text-sm font-semibold text-[#14344E]">
-                        CPF ou CNPJ <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        id="cpf"
-                        type="text"
-                        required
-                        placeholder="000.000.000-00"
-                        className="w-full rounded-[4px] border border-[#14344E]/15 bg-white px-4 py-3 text-sm text-[#14344E] outline-none transition-colors focus:border-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/20"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="unidade" className="mb-1 block text-sm font-semibold text-[#14344E]">
-                        Unidade
-                      </label>
-                      <input
-                        id="unidade"
-                        type="text"
-                        placeholder="Ex.: Bloco B, ap. 51"
-                        className="w-full rounded-[4px] border border-[#14344E]/15 bg-white px-4 py-3 text-sm text-[#14344E] outline-none transition-colors focus:border-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/20"
-                      />
-                    </div>
-                  </div>
-                  <button
-                    type="submit"
+              <h2 className="text-xl font-black text-[#14344E]">
+                Onde emitir sua 2ª via
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-[#14344E]/70">
+                A NPG Capital não emite boletos condominiais. A cobrança é feita
+                pela administradora do seu condomínio, e é no portal dela que
+                você consulta valores, vencimentos e emite a segunda via.
+              </p>
+
+              {BOLETO_PORTAL_URL ? (
+                <>
+                  <a
+                    href={BOLETO_PORTAL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[4px] bg-[#F1C75B] px-6 text-sm font-black text-[#0E1F1E] transition-colors hover:bg-[#E1B34C]"
                   >
-                    Buscar boleto
-                  </button>
-                </form>
+                    Ir para o portal de boletos
+                    <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                  </a>
+                  <p className="mt-3 text-xs leading-5 text-[#14344E]/50">
+                    Você será direcionado para um site externo, operado por
+                    terceiros. A NPG Capital não coleta nem armazena os dados
+                    informados lá.
+                  </p>
+                </>
+              ) : (
+                <p className="mt-6 rounded-[4px] border border-[#14344E]/10 bg-[#14344E]/[0.03] px-4 py-3 text-sm leading-6 text-[#14344E]/70">
+                  Não sabe qual é a administradora do seu condomínio? Fale com a
+                  gente pelo WhatsApp que a gente te direciona.
+                </p>
               )}
+
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[4px] border border-[#14344E]/15 px-6 text-sm font-black text-[#14344E] transition-colors hover:border-[#14344E]/30 hover:bg-[#14344E]/[0.03]"
+              >
+                <MessageCircle aria-hidden="true" className="h-4 w-4" />
+                Tirar dúvida no WhatsApp
+              </a>
             </div>
           </MotionBlock>
 
-          {/* Aside */}
           <MotionBlock delay={0.12}>
             <div className="space-y-4">
               {[
                 {
                   icon: Clock,
-                  text: "Disponível 24 horas, sem precisar falar com ninguém.",
+                  text: "O portal da administradora fica disponível 24 horas.",
                 },
                 {
                   icon: LockKeyhole,
-                  text: "Ambiente seguro — seus dados não são compartilhados.",
+                  text: "Nunca pedimos CPF, senha ou dados bancários por esta página.",
                 },
                 {
                   icon: MessageCircle,
@@ -125,16 +91,6 @@ export function SeuBoletoContent() {
                   </div>
                 );
               })}
-
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[4px] bg-[#1FAF67] px-5 text-sm font-black text-white transition-colors hover:bg-[#168E53]"
-              >
-                <MessageCircle aria-hidden="true" className="h-4 w-4" />
-                Falar no WhatsApp
-              </a>
             </div>
           </MotionBlock>
         </div>

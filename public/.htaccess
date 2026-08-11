@@ -1,0 +1,116 @@
+# ---------------------------------------------------------------------------
+# Configuração do Apache para o site estático da NPG Capital.
+#
+# Sobe junto com o build: vira /.htaccess na raiz do domínio.
+# Editar aqui, nunca direto no servidor — o próximo deploy sobrescreve.
+# ---------------------------------------------------------------------------
+
+AddDefaultCharset utf-8
+
+# Sem listagem de diretório: evita expor o conteúdo de pastas sem index.
+Options -Indexes
+
+ErrorDocument 404 /404.html
+
+
+# --- URLs -------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Tudo em HTTPS.
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Domínio canônico sem www — é o que está no metadataBase e no sitemap.
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # /contato.html -> /contato
+  # O teste é em THE_REQUEST (a linha original do navegador) e não na URL já
+  # reescrita, senão o rewrite interno lá embaixo entraria em laço.
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [L,R=301]
+
+  # /contato/ -> /contato, mas só quando existe o .html correspondente.
+  # A condição protege diretórios reais como /_next/static/.
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+  # /contato entrega contato.html, sem mudar a URL na barra do navegador.
+  #
+  # ATENÇÃO: o export cria contato.html E um diretório contato/ (que guarda só
+  # os payloads de navegação do Next, sem index.html). Por isso NÃO existe aqui
+  # a condição !-d que normalmente se usa: com ela, /contato bateria no
+  # diretório, o Apache redirecionaria para /contato/ e devolveria 403 por não
+  # achar índice. O .html tem que ganhar do diretório.
+  #
+  # !-f é mantido para preservar arquivos reais, incluindo /api/enviar.php.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ /$1.html [L]
+</IfModule>
+
+<IfModule mod_dir.c>
+  # Impede o Apache de transformar /contato em /contato/ antes das regras
+  # acima agirem — é a outra metade da proteção descrita no bloco anterior.
+  DirectorySlash Off
+</IfModule>
+
+
+# --- Cache ------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+  # Arquivos do Next têm hash no nome: mudou o conteúdo, muda o nome.
+  # Por isso podem ser guardados para sempre.
+  <FilesMatch "\.(js|css|woff2?|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Imagens de public/assets NÃO têm hash no nome. Se marcar como immutable e
+  # você trocar uma foto, quem já visitou continua vendo a antiga por um ano.
+  # 30 dias é o meio-termo.
+  <FilesMatch "\.(jpe?g|png|webp|avif|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # O HTML precisa ser revalidado sempre, senão um deploy novo não aparece.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "^(sitemap\.xml|robots\.txt)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+
+  # O endpoint do formulário nunca pode ser cacheado.
+  <FilesMatch "\.php$">
+    Header set Cache-Control "no-store"
+  </FilesMatch>
+
+
+# --- Segurança --------------------------------------------------------------
+
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+
+# --- Compressão -------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+
+# --- Tipos MIME -------------------------------------------------------------
+
+<IfModule mod_mime.c>
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>

@@ -18,7 +18,7 @@ export const revistas: Revista[] = [
     theme: "Proteção! Síndicos devem agir em casos de violência doméstica?",
     description:
       "O papel do síndico diante de situações de violência doméstica identificadas no condomínio, e até onde vai a responsabilidade da gestão nesses casos.",
-    image: "/assets/revistas/46.jpg",
+    image: "/assets/revistas/46.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed46.pdf",
     seoTitle: "Violência doméstica em condomínio: papel do síndico",
     metaDescription:
@@ -39,7 +39,7 @@ export const revistas: Revista[] = [
     theme: "Animais de estimação em condomínio",
     description:
       "O que a convenção pode e não pode restringir sobre a presença de animais de estimação nas unidades e áreas comuns.",
-    image: "/assets/revistas/45.jpg",
+    image: "/assets/revistas/45.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed45.pdf",
     seoTitle: "Animais de estimação em condomínio: regras e direitos",
     metaDescription:
@@ -60,7 +60,7 @@ export const revistas: Revista[] = [
     theme: "WhatsApp do condomínio: canal de comunicação eficiente, mas com limites",
     description:
       "Como usar grupos de WhatsApp para a comunicação condominial sem gerar conflitos ou expor moradores indevidamente.",
-    image: "/assets/revistas/44.png",
+    image: "/assets/revistas/44.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed44.pdf",
     seoTitle: "WhatsApp do condomínio: regras e boas práticas",
     metaDescription:
@@ -81,7 +81,7 @@ export const revistas: Revista[] = [
     theme: "Acesso de entregadores em condomínio",
     description:
       "Regras e boas práticas para organizar a entrada de entregadores no condomínio sem comprometer a segurança dos moradores.",
-    image: "/assets/revistas/43.png",
+    image: "/assets/revistas/43.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed43.pdf",
     seoTitle: "Entregadores em condomínio: regras de acesso e segurança",
     metaDescription:
@@ -102,7 +102,7 @@ export const revistas: Revista[] = [
     theme: "Instalação de carregador para carro elétrico em condomínio",
     description:
       "Como lidar com pedidos de instalação de carregadores elétricos nas garagens, da autorização em assembleia à divisão de custos.",
-    image: "/assets/revistas/42.png",
+    image: "/assets/revistas/42.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed42.pdf",
     seoTitle: "Carregador de carro elétrico em condomínio: regras",
     metaDescription:
@@ -123,7 +123,7 @@ export const revistas: Revista[] = [
     theme: "Reformas em condomínio",
     description:
       "O que avaliar antes de autorizar reformas nas unidades e nas áreas comuns, evitando conflitos e problemas estruturais futuros.",
-    image: "/assets/revistas/41.png",
+    image: "/assets/revistas/41.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed41.pdf",
     seoTitle: "Reforma em condomínio: regras, documentos e cuidados",
     metaDescription:
@@ -144,7 +144,7 @@ export const revistas: Revista[] = [
     theme: "Orientação para o síndico eficaz",
     description:
       "Práticas e atitudes que ajudam o síndico a conduzir a gestão do condomínio com mais organização e eficiência.",
-    image: "/assets/revistas/40.jpg",
+    image: "/assets/revistas/40.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed40.pdf",
     seoTitle: "Como ser um síndico eficiente: guia de gestão",
     metaDescription:
@@ -165,7 +165,7 @@ export const revistas: Revista[] = [
     theme: "Direito básico dos condôminos",
     description:
       "Um panorama dos direitos e deveres fundamentais de quem mora em condomínio, direto ao ponto e sem juridiquês.",
-    image: "/assets/revistas/39.jpg",
+    image: "/assets/revistas/39.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed39.pdf",
     seoTitle: "Direitos dos condôminos: guia básico e legislação",
     metaDescription:
@@ -186,7 +186,7 @@ export const revistas: Revista[] = [
     theme: "Poda de árvores em condomínio",
     description:
       "Orientações sobre poda e manutenção de árvores nas áreas comuns, incluindo responsabilidades e cuidados legais envolvidos.",
-    image: "/assets/revistas/38.jpg",
+    image: "/assets/revistas/38.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed38.pdf",
     seoTitle: "Poda de árvores em condomínio: regras e cuidados",
     metaDescription:
@@ -207,7 +207,7 @@ export const revistas: Revista[] = [
     theme: "Prestação de contas",
     description:
       "Como organizar e apresentar as contas do condomínio com transparência, reduzindo questionamentos em assembleia.",
-    image: "/assets/revistas/37.jpg",
+    image: "/assets/revistas/37.webp",
     pdfUrl: "https://revista-direito-e-condominio.s3.us-east-2.amazonaws.com/Revista_DC_ed37.pdf",
     seoTitle: "Prestação de contas do condomínio: guia para síndicos",
     metaDescription:

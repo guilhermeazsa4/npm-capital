@@ -9,6 +9,12 @@
       "autoPort": true
     },
     {
+      "name": "static",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "out", "-l", "4173"],
+      "port": 4173
+    },
+    {
       "name": "ailton-dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "C:/Users/user/Desktop/ailton-prototype", "run", "dev", "--", "--port", "3001"],

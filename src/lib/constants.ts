@@ -5,12 +5,20 @@ export const WHATSAPP_MESSAGE = encodeURIComponent(
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 export const CONTACT = {
-  email: "contato@npgcapital.com.br",
+  email: "gerencia@npgcapital.com.br",
   phone: "(11) 97858-9115",
   address: "Av. Paulista, 1000 — São Paulo, SP",
-  // TODO: substituir pelo CNPJ real antes de publicar — aparece no footer e na política de privacidade.
-  cnpj: "00.001.010/0001-00",
+  cnpj: "66.492.850/0001-62",
 } as const;
+
+/**
+ * Portal externo onde o morador emite a 2ª via do boleto. Operado por terceiro,
+ * não pela NPG — por isso a página avisa que o usuário está saindo do site.
+ *
+ * TODO: preencher com a URL real antes de publicar. Enquanto estiver vazio, a
+ * página /seu-boleto mostra só o caminho por WhatsApp, sem link quebrado.
+ */
+export const BOLETO_PORTAL_URL = "";
 
 export const SOCIAL = {
   instagram: "https://www.instagram.com/npgcapital",

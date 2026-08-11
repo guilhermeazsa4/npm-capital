@@ -10,19 +10,19 @@ export function DepoimentosSection() {
       quote: "A inadimplência tinha travado a reforma da fachada. Com a garantia, conseguimos planejar e executar a obra.",
       name: "Sandra Beltrão",
       role: "Edifício Aurora · Itaim Bibi, São Paulo, SP",
-      photo: "/assets/Pessoa1.png",
+      photo: "/assets/Pessoa1.webp",
     },
     {
       quote: "Parei de perseguir morador no corredor. O condomínio recebe certo todo mês e eu cuido do que importa.",
       name: "Ricardo Almeida",
       role: "Condomínio Panamérica · Vila Olímpia, São Paulo, SP",
-      photo: "/assets/Pessoa2.png",
+      photo: "/assets/Pessoa2.webp",
     },
     {
       quote: "O que mais pesava era a cobrança. Hoje isso é da NPG, e as assembleias ficaram muito menos tensas.",
       name: "Marcos Tavares",
       role: "Edifício Fidalga · Pinheiros, São Paulo, SP",
-      photo: "/assets/Pessoa3.png",
+      photo: "/assets/Pessoa3.webp",
     },
   ];
 

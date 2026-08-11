@@ -3,14 +3,33 @@
 import { MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { FormErro, HoneypotField } from "@/components/form-fields";
 import { MotionBlock } from "@/components/ui";
+import { enviarLead, type FormStatus } from "@/lib/enviar-lead";
 
 const inputClassName =
   "w-full rounded-[4px] border border-[#14344E]/15 bg-white px-4 py-3 text-sm text-[#14344E] outline-none transition-colors focus:border-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/20";
 const labelClassName = "mb-1 block text-sm font-semibold text-[#14344E]";
 
 export function CtaFinal() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [erro, setErro] = useState("");
+  const submitted = status === "enviado";
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("enviando");
+    setErro("");
+
+    const resultado = await enviarLead(e.currentTarget, "Proposta — CTA final");
+
+    if (resultado.ok) {
+      setStatus("enviado");
+    } else {
+      setErro(resultado.erro);
+      setStatus("erro");
+    }
+  }
 
   return (
     <section className="relative flex min-h-[104vh] items-center overflow-hidden bg-[#0E1F1E] px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-24">
@@ -47,12 +66,8 @@ export function CtaFinal() {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
-              >
+              <form className="relative" onSubmit={handleSubmit}>
+                <HoneypotField />
                 <p className="mb-6 text-lg font-black text-[#14344E]">Solicitar Proposta</p>
 
                 <div className="space-y-4">
@@ -61,19 +76,19 @@ export function CtaFinal() {
                       <label htmlFor="cta-nome" className={labelClassName}>
                         Nome <span className="text-red-500">*</span>
                       </label>
-                      <input id="cta-nome" type="text" required placeholder="Seu nome" className={inputClassName} />
+                      <input id="cta-nome" name="nome" type="text" required placeholder="Seu nome" className={inputClassName} />
                     </div>
                     <div>
                       <label htmlFor="cta-email" className={labelClassName}>
                         E-mail <span className="text-red-500">*</span>
                       </label>
-                      <input id="cta-email" type="email" required placeholder="voce@email.com" className={inputClassName} />
+                      <input id="cta-email" name="email" type="email" required placeholder="voce@email.com" className={inputClassName} />
                     </div>
                     <div>
                       <label htmlFor="cta-telefone" className={labelClassName}>
                         Telefone / WhatsApp <span className="text-red-500">*</span>
                       </label>
-                      <input id="cta-telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
+                      <input id="cta-telefone" name="telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
                     </div>
                   </div>
 
@@ -85,13 +100,13 @@ export function CtaFinal() {
                       <label htmlFor="cta-condominio" className={labelClassName}>
                         Nome do condomínio <span className="text-red-500">*</span>
                       </label>
-                      <input id="cta-condominio" type="text" required placeholder="Nome do condomínio" className={inputClassName} />
+                      <input id="cta-condominio" name="condominio" type="text" required placeholder="Nome do condomínio" className={inputClassName} />
                     </div>
                     <div>
                       <label htmlFor="cta-receita" className={labelClassName}>
                         Receita mensal
                       </label>
-                      <input id="cta-receita" type="text" placeholder="Ex.: R$ 20.000" className={inputClassName} />
+                      <input id="cta-receita" name="receita" type="text" placeholder="Ex.: R$ 20.000" className={inputClassName} />
                     </div>
                   </div>
                 </div>
@@ -99,6 +114,8 @@ export function CtaFinal() {
                 <label htmlFor="cta-consentimento" className="mt-4 flex items-start gap-2 text-xs leading-5 text-[#14344E]/70">
                   <input
                     id="cta-consentimento"
+                    name="consentimento"
+                    value="1"
                     type="checkbox"
                     required
                     className="mt-0.5 h-4 w-4 shrink-0 rounded-[3px] border border-[#14344E]/30 text-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/30"
@@ -112,13 +129,18 @@ export function CtaFinal() {
                   </span>
                 </label>
 
+                {status === "erro" ? <FormErro mensagem={erro} /> : null}
+
                 <div className="mt-6">
                   <button
                     type="submit"
-                    className="group relative inline-flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 py-3 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-1px_0_rgba(100,71,17,0.12)] backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92 hover:shadow-[0_20px_54px_rgba(241,199,91,0.4),inset_0_1px_0_rgba(255,255,255,0.56)] active:scale-[0.98]"
+                    disabled={status === "enviando"}
+                    className="group relative inline-flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 py-3 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-1px_0_rgba(100,71,17,0.12)] backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92 hover:shadow-[0_20px_54px_rgba(241,199,91,0.4),inset_0_1px_0_rgba(255,255,255,0.56)] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60"
                   >
                     <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.52),transparent_36%,rgba(255,255,255,0.22)_72%,transparent)] opacity-90 transition-opacity group-hover:opacity-100" />
-                    <span className="relative z-10">Solicitar proposta personalizada</span>
+                    <span className="relative z-10">
+                      {status === "enviando" ? "Enviando..." : "Solicitar proposta personalizada"}
+                    </span>
                   </button>
                 </div>
               </form>

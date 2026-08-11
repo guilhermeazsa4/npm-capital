@@ -35,7 +35,7 @@ export function Footer() {
             <div className="mt-5 flex flex-wrap items-center gap-6">
               <div className="h-14 w-48">
                 <Image
-                  src="/assets/logoCondGarantidos.png"
+                  src="/assets/logoCondGarantidos.webp"
                   alt="Condomínios Garantidos"
                   width={220}
                   height={56}
@@ -51,7 +51,7 @@ export function Footer() {
             <div className="mt-5 flex flex-wrap items-center gap-6">
               <div className="h-14 w-36">
                 <Image
-                  src="/assets/BonijurisLogoBlack.png"
+                  src="/assets/BonijurisLogoBlack.webp"
                   alt="Bonijuris"
                   width={160}
                   height={56}
@@ -60,7 +60,7 @@ export function Footer() {
               </div>
               <div className="h-14 w-40">
                 <Image
-                  src="/assets/RevistaDireitoECondLogo.png"
+                  src="/assets/RevistaDireitoECondLogo.webp"
                   alt="Revista Direito e Condomínio"
                   width={180}
                   height={56}
@@ -76,7 +76,7 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <span className="text-sm font-semibold text-black/70">Desenvolvido por</span>
             <Image
-              src="/assets/HausLogoBlack.png"
+              src="/assets/HausLogoBlack.webp"
               alt="Haus"
               width={100}
               height={32}

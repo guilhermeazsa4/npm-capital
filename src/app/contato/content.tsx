@@ -3,8 +3,10 @@
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { FormErro, HoneypotField } from "@/components/form-fields";
 import { FloatingActions, MotionBlock } from "@/components/ui";
 import { CONTACT } from "@/lib/constants";
+import { enviarLead, type FormStatus } from "@/lib/enviar-lead";
 
 const contactCards = [
   {
@@ -38,8 +40,24 @@ const inputClassName =
 const labelClassName = "mb-1 block text-sm font-semibold text-[#14344E]";
 
 export function ContatoContent() {
-  const [activeTab, setActiveTab] = useState<"proposta" | "contato">("proposta");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [erro, setErro] = useState("");
+  const submitted = status === "enviado";
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("enviando");
+    setErro("");
+
+    const resultado = await enviarLead(e.currentTarget, "Proposta — página de contato");
+
+    if (resultado.ok) {
+      setStatus("enviado");
+    } else {
+      setErro(resultado.erro);
+      setStatus("erro");
+    }
+  }
 
   return (
     <main className="bg-white">
@@ -80,154 +98,74 @@ export function ContatoContent() {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
-              >
-                <div className="mb-6 flex items-center gap-4 border-b border-[#14344E]/10 sm:gap-6">
-                  {(["proposta", "contato"] as const).map((tab) => (
-                    <button
-                      key={tab}
-                      type="button"
-                      onClick={() => setActiveTab(tab)}
-                      className={`relative pb-3 text-sm font-black transition-colors sm:text-lg ${
-                        activeTab === tab
-                          ? "text-[#14344E]"
-                          : "text-[#14344E]/35 hover:text-[#14344E]/60"
-                      }`}
-                    >
-                      {tab === "proposta" ? "Solicitar Proposta" : "Contato"}
-                      {activeTab === tab ? (
-                        <span className="absolute inset-x-0 -bottom-px h-[2px] bg-[#F1C75B]" />
-                      ) : null}
-                    </button>
-                  ))}
-                </div>
+              <form className="relative" onSubmit={handleSubmit}>
+                <HoneypotField />
+                <p className="mb-6 text-lg font-black text-[#14344E]">Solicitar Proposta</p>
 
-                {activeTab === "proposta" ? (
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                      <div>
-                        <label htmlFor="p-nome" className={labelClassName}>
-                          Nome <span className="text-red-500">*</span>
-                        </label>
-                        <input id="p-nome" type="text" required placeholder="Seu nome" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="p-email" className={labelClassName}>
-                          E-mail <span className="text-red-500">*</span>
-                        </label>
-                        <input id="p-email" type="email" required placeholder="voce@email.com" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="p-telefone" className={labelClassName}>
-                          Telefone / WhatsApp <span className="text-red-500">*</span>
-                        </label>
-                        <input id="p-telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
-                      </div>
-                    </div>
-
-                    <p className="pt-2 text-xs font-black uppercase tracking-[0.18em] text-[#14344E]/50">
-                      Dados do condomínio
-                    </p>
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="p-condominio" className={labelClassName}>
-                          Nome do condomínio <span className="text-red-500">*</span>
-                        </label>
-                        <input id="p-condominio" type="text" required placeholder="Nome do condomínio" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="p-receita" className={labelClassName}>
-                          Receita mensal
-                        </label>
-                        <input id="p-receita" type="text" placeholder="Ex.: R$ 20.000" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="p-cidade" className={labelClassName}>
-                          Cidade <span className="text-red-500">*</span>
-                        </label>
-                        <input id="p-cidade" type="text" required placeholder="Sua cidade" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="p-estado" className={labelClassName}>
-                          Estado <span className="text-red-500">*</span>
-                        </label>
-                        <select id="p-estado" required defaultValue="SP" className={inputClassName}>
-                          {estados.map((uf) => (
-                            <option key={uf} value={uf}>
-                              {uf}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                      <div>
-                        <label htmlFor="c-nome" className={labelClassName}>
-                          Nome <span className="text-red-500">*</span>
-                        </label>
-                        <input id="c-nome" type="text" required placeholder="Seu nome" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="c-email" className={labelClassName}>
-                          E-mail <span className="text-red-500">*</span>
-                        </label>
-                        <input id="c-email" type="email" required placeholder="voce@email.com" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="c-telefone" className={labelClassName}>
-                          Telefone / WhatsApp <span className="text-red-500">*</span>
-                        </label>
-                        <input id="c-telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="c-condominio" className={labelClassName}>
-                          Condomínio <span className="text-red-500">*</span>
-                        </label>
-                        <input id="c-condominio" type="text" required placeholder="Nome do condomínio" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="c-cidade" className={labelClassName}>
-                          Cidade <span className="text-red-500">*</span>
-                        </label>
-                        <input id="c-cidade" type="text" required placeholder="Sua cidade" className={inputClassName} />
-                      </div>
-                      <div>
-                        <label htmlFor="c-estado" className={labelClassName}>
-                          Estado <span className="text-red-500">*</span>
-                        </label>
-                        <select id="c-estado" required defaultValue="SP" className={inputClassName}>
-                          {estados.map((uf) => (
-                            <option key={uf} value={uf}>
-                              {uf}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <div>
+                      <label htmlFor="p-nome" className={labelClassName}>
+                        Nome <span className="text-red-500">*</span>
+                      </label>
+                      <input id="p-nome" name="nome" type="text" required placeholder="Seu nome" className={inputClassName} />
                     </div>
                     <div>
-                      <label htmlFor="c-mensagem" className={labelClassName}>
-                        Mensagem (opcional)
+                      <label htmlFor="p-email" className={labelClassName}>
+                        E-mail <span className="text-red-500">*</span>
                       </label>
-                      <textarea
-                        id="c-mensagem"
-                        rows={2}
-                        placeholder="Conte um pouco sobre a situação do condomínio"
-                        className={`resize-none ${inputClassName}`}
-                      />
+                      <input id="p-email" name="email" type="email" required placeholder="voce@email.com" className={inputClassName} />
+                    </div>
+                    <div>
+                      <label htmlFor="p-telefone" className={labelClassName}>
+                        Telefone / WhatsApp <span className="text-red-500">*</span>
+                      </label>
+                      <input id="p-telefone" name="telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
                     </div>
                   </div>
-                )}
+
+                  <p className="pt-2 text-xs font-black uppercase tracking-[0.18em] text-[#14344E]/50">
+                    Dados do condomínio
+                  </p>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="p-condominio" className={labelClassName}>
+                        Nome do condomínio <span className="text-red-500">*</span>
+                      </label>
+                      <input id="p-condominio" name="condominio" type="text" required placeholder="Nome do condomínio" className={inputClassName} />
+                    </div>
+                    <div>
+                      <label htmlFor="p-receita" className={labelClassName}>
+                        Receita mensal
+                      </label>
+                      <input id="p-receita" name="receita" type="text" placeholder="Ex.: R$ 20.000" className={inputClassName} />
+                    </div>
+                    <div>
+                      <label htmlFor="p-cidade" className={labelClassName}>
+                        Cidade <span className="text-red-500">*</span>
+                      </label>
+                      <input id="p-cidade" name="cidade" type="text" required placeholder="Sua cidade" className={inputClassName} />
+                    </div>
+                    <div>
+                      <label htmlFor="p-estado" className={labelClassName}>
+                        Estado <span className="text-red-500">*</span>
+                      </label>
+                      <select id="p-estado" name="estado" required defaultValue="SP" className={inputClassName}>
+                        {estados.map((uf) => (
+                          <option key={uf} value={uf}>
+                            {uf}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                </div>
 
                 <label htmlFor="consentimento" className="mt-4 flex items-start gap-2 text-xs leading-5 text-[#14344E]/70">
                   <input
                     id="consentimento"
+                    name="consentimento"
+                    value="1"
                     type="checkbox"
                     required
                     className="mt-0.5 h-4 w-4 shrink-0 rounded-[3px] border border-[#14344E]/30 text-[#F1C75B] focus:ring-2 focus:ring-[#F1C75B]/30"
@@ -240,14 +178,17 @@ export function ContatoContent() {
                     .
                   </span>
                 </label>
+                {status === "erro" ? <FormErro mensagem={erro} /> : null}
+
                 <div className="mt-6">
                   <button
                     type="submit"
-                    className="group relative inline-flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 py-3 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-1px_0_rgba(100,71,17,0.12)] backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92 hover:shadow-[0_20px_54px_rgba(241,199,91,0.4),inset_0_1px_0_rgba(255,255,255,0.56)] active:scale-[0.98]"
+                    disabled={status === "enviando"}
+                    className="group relative inline-flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden rounded-[8px] border border-[#FFE39A]/70 bg-[#F1C75B]/88 px-6 py-3 text-sm font-black text-[#0E1F1E] shadow-[0_16px_42px_rgba(241,199,91,0.3),inset_0_1px_0_rgba(255,255,255,0.46),inset_0_-1px_0_rgba(100,71,17,0.12)] backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-[#FFD66E]/92 hover:shadow-[0_20px_54px_rgba(241,199,91,0.4),inset_0_1px_0_rgba(255,255,255,0.56)] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60"
                   >
                     <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.52),transparent_36%,rgba(255,255,255,0.22)_72%,transparent)] opacity-90 transition-opacity group-hover:opacity-100" />
                     <span className="relative z-10">
-                      {activeTab === "proposta" ? "Solicitar proposta personalizada" : "Enviar"}
+                      {status === "enviando" ? "Enviando..." : "Solicitar proposta personalizada"}
                     </span>
                   </button>
                 </div>
