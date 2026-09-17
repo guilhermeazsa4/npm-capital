@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { FormErro, HoneypotField } from "@/components/form-fields";
@@ -26,12 +26,6 @@ const contactCards = [
     label: "E-mail",
     value: CONTACT.email,
     href: `mailto:${CONTACT.email}`,
-  },
-  {
-    icon: MapPin,
-    label: "Localização",
-    value: CONTACT.address,
-    href: undefined,
   },
 ] as const;
 
@@ -126,7 +120,7 @@ export function ContatoContent() {
                       <label htmlFor="p-telefone" className={labelClassName}>
                         Telefone / WhatsApp <span className="text-red-500">*</span>
                       </label>
-                      <input id="p-telefone" name="telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
+                      <input id="p-telefone" name="telefone" type="tel" required placeholder="11 | 99999 9999" className={inputClassName} />
                     </div>
                   </div>
 

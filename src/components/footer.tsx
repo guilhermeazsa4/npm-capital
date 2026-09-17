@@ -4,8 +4,6 @@ import Link from "next/link";
 import { CONTACT, WHATSAPP_URL } from "@/lib/constants";
 
 export function Footer() {
-  const year = new Date().getFullYear();
-
   return (
     <footer className="gold-surface relative z-[55] border-t border-[#FFE39A]/70 px-5 pb-6 pt-6 text-black lg:px-8 lg:pb-8 lg:pt-8">
       <div className="relative z-10 mx-auto max-w-[1220px]">
@@ -28,7 +26,7 @@ export function Footer() {
               </a>
               <span className="inline-flex items-center gap-2">
                 <MapPin aria-hidden="true" className="h-4 w-4 shrink-0" />
-                {CONTACT.address}
+                São Paulo, SP
               </span>
             </div>
           </div>
@@ -37,12 +35,12 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-black uppercase text-black">Associada</h3>
             <div className="mt-5 flex flex-wrap items-center gap-6">
-              <div className="h-14 w-48">
+              <div className="h-10 w-36">
                 <Image
                   src="/assets/logoCondGarantidos.webp"
                   alt="Condomínios Garantidos"
-                  width={220}
-                  height={56}
+                  width={160}
+                  height={40}
                   className="h-full w-full object-contain"
                 />
               </div>
@@ -53,21 +51,21 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-black uppercase text-black">Parceiras</h3>
             <div className="mt-5 flex flex-wrap items-center gap-6">
-              <div className="h-14 w-36">
+              <div className="h-10 w-28">
                 <Image
                   src="/assets/BonijurisLogoBlack.webp"
                   alt="Bonijuris"
-                  width={160}
-                  height={56}
+                  width={120}
+                  height={40}
                   className="h-full w-full object-contain"
                 />
               </div>
-              <div className="h-14 w-40">
+              <div className="h-10 w-32">
                 <Image
                   src="/assets/RevistaDireitoECondLogo.webp"
                   alt="Revista Direito e Condomínio"
-                  width={180}
-                  height={56}
+                  width={140}
+                  height={40}
                   className="h-full w-full object-contain"
                 />
               </div>
@@ -82,14 +80,14 @@ export function Footer() {
             <Image
               src="/assets/HausLogoBlack.webp"
               alt="Haus"
-              width={100}
-              height={32}
-              className="h-6 w-auto object-contain"
+              width={80}
+              height={26}
+              className="h-5 w-auto object-contain"
             />
           </div>
 
           <p>
-            &copy; {year} NPG Capital. CNPJ {CONTACT.cnpj}. Todos os direitos reservados.{" "}
+            Todos os direitos reservados.{" "}
             <Link href="/politica-de-privacidade" className="underline">
               Política de Privacidade
             </Link>

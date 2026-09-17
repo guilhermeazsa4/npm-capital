@@ -260,7 +260,7 @@ export function EbookLandingContent({ ebook }: { ebook: Ebook }) {
                       <label htmlFor="eb-telefone" className={labelClassName}>
                         Telefone <span className="text-red-500">*</span>
                       </label>
-                      <input id="eb-telefone" name="telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
+                      <input id="eb-telefone" name="telefone" type="tel" required placeholder="11 | 99999 9999" className={inputClassName} />
                     </div>
                   </div>
 

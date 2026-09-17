@@ -88,7 +88,7 @@ export function CtaFinal() {
                       <label htmlFor="cta-telefone" className={labelClassName}>
                         Telefone / WhatsApp <span className="text-red-500">*</span>
                       </label>
-                      <input id="cta-telefone" name="telefone" type="tel" required placeholder="(11) 99999-9999" className={inputClassName} />
+                      <input id="cta-telefone" name="telefone" type="tel" required placeholder="11 | 99999 9999" className={inputClassName} />
                     </div>
                   </div>
 
