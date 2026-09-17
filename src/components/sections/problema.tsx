@@ -20,7 +20,7 @@ function ServiceCard({
   return (
     <MotionBlock delay={delay} className="h-full">
       <Link
-        href="/servicos"
+        href="/contato#solicitar-proposta"
         className="premium-glass-button topbar-ticket-button group relative flex h-full flex-col overflow-hidden rounded-[16px] p-7 text-white"
       >
         <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.36),transparent_34%,rgba(255,255,255,0.14)_72%,transparent)] opacity-85 transition-opacity group-hover:opacity-100" />

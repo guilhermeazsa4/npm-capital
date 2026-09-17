@@ -3,8 +3,6 @@
 import { Handshake, Receipt, ShieldCheck } from "lucide-react";
 import { FloatingActions, MotionBlock } from "@/components/ui";
 
-const YOUTUBE_ID = "QbD8gyoADKY";
-
 const manifestoParagraphs = [
   "Na NPG Capital, acreditamos que uma gestão condominial eficiente começa pela segurança financeira. Sabemos que a inadimplência gera incertezas, compromete planejamentos e dificulta decisões importantes. Por isso, existimos para transformar esse cenário, oferecendo estabilidade e confiança para síndicos, administradoras e condomínios. Nossa missão é garantir que a arrecadação aconteça de forma consistente, permitindo que cada condomínio mantenha seus compromissos, preserve seu patrimônio e continue evoluindo sem depender das oscilações causadas por atrasos nos pagamentos.",
   "Mais do que uma solução financeira, somos um parceiro estratégico para quem busca uma administração moderna, responsável e eficiente. Acreditamos que síndicos devem dedicar seu tempo à gestão, ao relacionamento com os moradores e ao desenvolvimento do condomínio, e não ao desgaste constante da cobrança. Ao assumir esse desafio, devolvemos tranquilidade e segurança para toda a comunidade.",
@@ -30,18 +28,6 @@ const cards = [
   },
 ];
 
-function YouTubePreview() {
-  return (
-    <iframe
-      className="h-full w-full"
-      src={`https://www.youtube.com/embed/${YOUTUBE_ID}`}
-      title="Vídeo institucional NPG Capital"
-      allow="accelerate-compute; autoplay; encrypted-media; picture-in-picture"
-      allowFullScreen
-    />
-  );
-}
-
 export function AEmpresaContent() {
   return (
     <main className="bg-[#14344E]">
@@ -62,20 +48,11 @@ export function AEmpresaContent() {
         </div>
       </section>
 
-      {/* Sessão 3 — Vídeo */}
+      {/* Sessão 3 — Cards com ícones */}
       <section className="relative overflow-hidden px-4 py-14 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-24">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,#122D3E_0%,#10262E_100%)]" />
         <div className="relative z-10 mx-auto max-w-[1120px] 2xl:max-w-[1240px]">
-          <MotionBlock>
-            <div className="overflow-hidden rounded-[12px] shadow-[0_18px_48px_rgba(4,17,24,0.28)] sm:rounded-[16px] lg:rounded-[20px] lg:shadow-[0_24px_70px_rgba(20,52,78,0.2)]">
-              <div className="relative aspect-video bg-black">
-                <YouTubePreview />
-              </div>
-            </div>
-          </MotionBlock>
-
-          {/* Sessão 3.5 — Cards com ícones */}
-          <div className="mx-auto mt-10 grid max-w-[520px] gap-4 sm:mt-12 sm:gap-5 lg:mt-16 xl:max-w-none xl:grid-cols-3">
+          <div className="mx-auto grid max-w-[520px] gap-4 sm:gap-5 xl:max-w-none xl:grid-cols-3">
             {cards.map((c, i) => (
               <MotionBlock key={c.title} delay={i * 0.08}>
                 <article className="hero-highlight-card group h-full rounded-[14px] p-5 text-center sm:rounded-[16px] sm:p-6 lg:rounded-[18px] lg:p-7 2xl:p-8">
