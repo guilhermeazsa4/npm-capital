@@ -38,13 +38,13 @@ export function BeneficiosDiferenteSection() {
       icon: MessageCircle,
       title: "Informações e orientações gratuitas",
       description:
-        "Orientações condominiais e jurídicas sobre qualquer assunto de interesse do condomínio são oferecidas gratuitamente pelos nossos consultores.",
+        "Orientações condominiais sobre qualquer assunto de interesse da gestão do condomínio são oferecidas gratuitamente pelos nossos consultores.",
     },
     {
       icon: PaintRoller,
       title: "Antecipação para reformas e benfeitorias",
       description:
-        "Condomínio sem saldo no fundo de obras? A NPG resolve rapidamente, com antecipação de valores parcelados diretamente no boleto do condomínio.",
+        "Condomínio sem saldo no fundo de obras? A NPG resolve rapidamente com antecipação de valores para obras e melhorias do condomínio.",
     },
     {
       icon: Users,

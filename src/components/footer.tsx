@@ -1,7 +1,7 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, WHATSAPP_URL } from "@/lib/constants";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -18,8 +18,12 @@ export function Footer() {
                 <Mail aria-hidden="true" className="h-4 w-4 shrink-0" />
                 {CONTACT.email}
               </a>
-              <a href={`tel:${CONTACT.phone}`} className="inline-flex items-center gap-2">
+              <a href={`tel:${CONTACT.landline.replace(/\D/g, "")}`} className="inline-flex items-center gap-2">
                 <Phone aria-hidden="true" className="h-4 w-4 shrink-0" />
+                {CONTACT.landline}
+              </a>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                <MessageCircle aria-hidden="true" className="h-4 w-4 shrink-0" />
                 {CONTACT.phone}
               </a>
               <span className="inline-flex items-center gap-2">

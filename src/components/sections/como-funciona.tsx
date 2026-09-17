@@ -185,7 +185,7 @@ export function ComoFuncionaSection() {
           </span>
           <div>
             <p>Resultado</p>
-            <strong>Receita garantida, sem desgaste para o sindico.</strong>
+            <strong>Receita garantida, sem desgaste para a gestão do condomínio.</strong>
           </div>
         </div>
       </div>

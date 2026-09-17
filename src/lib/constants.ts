@@ -7,6 +7,7 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_ME
 export const CONTACT = {
   email: "gerencia@npgcapital.com.br",
   phone: "(11) 97858-9115",
+  landline: "(11) 4085-0303",
   address: "Av. Paulista, 1000 — São Paulo, SP",
   cnpj: "66.492.850/0001-62",
 } as const;

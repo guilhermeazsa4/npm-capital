@@ -5,15 +5,21 @@ import Link from "next/link";
 import { useState } from "react";
 import { FormErro, HoneypotField } from "@/components/form-fields";
 import { FloatingActions, MotionBlock } from "@/components/ui";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, WHATSAPP_URL } from "@/lib/constants";
 import { enviarLead, type FormStatus } from "@/lib/enviar-lead";
 
 const contactCards = [
   {
     icon: Phone,
     label: "Telefone",
+    value: CONTACT.landline,
+    href: `tel:${CONTACT.landline.replace(/\D/g, "")}`,
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
     value: CONTACT.phone,
-    href: `tel:${CONTACT.phone.replace(/\D/g, "")}`,
+    href: WHATSAPP_URL,
   },
   {
     icon: Mail,
@@ -229,8 +235,15 @@ export function ContatoContent() {
                 const className =
                   "hero-highlight-card rounded-[16px] p-5 text-center transition-transform hover:-translate-y-1 sm:rounded-[18px] sm:p-6";
 
+                const isExternal = card.href?.startsWith("http");
+
                 return card.href ? (
-                  <a key={card.label} href={card.href} className={className}>
+                  <a
+                    key={card.label}
+                    href={card.href}
+                    className={className}
+                    {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  >
                     {content}
                   </a>
                 ) : (

@@ -10,8 +10,8 @@ function HeroContent() {
   return (
     <>
       <h1 className="max-w-[860px] text-4xl font-black leading-[1.02] md:text-6xl lg:text-[68px]">
-        Garantimos a receita,{" "}
-        <span className="hero-gold-signature">você gere melhor.</span>
+        Seu Rumo,{" "}
+        <span className="hero-gold-signature">Nossa Garantia</span>
       </h1>
       <p className="mt-6 max-w-xl text-left text-sm font-medium leading-7 text-white/92 md:text-base md:leading-7">
         Com a <span className="font-bold text-white">NPG Capital</span>, seu condomínio conta com
@@ -35,8 +35,8 @@ function HeroContent() {
           </Link>
         </div>
         <div className="w-full border-l border-white/18 pl-4 text-left text-sm font-semibold leading-7 text-white [text-shadow:0_1px_6px_rgba(0,0,0,0.55)] sm:w-auto sm:text-base">
-          <p>+10 condomínios atendidos</p>
-          <p>+10 anos de experiência</p>
+          <p>+ Atendimento humanizado</p>
+          <p>+ Gestão otimizada</p>
         </div>
       </div>
     </>
