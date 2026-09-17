@@ -21,7 +21,13 @@ export function RevistaLandingContent({ revista }: { revista: Revista }) {
 
           <div className="mt-8 grid gap-8 sm:grid-cols-[320px_1fr] sm:items-center sm:gap-10">
             <MotionBlock>
-              <div className="relative mx-auto aspect-[3/4] w-full max-w-[280px] sm:max-w-none">
+              <a
+                href={revista.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Baixar edição #${revista.number} em PDF`}
+                className="relative mx-auto block aspect-[3/4] w-full max-w-[280px] transition-transform hover:-translate-y-1 sm:max-w-none"
+              >
                 <Image
                   src={revista.image}
                   alt={`Edição #${revista.number}`}
@@ -30,7 +36,7 @@ export function RevistaLandingContent({ revista }: { revista: Revista }) {
                   sizes="(min-width: 640px) 320px, 280px"
                   priority
                 />
-              </div>
+              </a>
             </MotionBlock>
 
             <MotionBlock delay={0.1}>

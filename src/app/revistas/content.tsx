@@ -47,7 +47,7 @@ export function RevistasContent() {
               alt="Revista Direito e Condomínio"
               width={480}
               height={160}
-              className="mx-auto h-auto w-full max-w-[420px] object-contain"
+              className="mx-auto h-auto w-full max-w-[280px] object-contain"
               priority
             />
           </MotionBlock>
